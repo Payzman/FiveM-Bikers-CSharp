@@ -13,7 +13,6 @@ namespace patches
     {
         public Patches()
         {
-            CitizenFX.Core.Debug.WriteLine("This is an example Debug message");
             // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
         }
