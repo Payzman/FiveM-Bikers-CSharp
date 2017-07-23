@@ -14,21 +14,11 @@ namespace patches
 {
     public class IPMCScript: BaseScript
     {
-        MenuPool menus;
-        UIMenu interaction_menu;
+        IPMCMenus menus;
 
         public IPMCScript()
         {
-            menus = new MenuPool();
-            // Add additional menus here
-            interaction_menu = new UIMenu("Interaction Menu","");
-            menus.Add(interaction_menu);
-            // Add items for the interaction menu here:
-            var set_patch = new UIMenuItem("Set Patch");
-            interaction_menu.AddItem(set_patch);
-
-            // Refresh the interaction menu
-            interaction_menu.RefreshIndex();
+            menus = new IPMCMenus();
             // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
         }
@@ -40,7 +30,7 @@ namespace patches
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
             {
                 // Toggle visibility of the interaction menu
-                interaction_menu.Visible = !interaction_menu.Visible;
+                menus.ToggleInteractionMenu();
             }
         }
     }
