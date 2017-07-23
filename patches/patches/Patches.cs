@@ -32,7 +32,6 @@ namespace patches
 
         public async Task OnTick()
         {
-            CitizenFX.Core.Debug.WriteLine("Ticking...");
             menus.ProcessMenus();
             // Since FiveM does not use an interaction menu we can just override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
