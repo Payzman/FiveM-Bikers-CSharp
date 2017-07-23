@@ -9,9 +9,26 @@ namespace patches
 {
     class IPMCMenus
     {
-        MenuPool menus;
-        UIMenu interaction_menu;
-        UIMenu set_patches;
+        public static readonly String[] MENU_TITLES = 
+        {
+            "Interaction Menu",
+            "Set Patch",
+        };
+        public static readonly String INTERACTION_MENU_SUBTITLE = "";
+        public static readonly String SET_PATCHES_DESCRIPTION = "Sets your top rocker, center patch and bottom rocker";
+        public static readonly String[] CHARTERS =
+        {
+            "National",
+            "Paleto Bay",
+            "Rancho",
+            "Del Perro",
+            "La Mesa",
+        };
+
+
+        private MenuPool menus;
+        private UIMenu interaction_menu;
+        private UIMenu set_patches;
         // Creates all the interactive menus and calls them.
         // Constructor: Initialization
         public IPMCMenus()
@@ -25,21 +42,16 @@ namespace patches
         private void AddInteractionMenu()
         {
             // Add additional menus here
-            interaction_menu = new UIMenu("Interaction Menu", "");
+            interaction_menu = new UIMenu(MENU_TITLES[0], INTERACTION_MENU_SUBTITLE);
             menus.Add(interaction_menu);
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
-            set_patches = menus.AddSubMenu(interaction_menu, "Set Patch", "Sets your top rocker, center patch and bottom rocker");
-            UIMenuItem national = new UIMenuItem("National");
-            UIMenuItem del_perro = new UIMenuItem("Del Perro");
-            UIMenuItem la_mesa = new UIMenuItem("La Mesa");
-            UIMenuItem rancho = new UIMenuItem("Rancho");
-            UIMenuItem paleto_bay = new UIMenuItem("Paleto Bay");
-            set_patches.AddItem(national);
-            set_patches.AddItem(del_perro);
-            set_patches.AddItem(la_mesa);
-            set_patches.AddItem(rancho);
-            set_patches.AddItem(paleto_bay);
+            set_patches = menus.AddSubMenu(interaction_menu, MENU_TITLES[1], SET_PATCHES_DESCRIPTION);
+            for(int i=0; i < CHARTERS.Length; i++)
+            {
+                UIMenuItem charter = new UIMenuItem(CHARTERS[i]);
+                set_patches.AddItem(charter);
+            }
             // Refresh the set patches menu
             set_patches.RefreshIndex();
             // Refresh the interaction menu
