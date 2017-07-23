@@ -16,6 +16,7 @@ namespace patches
 
         public Patches()
         {
+            menus = new MenuPool();
             // Add additional menus here
             interaction_menu = new UIMenu("Interaction Menu","");
             menus.Add(interaction_menu);
@@ -31,6 +32,7 @@ namespace patches
 
         public async Task OnTick()
         {
+            CitizenFX.Core.Debug.WriteLine("Ticking...");
             menus.ProcessMenus();
             // Since FiveM does not use an interaction menu we can just override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
