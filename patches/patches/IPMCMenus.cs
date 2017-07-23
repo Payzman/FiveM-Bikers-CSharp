@@ -21,7 +21,7 @@ namespace patches
             interaction_menu = new UIMenu("Interaction Menu", "");
             menus.Add(interaction_menu);
             // Add items for the interaction menu here:
-            var set_patch = new UIMenuItem("Set Patch");
+            var set_patch = new UIMenuItem("Set Patch", "Sets your Top Rocker, Center Patch and Bottom Rocker");
             interaction_menu.AddItem(set_patch);
             // Refresh the interaction menu
             interaction_menu.RefreshIndex();
