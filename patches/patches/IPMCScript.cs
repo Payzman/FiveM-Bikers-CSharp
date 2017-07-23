@@ -7,14 +7,17 @@ using CitizenFX.Core;
 using CitizenFX.Core.UI;
 using NativeUI;
 
+//The following line is very helpful for debugging purposes. It prints a message to the client command line (press F8 ingame)
+//CitizenFX.Core.Debug.WriteLine("debug message");
+
 namespace patches
 {
-    public class Patches: BaseScript
+    public class IPMCScript: BaseScript
     {
         MenuPool menus;
         UIMenu interaction_menu;
 
-        public Patches()
+        public IPMCScript()
         {
             menus = new MenuPool();
             // Add additional menus here
@@ -36,7 +39,6 @@ namespace patches
             // Since FiveM does not use an interaction menu we can just override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
             {
-                CitizenFX.Core.Debug.WriteLine("Opening the interaction menu");
                 // Toggle visibility of the interaction menu
                 interaction_menu.Visible = !interaction_menu.Visible;
             }
