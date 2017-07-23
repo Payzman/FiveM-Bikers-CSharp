@@ -18,6 +18,7 @@ namespace patches
         {
             // Create menu pool
             menus = new MenuPool();
+
             AddInteractionMenu();
         }
 
@@ -28,7 +29,19 @@ namespace patches
             menus.Add(interaction_menu);
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
-            menus.AddSubMenu(interaction_menu, "Set Patch", "Sets your top rocker, center patch and bottom rocker");
+            set_patches = menus.AddSubMenu(interaction_menu, "Set Patch", "Sets your top rocker, center patch and bottom rocker");
+            UIMenuItem national = new UIMenuItem("National");
+            UIMenuItem del_perro = new UIMenuItem("Del Perro");
+            UIMenuItem la_mesa = new UIMenuItem("La Mesa");
+            UIMenuItem rancho = new UIMenuItem("Rancho");
+            UIMenuItem paleto_bay = new UIMenuItem("Paleto Bay");
+            set_patches.AddItem(national);
+            set_patches.AddItem(del_perro);
+            set_patches.AddItem(la_mesa);
+            set_patches.AddItem(rancho);
+            set_patches.AddItem(paleto_bay);
+            // Refresh the set patches menu
+            set_patches.RefreshIndex();
             // Refresh the interaction menu
             interaction_menu.RefreshIndex();
         }
