@@ -23,7 +23,8 @@ namespace patches
             // Since FiveM does not use an interaction menu we can just override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
             {
-                Screen.ShowNotification("this is tha interactionmenu brah");
+                CitizenFX.Core.Debug.WriteLine("This is an example Debug message");
+                Screen.ShowNotification("opening interaction menu...");
             }
         }
     }
