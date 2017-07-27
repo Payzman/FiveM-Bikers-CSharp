@@ -28,6 +28,7 @@ namespace patches
         {
             Screen.ShowNotification("Changing bottom rocker to " + IPMCMenus.CHARTERS[index]);
             int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            Function.Call(Hash.CLEAR_PED_DECORATIONS, player_ped_hash);
             int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY, "ipmc_overlays");
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, NAME_HASHES[index]);
             CitizenFX.Core.Debug.WriteLine("DEBUG:\nPlayer=" + player_ped_hash + "\nCollection=" + collection_hash + "\nTexture=" + texture_hash);
