@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPMCMenus.cs" />
+    <Compile Include="IPMCPed.cs" />
     <Compile Include="IPMCScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
