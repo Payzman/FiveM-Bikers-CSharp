@@ -95,6 +95,7 @@ namespace patches
                     int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY,"ipmc_overlays");
                     int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY,"ipmc_del_perro_M");
                     CitizenFX.Core.Debug.WriteLine("DEBUG:\nPlayer=" + player_ped_hash + "\nCollection=" + collection_hash + "\nTexture=" + texture_hash);
+                    Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, collection_hash, texture_hash);
                 }
             }
         }
