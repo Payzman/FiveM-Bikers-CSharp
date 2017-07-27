@@ -91,12 +91,10 @@ namespace patches
                 if(selectedItem.Text == MENU_TITLES[2])
                 {
                     Screen.ShowNotification("Changing bottom rocker to " + CHARTERS[index]);
-                    Screen.ShowNotification("Player ID=" + player.GetHashCode());
-                    Ped ped = new Ped(player.GetHashCode());
-                    Screen.ShowNotification("Ped code = " + ped.GetHashCode());
-                    //Alternate ped hash:
-                    int ped2 = Function.Call<int>(Hash.PLAYER_PED_ID);
-                    Screen.ShowNotification("Alternative Ped Code (def. working)" + ped2);
+                    int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+                    int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY,"ipmc_overlays");
+                    int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY,"ipmc_del_perro_M");
+                    CitizenFX.Core.Debug.WriteLine("DEBUG:\nPlayer=" + player_ped_hash + "\nCollection=" + collection_hash + "\nTexture=" + texture_hash);
                 }
             }
         }
