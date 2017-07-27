@@ -86,7 +86,7 @@ namespace patches
             if(sender == set_patches)
             {
                 // Might find a better way to do this meh...
-                if(selectedItem.Text == MENU_TITLES[3])
+                if(selectedItem.Text == MENU_TITLES[2])
                 {
                     Screen.ShowNotification("Changing bottom rocker to " + CHARTERS[index]);
                 }
