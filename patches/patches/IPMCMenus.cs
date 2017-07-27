@@ -54,6 +54,10 @@ namespace patches
             }
             // Refresh the set patches menu
             set_patches.RefreshIndex();
+            // Other idea: list
+            List<dynamic> charters = new List<dynamic>(CHARTERS);
+            UIMenuListItem set_patches2 = new UIMenuListItem(MENU_TITLES[1], charters, 1, SET_PATCHES_DESCRIPTION);
+            interaction_menu.AddItem(set_patches2);
             // Refresh the interaction menu
             interaction_menu.RefreshIndex();
         }
