@@ -90,12 +90,8 @@ namespace patches
                 // Might find a better way to do this meh...
                 if(selectedItem.Text == MENU_TITLES[2])
                 {
-                    Screen.ShowNotification("Changing bottom rocker to " + CHARTERS[index]);
-                    int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-                    int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY,"ipmc_overlays");
-                    int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY,"ipmc_del_perro_M");
-                    CitizenFX.Core.Debug.WriteLine("DEBUG:\nPlayer=" + player_ped_hash + "\nCollection=" + collection_hash + "\nTexture=" + texture_hash);
-                    Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, collection_hash, texture_hash);
+                    IPMCPed ipmcped = new IPMCPed();
+                    ipmcped.ApplyBottomRocker(index);
                 }
             }
         }
