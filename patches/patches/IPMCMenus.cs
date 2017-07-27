@@ -62,7 +62,7 @@ namespace patches
             UIMenuListItem set_patches2 = new UIMenuListItem(MENU_TITLES[2], charters, 1, MENU_DESCRIPTIONS[1]);
             set_patches.AddItem(set_patches2);
             // Try to use a handler to handle user input (choosing buttons etc.)
-            set_patches.OnItemSelect += ItemSelectHandler;
+            set_patches.OnListChange += ItemListHandler;
             // Refresh the set patches menu
             set_patches.RefreshIndex();
             // Refresh the interaction menu
@@ -81,10 +81,16 @@ namespace patches
             interaction_menu.Visible = !interaction_menu.Visible;
         }
 
-        public void ItemSelectHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        public void ItemListHandler(UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            //UI.Notify("You have selected: ~b~" + selectedItem.Text);
-            Screen.ShowNotification(sender.ToString() + " sendes you the message " + selectedItem.ToString() + " with index " + index);
+            if(sender == set_patches)
+            {
+                // Might find a better way to do this meh...
+                if(selectedItem.Text == MENU_TITLES[3])
+                {
+                    Screen.ShowNotification("Changing bottom rocker to " + CHARTERS[index]);
+                }
+            }
         }
     }
 }
