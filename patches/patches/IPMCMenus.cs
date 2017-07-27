@@ -13,6 +13,7 @@ namespace patches
         {
             "Interaction Menu",
             "Change Patch",
+            "Charter",
         };
         public static readonly String[] MENU_SUBTITLES =
         {
@@ -57,7 +58,7 @@ namespace patches
             set_patches = menus.AddSubMenu(interaction_menu, MENU_TITLES[1], MENU_DESCRIPTIONS[0]);
             // Other idea: list
             List<dynamic> charters = new List<dynamic>(CHARTERS);
-            UIMenuListItem set_patches2 = new UIMenuListItem(MENU_TITLES[1], charters, 1, MENU_DESCRIPTIONS[1]);
+            UIMenuListItem set_patches2 = new UIMenuListItem(MENU_TITLES[2], charters, 1, MENU_DESCRIPTIONS[1]);
             set_patches.AddItem(set_patches2);
             // Refresh the set patches menu
             set_patches.RefreshIndex();
