@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NativeUI;
 using CitizenFX.Core.UI;
+using CitizenFX.Core;
 
 namespace patches
 {
@@ -35,18 +36,18 @@ namespace patches
             "La Mesa",
         };
 
-
+        Player player;
         private MenuPool menus;
         private UIMenu interaction_menu;
         private UIMenu set_patches;
         // Creates all the interactive menus and calls them.
         // Constructor: Initialization
-        public IPMCMenus()
+        public IPMCMenus(Player p)
         {
             // Create menu pool
             menus = new MenuPool();
-
             AddInteractionMenu();
+            player = p;
         }
 
         private void AddInteractionMenu()
@@ -89,6 +90,7 @@ namespace patches
                 if(selectedItem.Text == MENU_TITLES[2])
                 {
                     Screen.ShowNotification("Changing bottom rocker to " + CHARTERS[index]);
+                    Screen.ShowNotification("Player ID=" + player.GetHashCode());
                 }
             }
         }

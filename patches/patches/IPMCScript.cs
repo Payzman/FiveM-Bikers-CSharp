@@ -18,7 +18,8 @@ namespace patches
 
         public IPMCScript()
         {
-            menus = new IPMCMenus();
+            Player player = LocalPlayer;
+            menus = new IPMCMenus(player);
             // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
         }
