@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NativeUI;
 using CitizenFX.Core.UI;
 using CitizenFX.Core;
+using CitizenFX.Core.Native;
 
 namespace patches
 {
@@ -91,6 +92,11 @@ namespace patches
                 {
                     Screen.ShowNotification("Changing bottom rocker to " + CHARTERS[index]);
                     Screen.ShowNotification("Player ID=" + player.GetHashCode());
+                    Ped ped = new Ped(player.GetHashCode());
+                    Screen.ShowNotification("Ped code = " + ped.GetHashCode());
+                    //Alternate ped hash:
+                    int ped2 = Function.Call<int>(Hash.PLAYER_PED_ID);
+                    Screen.ShowNotification("Alternative Ped Code (def. working)" + ped2);
                 }
             }
         }
