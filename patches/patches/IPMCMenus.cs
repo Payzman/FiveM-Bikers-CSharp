@@ -9,13 +9,21 @@ namespace patches
 {
     class IPMCMenus
     {
-        public static readonly String[] MENU_TITLES = 
+        public static readonly String[] MENU_TITLES =
         {
             "Interaction Menu",
-            "Set Patch",
+            "Change Patch",
         };
-        public static readonly String INTERACTION_MENU_SUBTITLE = "";
-        public static readonly String SET_PATCHES_DESCRIPTION = "Sets your top rocker, center patch and bottom rocker";
+        public static readonly String[] MENU_SUBTITLES =
+        {
+            "",
+            "",
+        };
+        public static readonly String[] MENU_DESCRIPTIONS =
+        {
+            "Options to change what patches and badges you wear",
+            "Set your charter"
+        };
         public static readonly String[] CHARTERS =
         {
             "National",
@@ -42,22 +50,17 @@ namespace patches
         private void AddInteractionMenu()
         {
             // Add additional menus here
-            interaction_menu = new UIMenu(MENU_TITLES[0], INTERACTION_MENU_SUBTITLE);
+            interaction_menu = new UIMenu(MENU_TITLES[0], MENU_SUBTITLES[0]);
             menus.Add(interaction_menu);
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
-            set_patches = menus.AddSubMenu(interaction_menu, MENU_TITLES[1], SET_PATCHES_DESCRIPTION);
-            for(int i=0; i < CHARTERS.Length; i++)
-            {
-                UIMenuItem charter = new UIMenuItem(CHARTERS[i]);
-                set_patches.AddItem(charter);
-            }
-            // Refresh the set patches menu
-            set_patches.RefreshIndex();
+            set_patches = menus.AddSubMenu(interaction_menu, MENU_TITLES[1], MENU_DESCRIPTIONS[0]);
             // Other idea: list
             List<dynamic> charters = new List<dynamic>(CHARTERS);
-            UIMenuListItem set_patches2 = new UIMenuListItem(MENU_TITLES[1], charters, 1, SET_PATCHES_DESCRIPTION);
-            interaction_menu.AddItem(set_patches2);
+            UIMenuListItem set_patches2 = new UIMenuListItem(MENU_TITLES[1], charters, 1, MENU_DESCRIPTIONS[1]);
+            set_patches.AddItem(set_patches2);
+            // Refresh the set patches menu
+            set_patches.RefreshIndex();
             // Refresh the interaction menu
             interaction_menu.RefreshIndex();
         }
