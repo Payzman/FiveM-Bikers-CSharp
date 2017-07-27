@@ -67,6 +67,9 @@ namespace patches
             set_patches.OnListChange += ItemListHandler;
             // Refresh the set patches menu
             set_patches.RefreshIndex();
+            UIMenuItem default_clothes = new UIMenuItem("Default Clothes");
+            interaction_menu.AddItem(default_clothes);
+            interaction_menu.OnItemSelect += ItemHandler;
             // Refresh the interaction menu
             interaction_menu.RefreshIndex();
         }
@@ -93,6 +96,16 @@ namespace patches
                     IPMCPed ipmcped = new IPMCPed();
                     ipmcped.ApplyBottomRocker(index);
                 }
+            }
+        }
+
+        public void ItemHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        {
+            if (selectedItem.Text == "Default Clothes")
+            {
+                int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+                Ped ped = new Ped(player_ped_hash);
+                ped.Style.SetDefaultClothes();
             }
         }
     }
