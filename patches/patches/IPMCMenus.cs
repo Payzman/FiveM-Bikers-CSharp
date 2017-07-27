@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NativeUI;
+using CitizenFX.Core.UI;
 
 namespace patches
 {
@@ -60,6 +61,8 @@ namespace patches
             List<dynamic> charters = new List<dynamic>(CHARTERS);
             UIMenuListItem set_patches2 = new UIMenuListItem(MENU_TITLES[2], charters, 1, MENU_DESCRIPTIONS[1]);
             set_patches.AddItem(set_patches2);
+            // Try to use a handler to handle user input (choosing buttons etc.)
+            set_patches.OnItemSelect += ItemSelectHandler;
             // Refresh the set patches menu
             set_patches.RefreshIndex();
             // Refresh the interaction menu
@@ -76,6 +79,12 @@ namespace patches
         public void ToggleInteractionMenu()
         {
             interaction_menu.Visible = !interaction_menu.Visible;
+        }
+
+        public void ItemSelectHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        {
+            //UI.Notify("You have selected: ~b~" + selectedItem.Text);
+            Screen.ShowNotification(sender.ToString() + " sendes you the message " + selectedItem.ToString() + " with index " + index);
         }
     }
 }
