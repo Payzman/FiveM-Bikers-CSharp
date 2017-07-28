@@ -56,6 +56,13 @@ namespace patches
             // Add additional menus here
             interaction_menu = new UIMenu(MENU_TITLES[0], MENU_SUBTITLES[0]);
             menus.Add(interaction_menu);
+            AddInteractionMenuItems();
+            // Refresh the interaction menu
+            interaction_menu.RefreshIndex();
+        }
+
+        private void AddInteractionMenuItems()
+        {
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
             set_patches = menus.AddSubMenu(interaction_menu, MENU_TITLES[1], MENU_DESCRIPTIONS[0]);
@@ -70,8 +77,6 @@ namespace patches
             UIMenuItem default_clothes = new UIMenuItem("Default Clothes");
             interaction_menu.AddItem(default_clothes);
             interaction_menu.OnItemSelect += ItemHandler;
-            // Refresh the interaction menu
-            interaction_menu.RefreshIndex();
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
