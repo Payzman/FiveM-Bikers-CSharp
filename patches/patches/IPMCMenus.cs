@@ -77,6 +77,16 @@ namespace patches
             UIMenuItem default_clothes = new UIMenuItem("Default Clothes");
             interaction_menu.AddItem(default_clothes);
             interaction_menu.OnItemSelect += ItemHandler;
+            // Leave Session
+            UIMenuItem leave_session = new UIMenuItem("Leave Session");
+            interaction_menu.AddItem(leave_session);
+            interaction_menu.OnItemSelect += LeaveSession;
+        }
+
+        private void LeaveSession(UIMenu sender, UIMenuItem selectedItem, int index)
+        {
+            Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
+            Screen.ShowNotification("You left the session!");
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
