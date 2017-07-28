@@ -2,3 +2,5 @@
 patches/.vs/patches/v15/.suo
 patches/patches/bin/
 patches/patches/obj/
+patches/patches/docs/
+*.suo
