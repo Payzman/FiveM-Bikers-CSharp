@@ -76,17 +76,11 @@ namespace patches
             set_patches.RefreshIndex();
             UIMenuItem default_clothes = new UIMenuItem("Default Clothes");
             interaction_menu.AddItem(default_clothes);
-            interaction_menu.OnItemSelect += ItemHandler;
             // Leave Session
             UIMenuItem leave_session = new UIMenuItem("Leave Session");
             interaction_menu.AddItem(leave_session);
-            interaction_menu.OnItemSelect += LeaveSession;
-        }
-
-        private void LeaveSession(UIMenu sender, UIMenuItem selectedItem, int index)
-        {
-            Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
-            Screen.ShowNotification("You left the session!");
+            // Define the interaction menu item handler
+            interaction_menu.OnItemSelect += ItemHandler;
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
@@ -116,11 +110,19 @@ namespace patches
 
         public void ItemHandler(UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            if (selectedItem.Text == "Default Clothes")
+            switch(selectedItem.Text)
             {
-                int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-                Ped ped = new Ped(player_ped_hash);
-                ped.Style.SetDefaultClothes();
+                case "Default Clothes":
+                    int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+                    Ped ped = new Ped(player_ped_hash);
+                    ped.Style.SetDefaultClothes();
+                    break;
+                case "Leave Session":
+                    Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
+                    Screen.ShowNotification("You left the session!");
+                    break;
+                default:
+                    break;
             }
         }
     }
