@@ -48,6 +48,11 @@ namespace patches
             // Leave Session
             UIMenuItem leave_session = new UIMenuItem(IPMCStrings.MenuItemLeaveSession);
             interaction_menu.AddItem(leave_session);
+
+            //Small Work in Progress part to check how the whole Ped Style thing works.
+            UIMenuItem test = new UIMenuItem("test ped components");
+            interaction_menu.AddItem(test);
+
             // Define the interaction menu item handler
             interaction_menu.OnItemSelect += ItemHandler;
         }
@@ -139,6 +144,12 @@ namespace patches
                 case IPMCStrings.MenuItemLeaveSession:
                     Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
                     Screen.ShowNotification(IPMCStrings.NotificationLeaveSession);
+                    break;
+                case "test ped components":
+                    int player_ped_hash2 = Function.Call<int>(Hash.PLAYER_PED_ID);
+                    Ped ped2 = new Ped(player_ped_hash2);
+                    PedComponent[] pedComponents = ped2.Style.GetAllComponents();
+                    CitizenFX.Core.Debug.WriteLine(pedComponents.ToString());
                     break;
                 default:
                     break;
