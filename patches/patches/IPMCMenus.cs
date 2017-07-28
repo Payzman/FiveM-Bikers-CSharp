@@ -63,6 +63,18 @@ namespace patches
 
         private void AddInteractionMenuItems()
         {
+            AddSetPatchesMenu();
+            UIMenuItem default_clothes = new UIMenuItem("Default Clothes");
+            interaction_menu.AddItem(default_clothes);
+            // Leave Session
+            UIMenuItem leave_session = new UIMenuItem("Leave Session");
+            interaction_menu.AddItem(leave_session);
+            // Define the interaction menu item handler
+            interaction_menu.OnItemSelect += ItemHandler;
+        }
+
+        private void AddSetPatchesMenu()
+        {
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
             set_patches = menus.AddSubMenu(interaction_menu, MENU_TITLES[1], MENU_DESCRIPTIONS[0]);
@@ -74,13 +86,6 @@ namespace patches
             set_patches.OnListChange += ItemListHandler;
             // Refresh the set patches menu
             set_patches.RefreshIndex();
-            UIMenuItem default_clothes = new UIMenuItem("Default Clothes");
-            interaction_menu.AddItem(default_clothes);
-            // Leave Session
-            UIMenuItem leave_session = new UIMenuItem("Leave Session");
-            interaction_menu.AddItem(leave_session);
-            // Define the interaction menu item handler
-            interaction_menu.OnItemSelect += ItemHandler;
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
