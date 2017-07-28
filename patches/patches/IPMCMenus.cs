@@ -149,7 +149,12 @@ namespace patches
                     int player_ped_hash2 = Function.Call<int>(Hash.PLAYER_PED_ID);
                     Ped ped2 = new Ped(player_ped_hash2);
                     PedComponent[] pedComponents = ped2.Style.GetAllComponents();
-                    CitizenFX.Core.Debug.WriteLine(pedComponents.ToString());
+                    int imax = pedComponents.Length;
+                    for (int i=0;i<imax;i++)
+                    {
+                        PedComponent singlecomponent = pedComponents[i];
+                        CitizenFX.Core.Debug.WriteLine("\nComponent ID=" + i + "\nIndex=" + singlecomponent.Index + "\nTexture=" + singlecomponent.TextureIndex);
+                    }
                     break;
                 default:
                     break;
