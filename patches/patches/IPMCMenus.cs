@@ -16,6 +16,7 @@ namespace patches
         private MenuPool menus;
         private UIMenu interaction_menu;
         private UIMenu set_patches;
+        private UIMenu recording;
         // Creates all the interactive menus and calls them.
         // Constructor: Initialization
         public IPMCMenus(Player p)
@@ -39,8 +40,11 @@ namespace patches
         private void AddInteractionMenuItems()
         {
             AddSetPatchesMenu();
+            // default clothes menu is just for WIP
             UIMenuItem default_clothes = new UIMenuItem(IPMCStrings.MenuItemDefaultClothes);
             interaction_menu.AddItem(default_clothes);
+            // Recording submenu
+            AddRecordingMenu();
             // Leave Session
             UIMenuItem leave_session = new UIMenuItem(IPMCStrings.MenuItemLeaveSession);
             interaction_menu.AddItem(leave_session);
@@ -64,9 +68,21 @@ namespace patches
             UIMenuListItem set_patches2 = new UIMenuListItem(IPMCStrings.MenuItemCharter, charters, 1, IPMCStrings.MenuDescriptionSetCharter);
             set_patches.AddItem(set_patches2);
             // Try to use a handler to handle user input (choosing buttons etc.)
-            set_patches.OnListChange += ItemListHandler;
+            set_patches.OnListChange += SetPatchHandler;
             // Refresh the set patches menu
             set_patches.RefreshIndex();
+        }
+
+        private void AddRecordingMenu()
+        {
+            recording = menus.AddSubMenu(interaction_menu, IPMCStrings.MenuTitleRecording, IPMCStrings.MenuDescriptionRecording);
+            UIMenuItem start_recording   = new UIMenuItem(IPMCStrings.MenuItemStartRecording,   IPMCStrings.MenuDescriptionStartRecording);
+            UIMenuItem stop_recording    = new UIMenuItem(IPMCStrings.MenuItemStopRecording,    IPMCStrings.MenuDescriptionStopRecording);
+            UIMenuItem discard_recording = new UIMenuItem(IPMCStrings.MenuItemDiscardRecording, IPMCStrings.MenuDescriptionDiscardRecording);
+            recording.AddItem(start_recording);
+            recording.AddItem(stop_recording);
+            recording.AddItem(discard_recording);
+            recording.OnItemSelect += RecordingHandler;
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
@@ -81,7 +97,7 @@ namespace patches
             interaction_menu.Visible = !interaction_menu.Visible;
         }
 
-        public void ItemListHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
         {
             if(sender == set_patches)
             {
@@ -90,6 +106,22 @@ namespace patches
                     IPMCPed ipmcped = new IPMCPed();
                     ipmcped.ApplyBottomRocker(index);
                 }
+            }
+        }
+
+        public void RecordingHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        {
+            switch (selectedItem.Text)
+            {
+                case IPMCStrings.MenuItemStartRecording:
+                    Function.Call(Hash._START_RECORDING, 1);
+                    break;
+                case IPMCStrings.MenuItemStopRecording:
+                    Function.Call(Hash._STOP_RECORDING_AND_SAVE_CLIP);
+                    break;
+                case IPMCStrings.MenuItemDiscardRecording:
+                    Function.Call(Hash._STOP_RECORDING_AND_DISCARD_CLIP);
+                    break;
             }
         }
 

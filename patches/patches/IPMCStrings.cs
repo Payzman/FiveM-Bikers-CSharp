@@ -26,15 +26,23 @@ namespace patches
         /* Menu Titles */
         public const String MenuTitleInteraction = "Interaction Menu";
         public const String MenuTitlePatch       = "Apply Patches";
+        public const String MenuTitleRecording   = "Recording Menu";
         /* Menu Items */
-        public const String MenuItemCharter        = "Charter";
-        public const String MenuItemDefaultClothes = "Default Clothes";
-        public const String MenuItemLeaveSession   = "Leave Session";
+        public const String MenuItemCharter          = "Charter";
+        public const String MenuItemDefaultClothes   = "Default Clothes";
+        public const String MenuItemLeaveSession     = "Leave Session";
+        public const String MenuItemStartRecording   = "Start Recording";
+        public const String MenuItemStopRecording    = "Stop Recording";
+        public const String MenuItemDiscardRecording = "Discard Recording";
         /* Menu Subtitles */
         public const String MenuSubtitleInteraction = "";
         /* Menu Descriptions */
-        public const String MenuDescriptionSetPatch     = "Options to change what patches and badges you wear";
-        public const String MenuDescriptionSetCharter   = "Set your charter";
+        public const String MenuDescriptionSetPatch         = "Options to change what patches and badges you wear";
+        public const String MenuDescriptionSetCharter       = "Set your charter";
+        public const String MenuDescriptionRecording        = "Recording options for rockstar editor";
+        public const String MenuDescriptionStartRecording   = "Start recording";
+        public const String MenuDescriptionStopRecording    = "Stop recording and save it";
+        public const String MenuDescriptionDiscardRecording = "Stop recording and discard it";
         /* Notifications */
         public const String NotificationLeaveSession = "You left the session!";
         /* PART 2: COMPUND STRINGS */

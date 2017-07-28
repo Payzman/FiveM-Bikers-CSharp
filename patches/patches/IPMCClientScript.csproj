@@ -51,6 +51,7 @@
     <Compile Include="IPMCMenus.cs" />
     <Compile Include="IPMCPed.cs" />
     <Compile Include="IPMCScript.cs" />
+    <Compile Include="IPMCStrings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
