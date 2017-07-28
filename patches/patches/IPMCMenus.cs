@@ -118,9 +118,11 @@ namespace patches
                     break;
                 case IPMCStrings.MenuItemStopRecording:
                     Function.Call(Hash._STOP_RECORDING_AND_SAVE_CLIP);
+                    Screen.ShowNotification(IPMCStrings.NotificationSaveClip);
                     break;
                 case IPMCStrings.MenuItemDiscardRecording:
                     Function.Call(Hash._STOP_RECORDING_AND_DISCARD_CLIP);
+                    Screen.ShowNotification(IPMCStrings.NotificationDiscardClip);
                     break;
             }
         }
