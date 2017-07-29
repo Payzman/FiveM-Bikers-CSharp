@@ -48,11 +48,6 @@ namespace patches
             // Leave Session
             UIMenuItem leave_session = new UIMenuItem(IPMCStrings.MenuItemLeaveSession);
             interaction_menu.AddItem(leave_session);
-            // Simples test: Saving and Loading a file
-            UIMenuItem save = new UIMenuItem("save");
-            interaction_menu.AddItem(save);
-            UIMenuItem load = new UIMenuItem("load");
-            interaction_menu.AddItem(load);
             // Define the interaction menu item handler
             interaction_menu.OnItemSelect += ItemHandler;
         }
@@ -144,14 +139,6 @@ namespace patches
                 case IPMCStrings.MenuItemLeaveSession:
                     Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
                     Screen.ShowNotification(IPMCStrings.NotificationLeaveSession);
-                    break;
-                case "save":
-                    string text = "Hello, file system!";
-                    System.IO.File.WriteAllText(@"./hello.txt", text);
-                    break;
-                case "load":
-                    string read = System.IO.File.ReadAllText(@"./hello.txt");
-                    Screen.ShowNotification(read);
                     break;
                 default:
                     break;
