@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// Watch out because there is a CitizenFX Server and CitizenFX Client version!!
 using CitizenFX.Core;
-using CitizenFX.Core.UI;
 
 namespace IPMCServerScript
 {
@@ -17,7 +17,11 @@ namespace IPMCServerScript
 
         void doSomething(dynamic p)
         {
-            TriggerEvent("testClient");
+            PlayerList list = new PlayerList();
+            foreach (Player player in list)
+            {
+                player.TriggerEvent("testClient");
+            }
         }
     }
 }
