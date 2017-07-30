@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// Watch out because there is a CitizenFX Server and CitizenFX Client version!!
 using CitizenFX.Core;
-using CitizenFX.Core.UI;
 
 namespace IPMCServerScript
 {
@@ -13,13 +13,13 @@ namespace IPMCServerScript
         public IPMCServer()
         {
             Debug.WriteLine("DEBUG: add server event for 'test'");
-            EventHandlers["test"] += new Action<dynamic>(doSomething);
+            EventHandlers["test"] += new Action<Player>(doSomething);
         }
 
-        void doSomething(dynamic p)
+        void doSomething(Player player)
         {
             Debug.WriteLine("DEBUG: trigger client event");
-            TriggerEvent("testClient");
+            player.TriggerEvent("test");
         }
     }
 }
