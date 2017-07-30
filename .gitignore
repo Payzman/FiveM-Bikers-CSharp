@@ -15,3 +15,4 @@ patches/patches/Properties/AssemblyInfo.cs
 patches/patches/IPMCClientScript.csproj
 patches/IPMCServerScript/IPMCServerScript.csproj
 patches/IPMCScripts.sln
+patches/IPMCServerScript/Properties/AssemblyInfo.cs
