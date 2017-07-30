@@ -12,11 +12,13 @@ namespace IPMCServerScript
     {
         public IPMCServer()
         {
+            Debug.WriteLine("DEBUG: add server event for 'test'");
             EventHandlers["test"] += new Action<dynamic>(doSomething);
         }
 
         void doSomething(dynamic p)
         {
+            Debug.WriteLine("DEBUG: trigger client event");
             TriggerEvent("testClient");
         }
     }
