@@ -11,3 +11,7 @@ patches/patches/packages.config
 patches/IPMCServerScript/bin/
 patches/IPMCServerScript/obj/Debug/CoreCompileInputs.cache
 patches/IPMCServerScript/obj/
+patches/patches/Properties/AssemblyInfo.cs
+patches/patches/IPMCClientScript.csproj
+patches/IPMCServerScript/IPMCServerScript.csproj
+patches/IPMCScripts.sln
