@@ -147,8 +147,7 @@ namespace patches
                     Screen.ShowNotification(IPMCStrings.NotificationLeaveSession);
                     break;
                 case "trigger server event":
-                    Debug.WriteLine("DEBUG: Test-Serverevent with player = " + player.Name);
-                    IPMCScript.TriggerServerEvent("test", player);
+                    IPMCScript.TriggerServerEvent("test");
                     break;
                 default:
                     break;

@@ -40,7 +40,6 @@ namespace patches
 
         void testeventclient(dynamic p)
         {
-            Debug.WriteLine("DEBUG: testing a client event");
             Screen.ShowNotification("ay i just came from the server bro");
         }
     }
