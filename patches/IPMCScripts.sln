@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPMCClientScript", "patches\IPMCClientScript.csproj", "{FB5EF75E-C05F-418C-89E1-C097C770A523}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPMCClientScript", "IPMCClientScript\IPMCClientScript.csproj", "{FB0F2F0A-7283-4D9A-94D9-A6580DACD925}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPMCServerScript", "IPMCServerScript\IPMCServerScript.csproj", "{E0EA5F4F-64CC-4DDB-9B01-ADFE53AC71E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FB5EF75E-C05F-418C-89E1-C097C770A523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB5EF75E-C05F-418C-89E1-C097C770A523}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB5EF75E-C05F-418C-89E1-C097C770A523}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB5EF75E-C05F-418C-89E1-C097C770A523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB0F2F0A-7283-4D9A-94D9-A6580DACD925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0F2F0A-7283-4D9A-94D9-A6580DACD925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0F2F0A-7283-4D9A-94D9-A6580DACD925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0F2F0A-7283-4D9A-94D9-A6580DACD925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0EA5F4F-64CC-4DDB-9B01-ADFE53AC71E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0EA5F4F-64CC-4DDB-9B01-ADFE53AC71E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0EA5F4F-64CC-4DDB-9B01-ADFE53AC71E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0EA5F4F-64CC-4DDB-9B01-ADFE53AC71E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

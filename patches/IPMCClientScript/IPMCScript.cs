@@ -21,6 +21,7 @@ namespace patches
         {
             Player player = LocalPlayer;
             menus = new IPMCMenus(player);
+            EventHandlers["testClient"] += new Action<dynamic>(testeventclient);
             // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
         }
@@ -35,6 +36,11 @@ namespace patches
                 // Toggle visibility of the interaction menu
                 menus.ToggleInteractionMenu();
             }
+        }
+
+        private void testeventclient(dynamic p)
+        {
+            Screen.ShowNotification("ay i just came from the server bro");
         }
     }
 }

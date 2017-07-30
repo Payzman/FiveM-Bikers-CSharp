@@ -8,3 +8,12 @@ patches/packages/StyleCop.MSBuild.4.7.55.0/
 patches/patches/StyleCop.Cache
 patches/patches/packages.config
 *.deleteme
+patches/IPMCServerScript/bin/
+patches/IPMCServerScript/obj/Debug/CoreCompileInputs.cache
+patches/IPMCServerScript/obj/
+patches/patches/Properties/AssemblyInfo.cs
+patches/IPMCServerScript/Properties/AssemblyInfo.cs
+*.Cache
+patches/IPMCClientScript/bin/
+patches/IPMCClientScript/docs/
+patches/IPMCClientScript/obj/
