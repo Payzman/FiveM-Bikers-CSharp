@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 // Watch out because there is a CitizenFX Server and CitizenFX Client version!!
 using CitizenFX.Core;
 using System.Data.SQLite;
+using System.IO;
 
 namespace IPMCServerScript
 {
@@ -15,7 +16,10 @@ namespace IPMCServerScript
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
             //Test for SQLite
-            SQLiteConnection.CreateFile("ipmc5m.sqlite");
+            if(!File.Exists("database/ipmc5m.sqlite"))
+            {
+                SQLiteConnection.CreateFile("database/ipmc5m.sqlite");
+            }
         }
 
         void doSomething(dynamic p)
