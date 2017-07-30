@@ -18,3 +18,4 @@ patches/IPMCClientScript/bin/
 patches/IPMCClientScript/docs/
 patches/IPMCClientScript/obj/
 patches/packages/MySql.Data.6.9.9/
+System.Data.SQLite.xml
