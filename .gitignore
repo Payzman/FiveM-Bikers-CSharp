@@ -9,3 +9,4 @@ patches/patches/StyleCop.Cache
 patches/patches/packages.config
 *.deleteme
 patches/IPMCServerScript/obj/
+patches/IPMCServerScript/bin/
