@@ -10,14 +10,6 @@ namespace patches
 {
     class IPMCPed
     {
-        private static readonly String[] NAME_HASHES =
-        {
-            "ipmc_national_M",
-            "ipmc_paleto_bay_M",
-            "ipmc_rancho_M",
-            "ipmc_del_perro_M",
-            "ipmc_la_mesa_M",
-        };
 
         public IPMCPed()
         {
@@ -26,13 +18,34 @@ namespace patches
 
         public void ApplyBottomRocker(int index)
         {
-            Screen.ShowNotification("Changing bottom rocker to " + IPMCMenus.CHARTERS[index]);
+            Tuple<string, string> name_hash = GetCharterFromIndex(index);
+            String hash = name_hash.Item1;
+            String charter_name = name_hash.Item2;
             int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY, IPMCStrings.OverlayCollection);
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, hash);
             Function.Call(Hash.CLEAR_PED_DECORATIONS, player_ped_hash);
-            int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY, "ipmc_overlays");
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, NAME_HASHES[index]);
-            CitizenFX.Core.Debug.WriteLine("DEBUG:\nPlayer=" + player_ped_hash + "\nCollection=" + collection_hash + "\nTexture=" + texture_hash);
             Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, collection_hash, texture_hash);
+            Screen.ShowNotification(IPMCStrings.ChangeBottomRocker(charter_name));
+        }
+
+        public Tuple<String,String> GetCharterFromIndex(int index)
+        {
+            switch(index)
+            {
+                case 0:
+                    return new Tuple<string, string>(IPMCStrings.PatchNationalMaleTextHash,  IPMCStrings.CharterNameNational);
+                case 1:
+                    return new Tuple<string, string>(IPMCStrings.PatchPaletoBayMaleTextHash, IPMCStrings.CharterNamePaletoBay);
+                case 2:
+                    return new Tuple<string, string>(IPMCStrings.PatchRanchoMaleTextHash,    IPMCStrings.CharterNameRancho);
+                case 3:
+                    return new Tuple<string, string>(IPMCStrings.PatchDelPerroMaleTextHash,  IPMCStrings.CharterNameDelPerro);
+                case 4:
+                    return new Tuple<string, string>(IPMCStrings.PatchLaMesaMaleTextHash,    IPMCStrings.CharterNameLaMesa);
+                default:
+                    throw new Exception();
+            }
         }
     }
 }

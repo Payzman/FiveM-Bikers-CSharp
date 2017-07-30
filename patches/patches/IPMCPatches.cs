@@ -1,6 +1,0 @@
-﻿namespace patches
-{
-    class IPMCPatches
-    {
-    }
-}

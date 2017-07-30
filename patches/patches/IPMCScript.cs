@@ -27,6 +27,7 @@ namespace patches
 
         public async Task OnTick()
         {
+            await Task.FromResult(0);
             menus.ProcessMenus();
             // Since FiveM does not use an interaction menu we can just override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
