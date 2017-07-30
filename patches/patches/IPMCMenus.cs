@@ -146,6 +146,9 @@ namespace patches
                     Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
                     Screen.ShowNotification(IPMCStrings.NotificationLeaveSession);
                     break;
+                case "trigger server event":
+                    IPMCScript.TriggerServerEvent("test");
+                    break;
                 default:
                     break;
             }
