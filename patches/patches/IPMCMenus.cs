@@ -10,6 +10,9 @@ using CitizenFX.Core.Native;
 
 namespace patches
 {
+    /// <summary>
+    /// The IPMCMenu class handles all the additional menus, which are used on the client side to use different settings.
+    /// </summary>
     class IPMCMenus
     {
         Player player;
