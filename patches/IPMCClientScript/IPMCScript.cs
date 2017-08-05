@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CitizenFX.Core;
 using CitizenFX.Core.UI;
-using CitizenFX.Core.Native;
-using NativeUI;
 
 //The following line is very helpful for debugging purposes. It prints a message to the client command line (press F8 ingame)
 //CitizenFX.Core.Debug.WriteLine("debug message");

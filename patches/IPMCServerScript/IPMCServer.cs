@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 // Watch out because there is a CitizenFX Server and CitizenFX Client version!!
 using CitizenFX.Core;
-using System.IO;
 
 namespace IPMCServerScript
 {
@@ -14,6 +10,7 @@ namespace IPMCServerScript
         public IPMCServer()
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
+            DbTest().Wait();
         }
 
         void doSomething(dynamic p)
@@ -23,6 +20,11 @@ namespace IPMCServerScript
             {
                 player.TriggerEvent("testClient");
             }
+        }
+
+        static async Task DbTest()
+        {
+            await Task.FromResult(0);
         }
     }
 }
