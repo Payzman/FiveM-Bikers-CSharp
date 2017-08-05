@@ -12,6 +12,7 @@ namespace IPMCServerScript
 {
     public class IPMCServer : BaseScript
     {
+        SQLiteConnection dbConnection;
         public IPMCServer()
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
@@ -20,6 +21,10 @@ namespace IPMCServerScript
             {
                 SQLiteConnection.CreateFile("database/ipmc5m.sqlite");
             }
+            dbConnection = new SQLiteConnection("Data Source=database/ipmc5m.sqlite;Version=3");
+            dbConnection.Open();
+            //Do something
+            dbConnection.Close();
         }
 
         void doSomething(dynamic p)
