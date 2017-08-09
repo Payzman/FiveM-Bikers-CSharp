@@ -18,10 +18,10 @@ namespace IPMCServerScript
             IPMCServer.TriggerEvent("IPMC:HttpGet",url);
         }
 
-        public static void HandleResponse(dynamic response)
+        public static void HandleResponse(IPMCCouchDbRoot response)
         {
-            IPMCCouchDbRoot root = new IPMCCouchDbRoot(response);
-            Debug.WriteLine("Welcome to CouchDB Version " + root.version);
+            //IPMCCouchDbRoot root = new IPMCCouchDbRoot(response);
+            Debug.WriteLine("Welcome to CouchDB Version " + response.version);
         }
     }
 }
