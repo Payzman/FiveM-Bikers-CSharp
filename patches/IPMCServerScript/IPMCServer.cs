@@ -9,6 +9,8 @@ namespace IPMCServerScript
 {
     public class IPMCServer : BaseScript
     {
+        IPMCDatabase database;
+
         public IPMCServer()
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
@@ -17,7 +19,6 @@ namespace IPMCServerScript
         
         void doSomething(dynamic p)
         {
-            TriggerEvent("httpGet");
             PlayerList list = new PlayerList();
             foreach (Player player in list)
             {
@@ -27,7 +28,10 @@ namespace IPMCServerScript
 
         void initPlayer()
         {
-            Debug.WriteLine("Getting Player Info from ChouchDB");
+            if(database == null)
+            {
+                database = new IPMCDatabase();
+            }
         }
     }
 }
