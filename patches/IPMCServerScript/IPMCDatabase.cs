@@ -20,10 +20,9 @@ namespace IPMCServerScript
 
         public static void HandleResponse(dynamic response)
         {
+            IPMCCouchDbRoot root = (IPMCCouchDbRoot)response;
             Debug.WriteLine(response.ToString());
-            Debug.WriteLine(response.couchdb); //test to see if i can actually use the properties
-            //IPMCCouchDbRoot root = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<IPMCCouchDbRoot>(response);
-            //Debug.WriteLine("Init Couch DB Version: " + root.version);
+            Debug.WriteLine("Welcome to CouchDB Version " + root.version);
         }
     }
 }
