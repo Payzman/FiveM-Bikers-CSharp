@@ -18,10 +18,11 @@ namespace IPMCServerScript
             IPMCServer.TriggerEvent("IPMC:HttpGet",url);
         }
 
-        public static void HandleResponse(string response)
+        public static void HandleResponse(dynamic response)
         {
-            IPMCCouchDbRoot root = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<IPMCCouchDbRoot>(response);
-            Debug.WriteLine("Init Couch DB Version: " + root.version);
+            Debug.WriteLine(response);
+            //IPMCCouchDbRoot root = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<IPMCCouchDbRoot>(response);
+            //Debug.WriteLine("Init Couch DB Version: " + root.version);
         }
     }
 }
