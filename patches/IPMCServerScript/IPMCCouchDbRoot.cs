@@ -8,6 +8,10 @@ namespace IPMCServerScript
 {
     public class Vendor
     {
+        public Vendor(dynamic obj)
+        {
+            obj.name = obj.name;
+        }
         public string name { get; set; }
     }
 
@@ -17,7 +21,7 @@ namespace IPMCServerScript
         {
             this.couchdb = obj.couchdb;
             this.version = obj.version;
-            this.vendor = obj.vendor;
+            this.vendor = new Vendor(obj.vendor);
         }
         public string couchdb { get; set; }
         public string version { get; set; }
