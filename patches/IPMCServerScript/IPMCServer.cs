@@ -12,7 +12,7 @@ namespace IPMCServerScript
         public IPMCServer()
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
-            EventHandlers["playerSpawned"] += new Action(initCouchDb);
+            EventHandlers["playerSpawned"] += new Action<dynamic>(initCouchDb);
         }
         
         void doSomething(dynamic p)
@@ -25,9 +25,10 @@ namespace IPMCServerScript
             }
         }
 
-        void initCouchDb()
+        void initCouchDb(dynamic spawn)
         {
-            Debug.WriteLine("Initializing Couch Database");
+            Debug.WriteLine("INITCOUCHDB: Initializing Couch Database");
+            Debug.WriteLine("INITCOUCHDB: Spawn information = " + spawn);
         }
     }
 }
