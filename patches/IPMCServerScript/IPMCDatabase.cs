@@ -11,17 +11,21 @@ namespace IPMCServerScript
     // The actual HTTP Requests and Responses are done by a lua script!
     class IPMCDatabase
     {
+        IPMCCouchDbRoot root;
         string url = "http://127.0.0.1:5984";
 
         public IPMCDatabase()
         {
-            IPMCServer.TriggerEvent("IPMC:HttpGet",url);
+            IPMCServer.TriggerEvent("IPMC:HttpGet",url,"connectivity test");
         }
 
-        public static void HandleResponse(dynamic response)
+        public void HandleResponse(dynamic response, string reason)
         {
-            IPMCCouchDbRoot root = new IPMCCouchDbRoot(response);
-            Debug.WriteLine("Welcome to CouchDB Version " + response.version);
+            if (reason == "connectivity test")
+            {
+                root = new IPMCCouchDbRoot(response);
+                Debug.WriteLine("Welcome to CouchDB Version " + root.version);
+            }
         }
     }
 }
