@@ -12,11 +12,9 @@ namespace IPMCServerScript
         public IPMCServer()
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
+            EventHandlers["playerSpawned"] += new Action(initCouchDb);
         }
-
-        // This is an old test from me: I just tried to trigger this event on
-        // the client side ("test") which triggers a clientSideEvent with a 
-        // notification - not import for the http-stuff
+        
         void doSomething(dynamic p)
         {
             TriggerEvent("httpGet");
@@ -25,6 +23,11 @@ namespace IPMCServerScript
             {
                 player.TriggerEvent("testClient");
             }
+        }
+
+        void initCouchDb()
+        {
+            Debug.WriteLine("Initializing Couch Database");
         }
     }
 }
