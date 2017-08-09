@@ -20,8 +20,7 @@ namespace IPMCServerScript
 
         public static void HandleResponse(dynamic response)
         {
-            IPMCCouchDbRoot root = (IPMCCouchDbRoot)response;
-            Debug.WriteLine(response.ToString());
+            IPMCCouchDbRoot root = new IPMCCouchDbRoot(response);
             Debug.WriteLine("Welcome to CouchDB Version " + root.version);
         }
     }
