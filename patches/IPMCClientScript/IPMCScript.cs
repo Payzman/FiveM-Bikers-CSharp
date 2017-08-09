@@ -42,7 +42,7 @@ namespace patches
 
         private void handlePlayerSpawn(dynamic spawn)
         {
-            Debug.WriteLine("INITCOUCHDB: Spawn information = " + spawn);
+            TriggerServerEvent("IPMC:InitPlayer");
         }
     }
 }
