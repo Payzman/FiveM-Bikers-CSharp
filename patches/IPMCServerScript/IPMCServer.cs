@@ -15,6 +15,7 @@ namespace IPMCServerScript
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
             EventHandlers["IPMC:InitPlayer"] += new Action(initPlayer);
+            EventHandlers["IPMC:HttpResponse"] += new Action<string>(IPMCDatabase.HandleResponse);
         }
         
         void doSomething(dynamic p)
