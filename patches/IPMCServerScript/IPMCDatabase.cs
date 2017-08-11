@@ -12,7 +12,8 @@ namespace IPMCServerScript
     class IPMCDatabase
     {
         IPMCCouchDbRoot root;
-        string url = "http://127.0.0.1:5984";
+        static string url = "http://127.0.0.1:5984";
+        static string all_dbs = url + "/_all_dbs";
 
         public IPMCDatabase()
         {
@@ -26,7 +27,7 @@ namespace IPMCServerScript
                 case "connectivity test":
                     root = new IPMCCouchDbRoot(response);
                     Debug.WriteLine("Welcome to CouchDB Version " + root.version);
-                    IPMCServer.TriggerEvent("IPMC:HttpGet", url, "get all databases");
+                    IPMCServer.TriggerEvent("IPMC:HttpGet", all_dbs, "get all databases");
                     break;
                 case "get all databases":
                     Debug.WriteLine(response.ToString());
