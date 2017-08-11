@@ -33,7 +33,7 @@ namespace IPMCServerScript
                     IPMCServer.TriggerEvent("IPMC:HttpGet", all_dbs, "get all databases");
                     break;
                 case "get all databases":
-                    databases = response;
+                    databases = (List<string>)response;
                     foreach (string db in databases)
                     {
                         Debug.WriteLine(db);
