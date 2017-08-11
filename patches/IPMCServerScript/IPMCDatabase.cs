@@ -37,6 +37,11 @@ namespace IPMCServerScript
                     {
                         databases.Add(response.ToString());
                     }
+                    //testing document creation
+                    dynamic data = new System.Dynamic.ExpandoObject();
+                    data.player_name = "Payzman";
+                    data.hello = "world";
+                    IPMCServer.TriggerEvent("IPMC:HttpPut", "http://127.0.0.1:5984/players/6e1295ed6c29495e54cc05947f18c8af", data, "blub");
                     break;
             }
         }
