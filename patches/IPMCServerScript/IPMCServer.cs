@@ -30,6 +30,7 @@ namespace IPMCServerScript
         {
             if(database == null)
             {
+                // When a player spawns we check if the database works
                 database = new IPMCDatabase();
                 EventHandlers["IPMC:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             }

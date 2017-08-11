@@ -21,10 +21,16 @@ namespace IPMCServerScript
 
         public void HandleResponse(dynamic response, string reason)
         {
-            if (reason == "connectivity test")
+            switch(reason)
             {
-                root = new IPMCCouchDbRoot(response);
-                Debug.WriteLine("Welcome to CouchDB Version " + root.version);
+                case "connectivity test":
+                    root = new IPMCCouchDbRoot(response);
+                    Debug.WriteLine("Welcome to CouchDB Version " + root.version);
+                    IPMCServer.TriggerEvent("IPMC:HttpGet", url, "get all databases");
+                    break;
+                case "get all databases":
+                    Debug.WriteLine(response);
+                    break;
             }
         }
     }
