@@ -35,7 +35,7 @@ namespace IPMCServerScript
                 case "get all databases":
                     foreach(object obj in response)
                     {
-                        Debug.WriteLine(obj.ToString());
+                        databases.Add(response.ToString());
                     }
                     break;
             }
