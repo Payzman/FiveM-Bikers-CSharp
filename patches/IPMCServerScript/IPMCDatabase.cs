@@ -29,7 +29,7 @@ namespace IPMCServerScript
                     IPMCServer.TriggerEvent("IPMC:HttpGet", url, "get all databases");
                     break;
                 case "get all databases":
-                    Debug.WriteLine(response);
+                    Debug.WriteLine(response.ToString());
                     break;
             }
         }
