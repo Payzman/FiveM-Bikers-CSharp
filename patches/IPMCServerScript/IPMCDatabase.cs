@@ -8,11 +8,23 @@ using System.Web;
 
 namespace IPMCServerScript
 {
+    public class Value
+    {
+        public string rev { get; set; }
+    }
+
+    public class Row
+    {
+        public string id { get; set; }
+        public string key { get; set; }
+        public Value value { get; set; }
+    }
+
     class PlayerDatabase
     {
         public int total_rows { get; set; }
         public int offset { get; set; }
-        public List<object> rows { get; set; }
+        public List<Row> rows { get; set; }
 
         public PlayerDatabase(dynamic obj)
         {
