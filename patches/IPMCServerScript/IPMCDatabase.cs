@@ -20,8 +20,8 @@ namespace IPMCServerScript
             offset = obj.offset;
             rows = obj.rows;
             Debug.WriteLine("Couch DB: Updated player database with:");
-            Debug.WriteLine("\t total rows: " + total_rows);
-            Debug.WriteLine("\t offset: " + offset);
+            Debug.WriteLine("\t  total rows: " + total_rows);
+            Debug.WriteLine("\t  offset: " + offset);
         }
     }
     // The actual HTTP Requests and Responses are done by a lua script!
