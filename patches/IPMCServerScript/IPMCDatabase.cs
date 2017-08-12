@@ -11,6 +11,11 @@ namespace IPMCServerScript
     public class Value
     {
         public string rev { get; set; }
+
+        public Value(dynamic obj)
+        {
+            rev = obj.rev;
+        }
     }
 
     public class Row
@@ -18,6 +23,13 @@ namespace IPMCServerScript
         public string id { get; set; }
         public string key { get; set; }
         public Value value { get; set; }
+
+        public Row(dynamic obj)
+        {
+            id = obj.id;
+            key = obj.key;
+            value = new Value(obj.value);
+        }
     }
 
     class PlayerDatabase
@@ -30,7 +42,11 @@ namespace IPMCServerScript
         {
             total_rows = obj.total_rows;
             offset = obj.offset;
-            rows = obj.rows;
+            rows = new List<Row>();
+            foreach(dynamic row in obj.rows)
+            {
+                rows.Add(new Row(row));
+            }
             Debug.WriteLine("Couch DB: Updated player database with:");
             Debug.WriteLine("\t  total rows: " + total_rows);
             Debug.WriteLine("\t  offset: " + offset);
