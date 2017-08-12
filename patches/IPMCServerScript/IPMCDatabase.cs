@@ -19,6 +19,9 @@ namespace IPMCServerScript
             total_rows = obj.total_rows;
             offset = obj.offset;
             rows = obj.rows;
+            Debug.WriteLine("Couch DB: Updated player database with:");
+            Debug.WriteLine("\t total rows: " + total_rows);
+            Debug.WriteLine("\t offset: " + offset);
         }
     }
     // The actual HTTP Requests and Responses are done by a lua script!
@@ -40,7 +43,7 @@ namespace IPMCServerScript
                 case "connectivity test":
                     root = new IPMCCouchDbRoot(response);
                     IPMCServer.TriggerEvent("IPMC:HttpGet", all_dbs, "get all databases");
-                    Debug.WriteLine("Couch DB initialized (Version " + root.version + ")");
+                    Debug.WriteLine("Couch DB: initialized (Version " + root.version + ")");
                     IPMCServer.TriggerEvent("Server:Initialized");
                     break;
                 case "get all databases":
@@ -52,6 +55,7 @@ namespace IPMCServerScript
                     break;
                 case "get player docs":
                     players = new PlayerDatabase(response);
+                    IPMCServer.TriggerEvent("Server:LoadedPlayerdocs");
                     break;
             }
         }

@@ -28,6 +28,7 @@ namespace IPMCServerScript
             database = new IPMCDatabase();
             EventHandlers["IPMC:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
+            EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             Tick += OnTick;
         }
 
@@ -37,7 +38,6 @@ namespace IPMCServerScript
             switch(database_state)
             {
                 case Db_State.not_connected:
-                    Debug.WriteLine("Trying to connect to CouchDB...");
                     database.Connect();
                     break;
                 case Db_State.connected:
@@ -65,8 +65,13 @@ namespace IPMCServerScript
 
         void Initialized()
         {
-            Debug.WriteLine("Couch DB connection successfull!");
             database_state = Db_State.loading;
+        }
+
+        void LoadedPlayerDocs()
+        {
+            // provisional -> connected state is after ALL databases were loaded in.... just playerdatabase for now.
+            database_state = Db_State.connected;
         }
     }
 }
