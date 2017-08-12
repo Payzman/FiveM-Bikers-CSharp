@@ -10,11 +10,20 @@ namespace IPMCServerScript
     public class IPMCServer : BaseScript
     {
         bool DB_INITIALIZED;
+        enum Db_State
+        {
+            not_connected,
+            connected,
+            loading,
+            updating,
+        };
+        Db_State database_state;
 
         IPMCDatabase database;
 
         public IPMCServer()
         {
+            database_state = Db_State.not_connected;
             EventHandlers["test"] += new Action<dynamic>(doSomething);
             EventHandlers["IPMC:InitPlayer"] += new Action(initPlayer);
             database = new IPMCDatabase();
@@ -26,10 +35,18 @@ namespace IPMCServerScript
         private async Task OnTick()
         {
             await Task.FromResult(0);
-            if(!DB_INITIALIZED)
+            switch(database_state)
             {
-                Debug.WriteLine("Trying to connect to CouchDB...");
-                database.Connect();
+                case Db_State.not_connected:
+                    Debug.WriteLine("Trying to connect to CouchDB...");
+                    database.Connect();
+                    break;
+                case Db_State.connected:
+                    //do some stuff
+                    break;
+                case Db_State.loading:
+                    database.Load();
+                    break;
             }
         }
 

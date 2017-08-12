@@ -8,6 +8,19 @@ using System.Web;
 
 namespace IPMCServerScript
 {
+    class PlayerDatabase
+    {
+        public int total_rows { get; set; }
+        public int offset { get; set; }
+        public List<object> rows { get; set; }
+
+        public PlayerDatabase(dynamic obj)
+        {
+            total_rows = obj.total_rows;
+            offset = obj.offset;
+            rows = obj.rows;
+        }
+    }
     // The actual HTTP Requests and Responses are done by a lua script!
     class IPMCDatabase
     {
@@ -16,6 +29,7 @@ namespace IPMCServerScript
         static string all_dbs = url + "/_all_dbs";
         // dynamic stuff
         IPMCCouchDbRoot root;
+        PlayerDatabase players;
         List<string> databases;
         List<PlayerDocument> users;
 
@@ -36,12 +50,22 @@ namespace IPMCServerScript
                         databases.Add(response.ToString());
                     }
                     break;
+                case "get player docs":
+                    players = new PlayerDatabase(response);
+                    break;
             }
         }
 
         public void Connect()
         {
             IPMCServer.TriggerEvent("IPMC:HttpGet", url, "connectivity test");
+        }
+
+        public void Load()
+        {
+            string all_player_docs = url + "/players/_all_docs";
+            string reason = "get player docs";
+            IPMCServer.TriggerEvent("IPMC:HttpGet", all_player_docs, reason);
         }
     }
 }
