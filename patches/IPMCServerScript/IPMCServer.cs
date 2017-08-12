@@ -15,6 +15,8 @@ namespace IPMCServerScript
         {
             EventHandlers["test"] += new Action<dynamic>(doSomething);
             EventHandlers["IPMC:InitPlayer"] += new Action(initPlayer);
+            database = new IPMCDatabase();
+            EventHandlers["IPMC:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
         }
         
         void doSomething(dynamic p)
@@ -28,12 +30,7 @@ namespace IPMCServerScript
 
         void initPlayer()
         {
-            if(database == null)
-            {
-                // When a player spawns we check if the database works
-                database = new IPMCDatabase();
-                EventHandlers["IPMC:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
-            }
+            // do stuff
         }
     }
 }
