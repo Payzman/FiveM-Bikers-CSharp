@@ -9,7 +9,6 @@ namespace IPMCServerScript
 {
     public class IPMCServer : BaseScript
     {
-        bool DB_INITIALIZED;
         enum Db_State
         {
             not_connected,
@@ -53,7 +52,7 @@ namespace IPMCServerScript
         void doSomething(dynamic p)
         {
             PlayerList list = new PlayerList();
-            foreach (CitizenFX.Core.Player player in list)
+            foreach (Player player in list)
             {
                 player.TriggerEvent("testClient");
             }
@@ -67,7 +66,7 @@ namespace IPMCServerScript
         void Initialized()
         {
             Debug.WriteLine("Couch DB connection successfull!");
-            DB_INITIALIZED = true;
+            database_state = Db_State.loading;
         }
     }
 }
