@@ -17,6 +17,7 @@ namespace patches
             Player player = LocalPlayer;
             menus = new IPMCMenus(player);
             EventHandlers["testClient"] += new Action<dynamic>(testeventclient);
+            EventHandlers["playerSpawned"] += new Action<dynamic>(handlePlayerSpawn);
             // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
         }
@@ -28,7 +29,7 @@ namespace patches
             // Since FiveM does not use an interaction menu we can just override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
             {
-                CitizenFX.Core.Debug.WriteLine("Oh you pressed M!");
+                Debug.WriteLine("Oh you pressed M!");
                 // Toggle visibility of the interaction menu
                 menus.ToggleInteractionMenu();
             }
@@ -37,6 +38,11 @@ namespace patches
         private void testeventclient(dynamic p)
         {
             Screen.ShowNotification("ay i just came from the server bro");
+        }
+
+        private void handlePlayerSpawn(dynamic spawn)
+        {
+            TriggerServerEvent("IPMC:InitPlayer");
         }
     }
 }
