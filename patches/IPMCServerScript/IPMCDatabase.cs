@@ -17,6 +17,7 @@ namespace IPMCServerScript
         // dynamic stuff
         IPMCCouchDbRoot root;
         List<string> databases;
+        List<PlayerDocument> users;
 
         public void HandleResponse(dynamic response, string reason)
         {

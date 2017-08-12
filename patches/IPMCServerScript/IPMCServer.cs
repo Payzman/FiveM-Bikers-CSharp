@@ -36,7 +36,7 @@ namespace IPMCServerScript
         void doSomething(dynamic p)
         {
             PlayerList list = new PlayerList();
-            foreach (Player player in list)
+            foreach (CitizenFX.Core.Player player in list)
             {
                 player.TriggerEvent("testClient");
             }
