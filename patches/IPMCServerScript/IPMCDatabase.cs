@@ -18,19 +18,15 @@ namespace IPMCServerScript
         IPMCCouchDbRoot root;
         List<string> databases;
 
-        public IPMCDatabase()
-        {
-            IPMCServer.TriggerEvent("IPMC:HttpGet",url,"connectivity test");
-        }
-
         public void HandleResponse(dynamic response, string reason)
         {
             switch(reason)
             {
                 case "connectivity test":
                     root = new IPMCCouchDbRoot(response);
-                    Debug.WriteLine("Welcome to CouchDB Version " + root.version);
                     IPMCServer.TriggerEvent("IPMC:HttpGet", all_dbs, "get all databases");
+                    Debug.WriteLine("Couch DB initialized (Version " + root.version + ")");
+                    IPMCServer.TriggerEvent("Server:Initialized");
                     break;
                 case "get all databases":
                     databases = new List<string>();
@@ -40,6 +36,11 @@ namespace IPMCServerScript
                     }
                     break;
             }
+        }
+
+        public void Connect()
+        {
+            IPMCServer.TriggerEvent("IPMC:HttpGet", url, "connectivity test");
         }
     }
 }
