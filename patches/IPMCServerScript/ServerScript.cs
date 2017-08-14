@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 // Watch out because there is a CitizenFX Server and CitizenFX Client version!!
 using CitizenFX.Core;
-using System.Net;
-using System.IO;
 
 namespace Server
 {
