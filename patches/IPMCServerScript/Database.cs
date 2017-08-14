@@ -42,9 +42,6 @@ namespace Server
             {
                 rows.Add(new Row(row));
             }
-            Debug.WriteLine("Couch DB: Updated player database with:");
-            Debug.WriteLine("\t  total rows: " + total_rows);
-            Debug.WriteLine("\t  offset: " + offset);
         }
     }
     // The actual HTTP Requests and Responses are done by a lua script!
@@ -66,7 +63,6 @@ namespace Server
                 case "connectivity test":
                     root = new CouchDBRoot(response);
                     ServerScript.TriggerEvent("Server:HttpGet", all_dbs, "get all databases");
-                    Debug.WriteLine("Couch DB: initialized (Version " + root.version + ")");
                     ServerScript.TriggerEvent("Server:Initialized");
                     break;
                 case "get all databases":
