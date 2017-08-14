@@ -47,10 +47,6 @@ namespace Server
     // The actual HTTP Requests and Responses are done by a lua script!
     class Database
     {
-        // static stuff
-        static string url = "http://127.0.0.1:5984";
-        static string all_dbs = url + "/_all_dbs";
-        // dynamic stuff
         CouchDBRoot root;
         PlayerDatabase players;
         List<string> databases;
@@ -60,19 +56,19 @@ namespace Server
         {
             switch(reason)
             {
-                case "connectivity test":
+                case Strings.reason_connectivity:
                     root = new CouchDBRoot(response);
-                    ServerScript.TriggerEvent("Server:HttpGet", all_dbs, "get all databases");
+                    ServerScript.TriggerEvent("Server:HttpGet", Strings.all_dbs_url, Strings.get_all_dbs);
                     ServerScript.TriggerEvent("Server:Initialized");
                     break;
-                case "get all databases":
+                case Strings.get_all_dbs:
                     databases = new List<string>();
                     foreach(object obj in response)
                     {
                         databases.Add(response.ToString());
                     }
                     break;
-                case "get player docs":
+                case Strings.get_player_docs:
                     players = new PlayerDatabase(response);
                     ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
                     break;
@@ -81,14 +77,12 @@ namespace Server
 
         public void Connect()
         {
-            ServerScript.TriggerEvent("Server:HttpGet", url, "connectivity test");
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
         }
 
         public void Load()
         {
-            string all_player_docs = url + "/players/_all_docs";
-            string reason = "get player docs";
-            ServerScript.TriggerEvent("Server:HttpGet", all_player_docs, reason);
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
         }
     }
 }
