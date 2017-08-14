@@ -85,9 +85,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPMCCouchDbRoot.cs" />
-    <Compile Include="IPMCDatabase.cs" />
-    <Compile Include="IPMCServer.cs" />
+    <Compile Include="CouchDBRoot.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="ServerScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlayerDocument.cs" />
   </ItemGroup>

@@ -6,16 +6,16 @@ using CitizenFX.Core.UI;
 //The following line is very helpful for debugging purposes. It prints a message to the client command line (press F8 ingame)
 //CitizenFX.Core.Debug.WriteLine("debug message");
 
-namespace patches
+namespace Client
 {
-    public class IPMCScript: BaseScript
+    public class ClientScript: BaseScript
     {
-        IPMCMenus menus;
+        Menu menus;
 
-        public IPMCScript()
+        public ClientScript()
         {
             Player player = LocalPlayer;
-            menus = new IPMCMenus(player);
+            menus = new Menu(player);
             EventHandlers["testClient"] += new Action<dynamic>(testeventclient);
             EventHandlers["playerSpawned"] += new Action<dynamic>(handlePlayerSpawn);
             // @ every tick (small time frame) the function OnTick is called.
@@ -42,7 +42,7 @@ namespace patches
 
         private void handlePlayerSpawn(dynamic spawn)
         {
-            TriggerServerEvent("IPMC:InitPlayer");
+            TriggerServerEvent("Server:InitPlayer");
         }
     }
 }

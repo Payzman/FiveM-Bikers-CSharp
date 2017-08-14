@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPMCClientScript", "IPMCClientScript\IPMCClientScript.csproj", "{FB0F2F0A-7283-4D9A-94D9-A6580DACD925}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientScript", "IPMCClientScript\ClientScript.csproj", "{FB0F2F0A-7283-4D9A-94D9-A6580DACD925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPMCServerScript", "IPMCServerScript\IPMCServerScript.csproj", "{E0EA5F4F-64CC-4DDB-9B01-ADFE53AC71E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerScript", "IPMCServerScript\ServerScript.csproj", "{E0EA5F4F-64CC-4DDB-9B01-ADFE53AC71E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,9 +5,9 @@ using CitizenFX.Core;
 using System.Net;
 using System.IO;
 
-namespace IPMCServerScript
+namespace Server
 {
-    public class IPMCServer : BaseScript
+    public class ServerScript : BaseScript
     {
         enum Db_State
         {
@@ -18,15 +18,15 @@ namespace IPMCServerScript
         };
         Db_State database_state;
 
-        IPMCDatabase database;
+        Database database;
 
-        public IPMCServer()
+        public ServerScript()
         {
             database_state = Db_State.not_connected;
             EventHandlers["test"] += new Action<dynamic>(doSomething);
-            EventHandlers["IPMC:InitPlayer"] += new Action(initPlayer);
-            database = new IPMCDatabase();
-            EventHandlers["IPMC:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
+            EventHandlers["Server:InitPlayer"] += new Action(initPlayer);
+            database = new Database();
+            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             Tick += OnTick;

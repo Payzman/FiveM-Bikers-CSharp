@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPMCServerScript
+namespace Server
 {
     public class Vendor
     {
@@ -15,9 +15,9 @@ namespace IPMCServerScript
         public string name { get; set; }
     }
 
-    public class IPMCCouchDbRoot
+    public class CouchDBRoot
     {
-        public IPMCCouchDbRoot(dynamic obj)
+        public CouchDBRoot(dynamic obj)
         {
             this.couchdb = obj.couchdb;
             this.version = obj.version;

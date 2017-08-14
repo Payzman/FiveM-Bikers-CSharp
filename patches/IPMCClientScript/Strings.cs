@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace patches
+namespace Client
 {
-    static class IPMCStrings
+    static class Strings
     {
         /* PART 1: SIMPLE STRINGS */
         /* Overlay Collections */

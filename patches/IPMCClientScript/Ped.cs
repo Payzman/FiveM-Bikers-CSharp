@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using CitizenFX.Core.UI;
 using CitizenFX.Core.Native;
 
-namespace patches
+namespace Client
 {
-    class IPMCPed
+    class Ped
     {
 
-        public IPMCPed()
+        public Ped()
         {
             //STUB
         }
@@ -22,11 +22,11 @@ namespace patches
             String hash = name_hash.Item1;
             String charter_name = name_hash.Item2;
             int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-            int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY, IPMCStrings.OverlayCollection);
+            int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection);
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, hash);
             Function.Call(Hash.CLEAR_PED_DECORATIONS, player_ped_hash);
             Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, collection_hash, texture_hash);
-            Screen.ShowNotification(IPMCStrings.ChangeBottomRocker(charter_name));
+            Screen.ShowNotification(Strings.ChangeBottomRocker(charter_name));
         }
 
         public Tuple<String,String> GetCharterFromIndex(int index)
@@ -34,15 +34,15 @@ namespace patches
             switch(index)
             {
                 case 0:
-                    return new Tuple<string, string>(IPMCStrings.PatchNationalMaleTextHash,  IPMCStrings.CharterNameNational);
+                    return new Tuple<string, string>(Strings.PatchNationalMaleTextHash,  Strings.CharterNameNational);
                 case 1:
-                    return new Tuple<string, string>(IPMCStrings.PatchPaletoBayMaleTextHash, IPMCStrings.CharterNamePaletoBay);
+                    return new Tuple<string, string>(Strings.PatchPaletoBayMaleTextHash, Strings.CharterNamePaletoBay);
                 case 2:
-                    return new Tuple<string, string>(IPMCStrings.PatchRanchoMaleTextHash,    IPMCStrings.CharterNameRancho);
+                    return new Tuple<string, string>(Strings.PatchRanchoMaleTextHash,    Strings.CharterNameRancho);
                 case 3:
-                    return new Tuple<string, string>(IPMCStrings.PatchDelPerroMaleTextHash,  IPMCStrings.CharterNameDelPerro);
+                    return new Tuple<string, string>(Strings.PatchDelPerroMaleTextHash,  Strings.CharterNameDelPerro);
                 case 4:
-                    return new Tuple<string, string>(IPMCStrings.PatchLaMesaMaleTextHash,    IPMCStrings.CharterNameLaMesa);
+                    return new Tuple<string, string>(Strings.PatchLaMesaMaleTextHash,    Strings.CharterNameLaMesa);
                 default:
                     throw new Exception();
             }

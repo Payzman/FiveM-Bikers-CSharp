@@ -8,12 +8,9 @@ using CitizenFX.Core.UI;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
 
-namespace patches
+namespace Client
 {
-    /// <summary>
-    /// The IPMCMenu class handles all the additional menus, which are used on the client side to use different settings.
-    /// </summary>
-    class IPMCMenus
+    class Menu
     {
         Player player;
         private MenuPool menus;
@@ -22,7 +19,7 @@ namespace patches
         private UIMenu recording;
         // Creates all the interactive menus and calls them.
         // Constructor: Initialization
-        public IPMCMenus(Player p)
+        public Menu(Player p)
         {
             // Create menu pool
             menus = new MenuPool();
@@ -33,7 +30,7 @@ namespace patches
         private void AddInteractionMenu()
         {
             // Add additional menus here
-            interaction_menu = new UIMenu(IPMCStrings.MenuTitleInteraction, IPMCStrings.MenuSubtitleInteraction);
+            interaction_menu = new UIMenu(Strings.MenuTitleInteraction, Strings.MenuSubtitleInteraction);
             menus.Add(interaction_menu);
             AddInteractionMenuItems();
             // Refresh the interaction menu
@@ -44,12 +41,12 @@ namespace patches
         {
             AddSetPatchesMenu();
             // default clothes menu is just for WIP
-            UIMenuItem default_clothes = new UIMenuItem(IPMCStrings.MenuItemDefaultClothes);
+            UIMenuItem default_clothes = new UIMenuItem(Strings.MenuItemDefaultClothes);
             interaction_menu.AddItem(default_clothes);
             // Recording submenu
             AddRecordingMenu();
             // Leave Session
-            UIMenuItem leave_session = new UIMenuItem(IPMCStrings.MenuItemLeaveSession);
+            UIMenuItem leave_session = new UIMenuItem(Strings.MenuItemLeaveSession);
             interaction_menu.AddItem(leave_session);
             // Trigger Server event example
             UIMenuItem trigger = new UIMenuItem("trigger server event");
@@ -62,16 +59,16 @@ namespace patches
         {
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
-            set_patches = menus.AddSubMenu(interaction_menu, IPMCStrings.MenuTitlePatch, IPMCStrings.MenuDescriptionSetPatch);
+            set_patches = menus.AddSubMenu(interaction_menu, Strings.MenuTitlePatch, Strings.MenuDescriptionSetPatch);
             List<dynamic> charters = new List<dynamic>()
             {
-                IPMCStrings.CharterNameNational,
-                IPMCStrings.CharterNamePaletoBay,
-                IPMCStrings.CharterNameRancho,
-                IPMCStrings.CharterNameDelPerro,
-                IPMCStrings.CharterNameLaMesa,
+                Strings.CharterNameNational,
+                Strings.CharterNamePaletoBay,
+                Strings.CharterNameRancho,
+                Strings.CharterNameDelPerro,
+                Strings.CharterNameLaMesa,
             };
-            UIMenuListItem set_patches2 = new UIMenuListItem(IPMCStrings.MenuItemCharter, charters, 1, IPMCStrings.MenuDescriptionSetCharter);
+            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItemCharter, charters, 1, Strings.MenuDescriptionSetCharter);
             set_patches.AddItem(set_patches2);
             // Try to use a handler to handle user input (choosing buttons etc.)
             set_patches.OnListChange += SetPatchHandler;
@@ -81,10 +78,10 @@ namespace patches
 
         private void AddRecordingMenu()
         {
-            recording = menus.AddSubMenu(interaction_menu, IPMCStrings.MenuTitleRecording, IPMCStrings.MenuDescriptionRecording);
-            UIMenuItem start_recording   = new UIMenuItem(IPMCStrings.MenuItemStartRecording,   IPMCStrings.MenuDescriptionStartRecording);
-            UIMenuItem stop_recording    = new UIMenuItem(IPMCStrings.MenuItemStopRecording,    IPMCStrings.MenuDescriptionStopRecording);
-            UIMenuItem discard_recording = new UIMenuItem(IPMCStrings.MenuItemDiscardRecording, IPMCStrings.MenuDescriptionDiscardRecording);
+            recording = menus.AddSubMenu(interaction_menu, Strings.MenuTitleRecording, Strings.MenuDescriptionRecording);
+            UIMenuItem start_recording   = new UIMenuItem(Strings.MenuItemStartRecording,   Strings.MenuDescriptionStartRecording);
+            UIMenuItem stop_recording    = new UIMenuItem(Strings.MenuItemStopRecording,    Strings.MenuDescriptionStopRecording);
+            UIMenuItem discard_recording = new UIMenuItem(Strings.MenuItemDiscardRecording, Strings.MenuDescriptionDiscardRecording);
             recording.AddItem(start_recording);
             recording.AddItem(stop_recording);
             recording.AddItem(discard_recording);
@@ -107,9 +104,9 @@ namespace patches
         {
             if(sender == set_patches)
             {
-                if(selectedItem.Text == IPMCStrings.MenuItemCharter)
+                if(selectedItem.Text == Strings.MenuItemCharter)
                 {
-                    IPMCPed ipmcped = new IPMCPed();
+                    Ped ipmcped = new Ped();
                     ipmcped.ApplyBottomRocker(index);
                 }
             }
@@ -119,16 +116,16 @@ namespace patches
         {
             switch (selectedItem.Text)
             {
-                case IPMCStrings.MenuItemStartRecording:
+                case Strings.MenuItemStartRecording:
                     Function.Call(Hash._START_RECORDING, 1);
                     break;
-                case IPMCStrings.MenuItemStopRecording:
+                case Strings.MenuItemStopRecording:
                     Function.Call(Hash._STOP_RECORDING_AND_SAVE_CLIP);
-                    Screen.ShowNotification(IPMCStrings.NotificationSaveClip);
+                    Screen.ShowNotification(Strings.NotificationSaveClip);
                     break;
-                case IPMCStrings.MenuItemDiscardRecording:
+                case Strings.MenuItemDiscardRecording:
                     Function.Call(Hash._STOP_RECORDING_AND_DISCARD_CLIP);
-                    Screen.ShowNotification(IPMCStrings.NotificationDiscardClip);
+                    Screen.ShowNotification(Strings.NotificationDiscardClip);
                     break;
             }
         }
@@ -137,17 +134,17 @@ namespace patches
         {
             switch(selectedItem.Text)
             {
-                case IPMCStrings.MenuItemDefaultClothes:
+                case Strings.MenuItemDefaultClothes:
                     int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-                    Ped ped = new Ped(player_ped_hash);
+                    CitizenFX.Core.Ped ped = new CitizenFX.Core.Ped(player_ped_hash);
                     ped.Style.SetDefaultClothes();
                     break;
-                case IPMCStrings.MenuItemLeaveSession:
+                case Strings.MenuItemLeaveSession:
                     Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
-                    Screen.ShowNotification(IPMCStrings.NotificationLeaveSession);
+                    Screen.ShowNotification(Strings.NotificationLeaveSession);
                     break;
                 case "trigger server event":
-                    IPMCScript.TriggerServerEvent("test");
+                    ClientScript.TriggerServerEvent("test");
                     break;
                 default:
                     break;

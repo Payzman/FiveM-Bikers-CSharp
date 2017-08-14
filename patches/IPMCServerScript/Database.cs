@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CitizenFX.Core;
 using System.Web;
 
-namespace IPMCServerScript
+namespace Server
 {
     public class Value
     {
@@ -53,13 +53,13 @@ namespace IPMCServerScript
         }
     }
     // The actual HTTP Requests and Responses are done by a lua script!
-    class IPMCDatabase
+    class Database
     {
         // static stuff
         static string url = "http://127.0.0.1:5984";
         static string all_dbs = url + "/_all_dbs";
         // dynamic stuff
-        IPMCCouchDbRoot root;
+        CouchDBRoot root;
         PlayerDatabase players;
         List<string> databases;
         List<PlayerDocument> users;
@@ -69,10 +69,10 @@ namespace IPMCServerScript
             switch(reason)
             {
                 case "connectivity test":
-                    root = new IPMCCouchDbRoot(response);
-                    IPMCServer.TriggerEvent("IPMC:HttpGet", all_dbs, "get all databases");
+                    root = new CouchDBRoot(response);
+                    ServerScript.TriggerEvent("Server:HttpGet", all_dbs, "get all databases");
                     Debug.WriteLine("Couch DB: initialized (Version " + root.version + ")");
-                    IPMCServer.TriggerEvent("Server:Initialized");
+                    ServerScript.TriggerEvent("Server:Initialized");
                     break;
                 case "get all databases":
                     databases = new List<string>();
@@ -83,21 +83,21 @@ namespace IPMCServerScript
                     break;
                 case "get player docs":
                     players = new PlayerDatabase(response);
-                    IPMCServer.TriggerEvent("Server:LoadedPlayerdocs");
+                    ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
                     break;
             }
         }
 
         public void Connect()
         {
-            IPMCServer.TriggerEvent("IPMC:HttpGet", url, "connectivity test");
+            ServerScript.TriggerEvent("Server:HttpGet", url, "connectivity test");
         }
 
         public void Load()
         {
             string all_player_docs = url + "/players/_all_docs";
             string reason = "get player docs";
-            IPMCServer.TriggerEvent("IPMC:HttpGet", all_player_docs, reason);
+            ServerScript.TriggerEvent("Server:HttpGet", all_player_docs, reason);
         }
     }
 }

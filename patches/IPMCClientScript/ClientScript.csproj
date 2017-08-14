@@ -51,10 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPMCMenus.cs" />
-    <Compile Include="IPMCPed.cs" />
-    <Compile Include="IPMCScript.cs" />
-    <Compile Include="IPMCStrings.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Ped.cs" />
+    <Compile Include="ClientScript.cs" />
+    <Compile Include="Strings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
