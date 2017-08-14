@@ -48,9 +48,6 @@ namespace Client
             // Leave Session
             UIMenuItem leave_session = new UIMenuItem(Strings.MenuItemLeaveSession);
             interaction_menu.AddItem(leave_session);
-            // Trigger Server event example
-            UIMenuItem trigger = new UIMenuItem("trigger server event");
-            interaction_menu.AddItem(trigger);
             // Define the interaction menu item handler
             interaction_menu.OnItemSelect += ItemHandler;
         }
@@ -142,9 +139,6 @@ namespace Client
                 case Strings.MenuItemLeaveSession:
                     Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
                     Screen.ShowNotification(Strings.NotificationLeaveSession);
-                    break;
-                case "trigger server event":
-                    ClientScript.TriggerServerEvent("test");
                     break;
                 default:
                     break;

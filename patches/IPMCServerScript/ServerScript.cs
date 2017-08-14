@@ -23,7 +23,6 @@ namespace Server
         public ServerScript()
         {
             database_state = Db_State.not_connected;
-            EventHandlers["test"] += new Action<dynamic>(doSomething);
             EventHandlers["Server:InitPlayer"] += new Action(initPlayer);
             database = new Database();
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
@@ -46,15 +45,6 @@ namespace Server
                 case Db_State.loading:
                     database.Load();
                     break;
-            }
-        }
-
-        void doSomething(dynamic p)
-        {
-            PlayerList list = new PlayerList();
-            foreach (Player player in list)
-            {
-                player.TriggerEvent("testClient");
             }
         }
 
