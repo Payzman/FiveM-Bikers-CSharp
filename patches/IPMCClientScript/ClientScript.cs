@@ -16,7 +16,6 @@ namespace Client
         {
             Player player = LocalPlayer;
             menus = new Menu(player);
-            EventHandlers["testClient"] += new Action<dynamic>(testeventclient);
             EventHandlers["playerSpawned"] += new Action<dynamic>(handlePlayerSpawn);
             // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
@@ -33,11 +32,6 @@ namespace Client
                 // Toggle visibility of the interaction menu
                 menus.ToggleInteractionMenu();
             }
-        }
-
-        private void testeventclient(dynamic p)
-        {
-            Screen.ShowNotification("ay i just came from the server bro");
         }
 
         private void handlePlayerSpawn(dynamic spawn)
