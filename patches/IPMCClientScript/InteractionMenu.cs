@@ -5,16 +5,15 @@ using CitizenFX.Core.Native;
 
 namespace Client
 {
-    class Menu
+    class InteractionMenu
     {
         Player player;
         private MenuPool menus;
         private UIMenu interaction_menu;
-        private UIMenu set_patches;
         private UIMenu recording;
         // Creates all the interactive menus and calls them.
         // Constructor: Initialization
-        public Menu(Player p)
+        public InteractionMenu(Player p)
         {
             // Create menu pool
             menus = new MenuPool();
@@ -34,7 +33,7 @@ namespace Client
 
         private void AddInteractionMenuItems()
         {
-            AddSetPatchesMenu();
+            PatchesMenu patches_menu = new PatchesMenu(menus, interaction_menu);
             // default clothes menu is just for WIP
             UIMenuItem default_clothes = new UIMenuItem(Strings.MenuItemDefaultClothes);
             interaction_menu.AddItem(default_clothes);
@@ -45,19 +44,6 @@ namespace Client
             interaction_menu.AddItem(leave_session);
             // Define the interaction menu item handler
             interaction_menu.OnItemSelect += ItemHandler;
-        }
-
-        private void AddSetPatchesMenu()
-        {
-            // Add items for the interaction menu here:
-            // Add the submenu "set patch"
-            set_patches = menus.AddSubMenu(interaction_menu, Strings.MenuTitlePatch, Strings.MenuDescriptionSetPatch);
-            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItemCharter, Strings.charters, 1, Strings.MenuDescriptionSetCharter);
-            set_patches.AddItem(set_patches2);
-            // Try to use a handler to handle user input (choosing buttons etc.)
-            set_patches.OnListChange += SetPatchHandler;
-            // Refresh the set patches menu
-            set_patches.RefreshIndex();
         }
 
         private void AddRecordingMenu()
@@ -82,18 +68,6 @@ namespace Client
         public void ToggleInteractionMenu()
         {
             interaction_menu.Visible = !interaction_menu.Visible;
-        }
-
-        public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
-        {
-            if(sender == set_patches)
-            {
-                if(selectedItem.Text == Strings.MenuItemCharter)
-                {
-                    Ped ipmcped = new Ped();
-                    ipmcped.ApplyBottomRocker(index);
-                }
-            }
         }
 
         public void RecordingHandler(UIMenu sender, UIMenuItem selectedItem, int index)
