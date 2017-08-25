@@ -25,6 +25,7 @@ namespace Server
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
+            EventHandlers["Server:playerConnected"] += new Action(initPlayer);
             Tick += OnTick;
         }
 
@@ -42,6 +43,24 @@ namespace Server
                 case Db_State.loading:
                     database.Load();
                     break;
+            }
+        }
+
+        void initPlayer()
+        {
+            Debug.WriteLine("New Player Connected");
+            Debug.WriteLine("Current Players");
+            PlayerList list = new PlayerList();
+            foreach(Player player in list)
+            {
+                Debug.WriteLine("Name = " + player.Name);
+                Debug.WriteLine("Endpoint = " + player.EndPoint);
+                Debug.WriteLine("Handle = " + player.Handle);
+                Debug.WriteLine("Identifiers");
+                foreach(string identifier in player.Identifiers)
+                {
+                    Debug.WriteLine(identifier);
+                }
             }
         }
 
