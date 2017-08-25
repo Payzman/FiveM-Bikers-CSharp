@@ -4,29 +4,6 @@ using System;
 
 namespace Server
 {
-    public class Value
-    {
-        public string rev { get; set; }
-
-        public Value(dynamic obj)
-        {
-            rev = obj.rev;
-        }
-    }
-
-    public class Row
-    {
-        public string id { get; set; }
-        public string key { get; set; }
-        public Value value { get; set; }
-
-        public Row(dynamic obj)
-        {
-            id = obj.id;
-            key = obj.key;
-            value = new Value(obj.value);
-        }
-    }
     // The actual HTTP Requests and Responses are done by a lua script!
     class Database
     {
@@ -82,7 +59,7 @@ namespace Server
 
         public void GetPlayerInfo()
         {
-            foreach(Row document in players.rows)
+            foreach(DatabaseRows document in players.rows)
             {
                 string url = Strings.player_base + "/" + document.id.ToString();
                 Debug.WriteLine("Getting entry from " + url);
