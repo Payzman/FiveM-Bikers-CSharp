@@ -51,9 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu.cs" />
+    <Compile Include="InteractionMenu.cs" />
+    <Compile Include="PatchesMenu.cs" />
     <Compile Include="Ped.cs" />
     <Compile Include="ClientScript.cs" />
+    <Compile Include="RecordingMenu.cs" />
     <Compile Include="Strings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
