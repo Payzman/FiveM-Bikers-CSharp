@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="CouchDBRoot.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="PlayerDatabase.cs" />
     <Compile Include="ServerScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlayerDocument.cs" />
