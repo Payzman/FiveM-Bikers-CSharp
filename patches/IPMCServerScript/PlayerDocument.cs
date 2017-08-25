@@ -7,15 +7,17 @@ namespace Server
     {
         public PlayerDocument(dynamic obj)
         {
-            if(((IDictionary<string,dynamic>)obj).ContainsKey("name"))
+            // the following is more readable th
+            if(((IDictionary<string,dynamic>)obj).ContainsKey("name") &&
+                ((IDictionary<string, dynamic>)obj).ContainsKey("endpoint"))
             {
                 Name = obj.name;
+                Endpoint = obj.endpoint;
             }
             else
             {
-                Debug.WriteLine("WARNING: Found Entry without name");
+                Debug.WriteLine("WARNING: Found incompatible entry. name or endpoint missing!");
             }
-            Endpoint = obj.endpoint;
         }
         public string Name { get; set; }
         public string Endpoint { get; set; }
