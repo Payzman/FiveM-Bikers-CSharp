@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CitizenFX.Core;
+using System;
 
 namespace Server
 {
@@ -73,9 +74,16 @@ namespace Server
                     ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
                     break;
                 case Strings.get_single_player_doc:
-                    PlayerDocument player = new PlayerDocument(response);
-                    users.Add(player);
-                    Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
+                    try
+                    {
+                        PlayerDocument player = new PlayerDocument(response);
+                        users.Add(player);
+                        Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
+                    }
+                    catch(ArgumentException e)
+                    {
+                        Debug.WriteLine("The database entry seems to be faulty. Please check the database");
+                    }
                     break;
             }
         }
