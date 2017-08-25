@@ -51,8 +51,8 @@ namespace Server
         CouchDBRoot root;
         PlayerDatabase players;
         List<string> databases;
-        List<PlayerDocument> users;
-
+        List<PlayerDocument> users = new List<PlayerDocument>();
+        
         public void HandleResponse(dynamic response, string reason)
         {
             switch(reason)
