@@ -7,9 +7,8 @@ namespace Server
     {
         public PlayerDocument(dynamic obj)
         {
-            // the following is more readable th
-            if(((IDictionary<string,dynamic>)obj).ContainsKey("name") &&
-                ((IDictionary<string, dynamic>)obj).ContainsKey("endpoint"))
+            if(((IDictionary<string,object>)obj).ContainsKey("name") &&
+                ((IDictionary<string,object>)obj).ContainsKey("endpoint"))
             {
                 Name = obj.name;
                 Endpoint = obj.endpoint;
