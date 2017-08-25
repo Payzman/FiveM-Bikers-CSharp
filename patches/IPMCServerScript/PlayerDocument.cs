@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using CitizenFX.Core;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Server
 {
@@ -16,7 +16,7 @@ namespace Server
             }
             else
             {
-                Debug.WriteLine("WARNING: Found incompatible entry. name or endpoint missing!");
+                throw new ArgumentException("The Player Document does not contain name and endpoint", "obj");
             }
         }
         public string Name { get; set; }
