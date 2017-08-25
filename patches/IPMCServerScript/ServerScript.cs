@@ -17,12 +17,12 @@ namespace Server
         };
         Db_State database_state;
 
-        Database database;
+        DatabaseCollection database;
 
         public ServerScript()
         {
             database_state = Db_State.not_connected;
-            database = new Database();
+            database = new DatabaseCollection();
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);

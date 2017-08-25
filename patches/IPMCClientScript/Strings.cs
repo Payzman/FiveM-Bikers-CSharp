@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Client
 {
@@ -49,5 +50,15 @@ namespace Client
         {
             return "Changing bottom rocker to " + charter_name;
         }
+        /* String Collections e.g. for menus etc.*/
+
+        public static List<dynamic> charters = new List<dynamic>()
+        {
+            CharterNameNational,
+            CharterNamePaletoBay,
+            CharterNameRancho,
+            CharterNameDelPerro,
+            CharterNameLaMesa,
+        };
     }
 }

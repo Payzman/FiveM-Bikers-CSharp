@@ -9,12 +9,12 @@ namespace Client
 {
     public class ClientScript: BaseScript
     {
-        Menu menus;
+        InteractionMenu menus;
 
         public ClientScript()
         {
             Player player = LocalPlayer;
-            menus = new Menu(player);
+            menus = new InteractionMenu(player);
             // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
         }
