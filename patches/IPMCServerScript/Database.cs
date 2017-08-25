@@ -102,7 +102,7 @@ namespace Server
         {
             foreach(Row document in players.rows)
             {
-                string url = Strings.player_base + document.id.ToString();
+                string url = Strings.player_base + "/" + document.id.ToString();
                 Debug.WriteLine("Getting entry from " + url);
                 string reason = Strings.get_single_player_doc;
                 ServerScript.TriggerEvent("Server:HttpGet", url, reason);
