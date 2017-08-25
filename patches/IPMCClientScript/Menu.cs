@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NativeUI;
+﻿using NativeUI;
 using CitizenFX.Core.UI;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
@@ -53,15 +52,7 @@ namespace Client
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
             set_patches = menus.AddSubMenu(interaction_menu, Strings.MenuTitlePatch, Strings.MenuDescriptionSetPatch);
-            List<dynamic> charters = new List<dynamic>()
-            {
-                Strings.CharterNameNational,
-                Strings.CharterNamePaletoBay,
-                Strings.CharterNameRancho,
-                Strings.CharterNameDelPerro,
-                Strings.CharterNameLaMesa,
-            };
-            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItemCharter, charters, 1, Strings.MenuDescriptionSetCharter);
+            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItemCharter, Strings.charters, 1, Strings.MenuDescriptionSetCharter);
             set_patches.AddItem(set_patches2);
             // Try to use a handler to handle user input (choosing buttons etc.)
             set_patches.OnListChange += SetPatchHandler;
@@ -128,9 +119,7 @@ namespace Client
             switch(selectedItem.Text)
             {
                 case Strings.MenuItemDefaultClothes:
-                    int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-                    CitizenFX.Core.Ped ped = new CitizenFX.Core.Ped(player_ped_hash);
-                    ped.Style.SetDefaultClothes();
+                    DefaultClothes();
                     break;
                 case Strings.MenuItemLeaveSession:
                     Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
@@ -139,6 +128,13 @@ namespace Client
                 default:
                     break;
             }
+        }
+
+        public void DefaultClothes()
+        {
+            int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            CitizenFX.Core.Ped ped = new CitizenFX.Core.Ped(player_ped_hash);
+            ped.Style.SetDefaultClothes();
         }
     }
 }
