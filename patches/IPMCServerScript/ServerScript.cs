@@ -13,6 +13,7 @@ namespace Server
             connected,
             loading,
             updating,
+            idle,
         };
         Db_State database_state;
 
@@ -39,6 +40,7 @@ namespace Server
                     break;
                 case Db_State.connected:
                     database.GetPlayerInfo();
+                    database_state = Db_State.idle;
                     break;
                 case Db_State.loading:
                     database.Load();
