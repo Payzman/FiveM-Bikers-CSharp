@@ -38,7 +38,7 @@ namespace Server
                     database.Connect();
                     break;
                 case Db_State.connected:
-                    //do some stuff
+                    database.GetPlayerInfo();
                     break;
                 case Db_State.loading:
                     database.Load();

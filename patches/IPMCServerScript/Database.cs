@@ -84,5 +84,15 @@ namespace Server
         {
             ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
         }
+
+        public void GetPlayerInfo()
+        {
+            foreach(Row document in players.rows)
+            {
+                string url = Strings.player_base + document.id.ToString();
+                string reason = "Get Single Player Document";
+                ServerScript.TriggerEvent("Server:HttpGet", url, reason);
+            }
+        }
     }
 }
