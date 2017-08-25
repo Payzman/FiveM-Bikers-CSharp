@@ -21,7 +21,6 @@ namespace Server
         public ServerScript()
         {
             database_state = Db_State.not_connected;
-            EventHandlers["Server:InitPlayer"] += new Action(initPlayer);
             database = new Database();
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
@@ -44,11 +43,6 @@ namespace Server
                     database.Load();
                     break;
             }
-        }
-
-        void initPlayer()
-        {
-            // do stuff
         }
 
         void Initialized()
