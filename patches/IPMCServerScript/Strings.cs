@@ -17,5 +17,6 @@ namespace Server
         public const string reason_connectivity = "connectivity test";
         public const string get_all_dbs = "get all databases";
         public const string get_player_docs = "Get Player Docs";
+        public const string get_single_player_doc = "Get Single Player Document";
     }
 }

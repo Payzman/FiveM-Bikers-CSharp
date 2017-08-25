@@ -72,6 +72,11 @@ namespace Server
                     players = new PlayerDatabase(response);
                     ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
                     break;
+                case Strings.get_single_player_doc:
+                    PlayerDocument player = new PlayerDocument(response);
+                    users.Add(player);
+                    Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
+                    break;
             }
         }
 
@@ -90,7 +95,7 @@ namespace Server
             foreach(Row document in players.rows)
             {
                 string url = Strings.player_base + document.id.ToString();
-                string reason = "Get Single Player Document";
+                string reason = Strings.get_single_player_doc;
                 ServerScript.TriggerEvent("Server:HttpGet", url, reason);
             }
         }
