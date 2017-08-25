@@ -86,10 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CouchDBRoot.cs" />
-    <Compile Include="Database.cs" />
+    <Compile Include="DatabaseCollection.cs" />
     <Compile Include="DatabaseRevision.cs" />
     <Compile Include="DatabaseRows.cs" />
-    <Compile Include="PlayerDatabase.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="ServerScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlayerDocument.cs" />
