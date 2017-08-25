@@ -82,7 +82,7 @@ namespace Server
                     }
                     catch(ArgumentException e)
                     {
-                        Debug.WriteLine("The database entry seems to be faulty. Please check the database");
+                        Debug.WriteLine(e.Message + "\nThe database entry seems to be faulty. Please check the database");
                     }
                     break;
             }
