@@ -122,8 +122,7 @@ namespace Client
                     DefaultClothes();
                     break;
                 case Strings.MenuItemLeaveSession:
-                    Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
-                    Screen.ShowNotification(Strings.NotificationLeaveSession);
+                    LeaveSession();
                     break;
                 default:
                     break;
@@ -135,6 +134,12 @@ namespace Client
             int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
             CitizenFX.Core.Ped ped = new CitizenFX.Core.Ped(player_ped_hash);
             ped.Style.SetDefaultClothes();
+        }
+
+        public void LeaveSession()
+        {
+            Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
+            Screen.ShowNotification(Strings.NotificationLeaveSession);
         }
     }
 }
