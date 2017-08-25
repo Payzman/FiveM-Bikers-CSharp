@@ -21,11 +21,11 @@ namespace Server
         public ServerScript()
         {
             database_state = Db_State.not_connected;
-            EventHandlers["Server:InitPlayer"] += new Action(initPlayer);
             database = new Database();
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
+            EventHandlers["Server:playerConnected"] += new Action(initPlayer);
             Tick += OnTick;
         }
 
@@ -48,7 +48,20 @@ namespace Server
 
         void initPlayer()
         {
-            // do stuff
+            Debug.WriteLine("New Player Connected");
+            Debug.WriteLine("Current Players");
+            PlayerList list = new PlayerList();
+            foreach(Player player in list)
+            {
+                Debug.WriteLine("Name = " + player.Name);
+                Debug.WriteLine("Endpoint = " + player.EndPoint);
+                Debug.WriteLine("Handle = " + player.Handle);
+                Debug.WriteLine("Identifiers");
+                foreach(string identifier in player.Identifiers)
+                {
+                    Debug.WriteLine(identifier);
+                }
+            }
         }
 
         void Initialized()
