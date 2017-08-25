@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CitizenFX.Core;
+using System;
 
 namespace Server
 {
@@ -50,8 +51,8 @@ namespace Server
         CouchDBRoot root;
         PlayerDatabase players;
         List<string> databases;
-        List<PlayerDocument> users;
-
+        List<PlayerDocument> users = new List<PlayerDocument>();
+        
         public void HandleResponse(dynamic response, string reason)
         {
             switch(reason)
@@ -72,6 +73,18 @@ namespace Server
                     players = new PlayerDatabase(response);
                     ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
                     break;
+                case Strings.get_single_player_doc:
+                    try
+                    {
+                        PlayerDocument player = new PlayerDocument(response);
+                        users.Add(player);
+                        Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
+                    }
+                    catch(ArgumentException e)
+                    {
+                        Debug.WriteLine(e.Message + "\nThe database entry seems to be faulty. Please check the database");
+                    }
+                    break;
             }
         }
 
@@ -83,6 +96,17 @@ namespace Server
         public void Load()
         {
             ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
+        }
+
+        public void GetPlayerInfo()
+        {
+            foreach(Row document in players.rows)
+            {
+                string url = Strings.player_base + "/" + document.id.ToString();
+                Debug.WriteLine("Getting entry from " + url);
+                string reason = Strings.get_single_player_doc;
+                ServerScript.TriggerEvent("Server:HttpGet", url, reason);
+            }
         }
     }
 }
