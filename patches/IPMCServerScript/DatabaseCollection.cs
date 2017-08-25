@@ -17,34 +17,54 @@ namespace Server
             switch(reason)
             {
                 case Strings.reason_connectivity:
-                    root = new CouchDBRoot(response);
-                    ServerScript.TriggerEvent("Server:HttpGet", Strings.all_dbs_url, Strings.get_all_dbs);
-                    ServerScript.TriggerEvent("Server:Initialized");
+                    CheckConnectivity(response);
                     break;
                 case Strings.get_all_dbs:
-                    databases = new List<string>();
-                    foreach(object obj in response)
-                    {
-                        databases.Add(response.ToString());
-                    }
+                    GetAllDatabases(response);
                     break;
                 case Strings.get_player_docs:
-                    players = new Database(response);
-                    ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
+                    CheckPlayerDatabase(response);
                     break;
                 case Strings.get_single_player_doc:
-                    try
-                    {
-                        PlayerDocument player = new PlayerDocument(response);
-                        users.Add(player);
-                        Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
-                    }
-                    catch(ArgumentException e)
-                    {
-                        Debug.WriteLine(e.Message + "\nThe database entry seems to be faulty. Please check the database");
-                    }
+                    GetPlayerDocument(response);
                     break;
             }
+        }
+
+        private void GetPlayerDocument(dynamic response)
+        {
+            try
+            {
+                PlayerDocument player = new PlayerDocument(response);
+                users.Add(player);
+                Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
+            }
+            catch (ArgumentException e)
+            {
+                Debug.WriteLine(e.Message + "\nThe database entry seems to be faulty. Please check the database");
+            }
+        }
+
+        private void CheckPlayerDatabase(dynamic response)
+        {
+            players = new Database(response);
+            ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
+        }
+
+        private void GetAllDatabases(dynamic response)
+        {
+            databases = new List<string>();
+            foreach (object obj in response)
+            {
+                databases.Add(response.ToString());
+            }
+        }
+
+        private void CheckConnectivity(dynamic response)
+        {
+            root = new CouchDBRoot(response);
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.all_dbs_url, Strings.get_all_dbs);
+            ServerScript.TriggerEvent("Server:Initialized");
         }
 
         public void Connect()
