@@ -54,7 +54,8 @@ namespace Server
             PlayerList playerlist = new PlayerList();
             foreach(Player player in playerlist)
             {
-                if(player.Handle.Equals(source))
+                int playerid = int.Parse(player.Handle);
+                if(playerid.Equals(source))
                 {
                     PlayerDocument user = database.users.Find(x => (x.Name == player.Name 
                                                                     && x.Endpoint == player.EndPoint));
