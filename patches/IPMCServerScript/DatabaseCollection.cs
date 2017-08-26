@@ -10,7 +10,7 @@ namespace Server
         CouchDBRoot root;
         Database players;
         List<string> databases;
-        List<PlayerDocument> users = new List<PlayerDocument>();
+        public List<PlayerDocument> users = new List<PlayerDocument>();
         
         public void HandleResponse(dynamic response, string reason)
         {
