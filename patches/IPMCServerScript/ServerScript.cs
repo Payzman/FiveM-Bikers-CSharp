@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 // Watch out because there is a CitizenFX Server and CitizenFX Client version!!
 using CitizenFX.Core;
+using System.Collections.Generic;
 
 namespace Server
 {
@@ -11,8 +12,8 @@ namespace Server
         {
             not_connected,
             connected,
-            loading,
-            updating,
+            loading, //Database -> Script
+            updating, // Script -> Database
             idle,
         };
         Db_State database_state;
@@ -50,19 +51,21 @@ namespace Server
 
         void initPlayer(int source)
         {
-            Debug.WriteLine("Source == " + source);
-            Debug.WriteLine("New Player Connected");
-            Debug.WriteLine("Current Players");
-            PlayerList list = new PlayerList();
-            foreach(Player player in list)
+            PlayerList playerlist = new PlayerList();
+            foreach(Player player in playerlist)
             {
-                Debug.WriteLine("Name = " + player.Name);
-                Debug.WriteLine("Endpoint = " + player.EndPoint);
-                Debug.WriteLine("Handle = " + player.Handle);
-                Debug.WriteLine("Identifiers");
-                foreach(string identifier in player.Identifiers)
+                if(player.Handle.Equals(source))
                 {
-                    Debug.WriteLine(identifier);
+                    PlayerDocument user = database.users.Find(x => (x.Name == player.Name 
+                                                                    && x.Endpoint == player.EndPoint));
+                    if(user != null)
+                    {
+                        Debug.WriteLine("We know that dude");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Who is that guy?");
+                    }
                 }
             }
         }
