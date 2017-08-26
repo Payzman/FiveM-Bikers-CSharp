@@ -26,7 +26,7 @@ namespace Server
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
-            EventHandlers["Server:playerConnected"] += new Action(initPlayer);
+            EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);
             Tick += OnTick;
         }
 
@@ -48,8 +48,9 @@ namespace Server
             }
         }
 
-        void initPlayer()
+        void initPlayer(int source)
         {
+            Debug.WriteLine("Source == " + source);
             Debug.WriteLine("New Player Connected");
             Debug.WriteLine("Current Players");
             PlayerList list = new PlayerList();
