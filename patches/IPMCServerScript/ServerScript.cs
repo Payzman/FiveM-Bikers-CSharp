@@ -51,23 +51,13 @@ namespace Server
 
         void initPlayer(int source)
         {
-            PlayerList playerlist = new PlayerList();
-            foreach(Player player in playerlist)
+            if(database.PlayerInDatabase(source))
             {
-                int playerid = int.Parse(player.Handle);
-                if(playerid.Equals(source))
-                {
-                    PlayerDocument user = database.users.Find(x => (x.Name == player.Name 
-                                                                    && x.Endpoint == player.EndPoint));
-                    if(user != null)
-                    {
-                        Debug.WriteLine("We know that dude");
-                    }
-                    else
-                    {
-                        Debug.WriteLine("Who is that guy?");
-                    }
-                }
+                Debug.WriteLine("We know that dude");
+            }
+            else
+            {
+                Debug.WriteLine("Who is that guy?");
             }
         }
 

@@ -10,7 +10,7 @@ namespace Server
         CouchDBRoot root;
         Database players;
         List<string> databases;
-        public List<PlayerDocument> users = new List<PlayerDocument>();
+        private List<PlayerDocument> users = new List<PlayerDocument>();
         
         public void HandleResponse(dynamic response, string reason)
         {
@@ -86,6 +86,14 @@ namespace Server
                 string reason = Strings.get_single_player_doc;
                 ServerScript.TriggerEvent("Server:HttpGet", url, reason);
             }
+        }
+
+        public bool PlayerInDatabase(int source)
+        {
+            Player player = new PlayerList()[source];
+            PlayerDocument user = users.Find(x => (x.Name == player.Name
+                                                && x.Endpoint == player.EndPoint));
+            return (user != null);
         }
     }
 }
