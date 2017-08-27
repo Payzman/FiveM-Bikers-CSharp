@@ -51,10 +51,7 @@ namespace Server
 
         void initPlayer(int source)
         {
-            Player player = new PlayerList()[source];
-            PlayerDocument user = database.users.Find(x => (x.Name == player.Name 
-                                                            && x.Endpoint == player.EndPoint));
-            if(user != null)
+            if(database.PlayerInDatabase(source))
             {
                 Debug.WriteLine("We know that dude");
             }
