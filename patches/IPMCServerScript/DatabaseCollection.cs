@@ -28,7 +28,16 @@ namespace Server
                 case Strings.get_single_player_doc:
                     GetPlayerDocument(response);
                     break;
+                case Strings.request_uuids:
+                    GetUuids(response);
+                    break;
             }
+        }
+
+        private void GetUuids(dynamic response)
+        {
+            string uuid = response.uuids[0];
+            Debug.WriteLine("Got a new Universal Unique Identifier: " + uuid);
         }
 
         private void GetPlayerDocument(dynamic response)
