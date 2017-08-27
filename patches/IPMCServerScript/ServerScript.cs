@@ -53,11 +53,15 @@ namespace Server
         {
             if(database.PlayerInDatabase(source))
             {
+                // Load player information
                 Debug.WriteLine("We know that dude");
             }
             else
             {
-                Debug.WriteLine("Who is that guy?");
+                // Create a new user document
+                string url = Strings.uuids;
+                string reason = Strings.request_uuids;
+                TriggerEvent("Server:HttpGet", url, reason);
             }
         }
 
