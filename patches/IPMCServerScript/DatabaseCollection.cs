@@ -38,6 +38,8 @@ namespace Server
         {
             string uuid = response.uuids[0];
             Debug.WriteLine("Got a new Universal Unique Identifier: " + uuid);
+            // UUIDs are currently only used for generating new documents (for new users...).
+            // The implementation will change at a later stage but atm it's the easiest.
         }
 
         private void GetPlayerDocument(dynamic response)
