@@ -12,7 +12,7 @@ namespace Server
         List<string> databases;
         private List<PlayerDocument> users = new List<PlayerDocument>();
         
-        public void HandleResponse(dynamic response, string reason)
+        public void HandleResponse(dynamic response, string reason, dynamic param)
         {
             switch(reason)
             {
@@ -29,12 +29,12 @@ namespace Server
                     GetPlayerDocument(response);
                     break;
                 case Strings.request_uuids:
-                    GetUuids(response);
+                    AddNewUser(response, param);
                     break;
             }
         }
 
-        private void GetUuids(dynamic response)
+        private void AddNewUser(dynamic response, dynamic param)
         {
             string uuid = response.uuids[0];
             Debug.WriteLine("Got a new Universal Unique Identifier: " + uuid);

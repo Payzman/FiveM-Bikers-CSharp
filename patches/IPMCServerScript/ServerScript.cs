@@ -24,7 +24,7 @@ namespace Server
         {
             database_state = Db_State.not_connected;
             database = new DatabaseCollection();
-            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
+            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);
