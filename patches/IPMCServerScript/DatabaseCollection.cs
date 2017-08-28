@@ -40,6 +40,9 @@ namespace Server
             Debug.WriteLine("Got a new Universal Unique Identifier: " + uuid);
             // UUIDs are currently only used for generating new documents (for new users...).
             // The implementation will change at a later stage but atm it's the easiest.
+            string url = Strings.player_base + "/" + uuid;
+            string reason = ""; /*i dont need a callback*/
+            ServerScript.TriggerEvent("Server:HttpPut", url, param, reason);
         }
 
         private void GetPlayerDocument(dynamic response)
