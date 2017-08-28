@@ -12,7 +12,7 @@ namespace Server
         List<string> databases;
         private List<PlayerDocument> users = new List<PlayerDocument>();
         
-        public void HandleResponse(dynamic response, string reason)
+        public void HandleResponse(dynamic response, string reason, dynamic param)
         {
             switch(reason)
             {
@@ -28,7 +28,21 @@ namespace Server
                 case Strings.get_single_player_doc:
                     GetPlayerDocument(response);
                     break;
+                case Strings.request_uuids:
+                    AddNewUser(response, param);
+                    break;
             }
+        }
+
+        private void AddNewUser(dynamic response, dynamic param)
+        {
+            string uuid = response.uuids[0];
+            Debug.WriteLine("Got a new Universal Unique Identifier: " + uuid);
+            // UUIDs are currently only used for generating new documents (for new users...).
+            // The implementation will change at a later stage but atm it's the easiest.
+            string url = Strings.player_base + "/" + uuid;
+            string reason = ""; /*i dont need a callback*/
+            ServerScript.TriggerEvent("Server:HttpPut", url, param, reason);
         }
 
         private void GetPlayerDocument(dynamic response)
@@ -88,12 +102,12 @@ namespace Server
             }
         }
 
-        public bool PlayerInDatabase(int source)
+        public PlayerDocument PlayerInDatabase(int source)
         {
             Player player = new PlayerList()[source];
             PlayerDocument user = users.Find(x => (x.Name == player.Name
                                                 && x.Endpoint == player.EndPoint));
-            return (user != null);
+            return user;
         }
     }
 }

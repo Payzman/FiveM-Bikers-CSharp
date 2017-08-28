@@ -5,6 +5,7 @@ namespace Server
 {
     class PlayerDocument
     {
+        /* This constructor is used when reading from the database */
         public PlayerDocument(dynamic obj)
         {
             database_id = obj._id;
@@ -18,6 +19,12 @@ namespace Server
             {
                 throw new ArgumentException("The Player Document does not contain name and endpoint", "obj");
             }
+        }
+        /* This constructor is used when updating the database. The 'id' value is unused here */
+        public PlayerDocument(string name, string endpoint)
+        {
+            Name = name;
+            Endpoint = endpoint;
         }
         public string Name { get; set; }
         public string Endpoint { get; set; }

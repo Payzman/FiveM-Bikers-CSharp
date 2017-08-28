@@ -24,7 +24,7 @@ namespace Server
         {
             database_state = Db_State.not_connected;
             database = new DatabaseCollection();
-            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string>(database.HandleResponse);
+            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);
@@ -51,13 +51,21 @@ namespace Server
 
         void initPlayer(int source)
         {
-            if(database.PlayerInDatabase(source))
+            Player player = new PlayerList()[source];
+            PlayerDocument user = database.PlayerInDatabase(source);
+            if(user != null)
             {
+                // Load player information
                 Debug.WriteLine("We know that dude");
             }
             else
             {
-                Debug.WriteLine("Who is that guy?");
+                // Create a new user document
+                Debug.WriteLine("Create a new User");
+                string url = Strings.uuids;
+                string reason = Strings.request_uuids;
+                PlayerDocument newplayer = new PlayerDocument(player.Name, player.EndPoint);
+                TriggerEvent("Server:HttpGet", url, reason, newplayer);
             }
         }
 
