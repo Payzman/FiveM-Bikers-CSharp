@@ -61,6 +61,7 @@ namespace Server
             else
             {
                 // Create a new user document
+                Debug.WriteLine("Create a new User");
                 string url = Strings.uuids;
                 string reason = Strings.request_uuids;
                 PlayerDocument newplayer = new PlayerDocument(player.Name, player.EndPoint);
