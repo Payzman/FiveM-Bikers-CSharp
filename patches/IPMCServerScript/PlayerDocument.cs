@@ -7,7 +7,8 @@ namespace Server
     {
         public PlayerDocument(dynamic obj)
         {
-            if(((IDictionary<string,object>)obj).ContainsKey("name") &&
+            database_id = obj._id;
+            if (((IDictionary<string,object>)obj).ContainsKey("name") &&
                 ((IDictionary<string,object>)obj).ContainsKey("endpoint"))
             {
                 Name = obj.name;
@@ -20,5 +21,6 @@ namespace Server
         }
         public string Name { get; set; }
         public string Endpoint { get; set; }
+        public string database_id { get; set; }
     }
 }
