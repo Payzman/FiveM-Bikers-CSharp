@@ -65,7 +65,7 @@ namespace Server
                 string url = Strings.uuids;
                 string reason = Strings.request_uuids;
                 PlayerDocument newplayer = new PlayerDocument(player.Name, player.EndPoint);
-                TriggerEvent("Server:HttpGet", url, reason);
+                TriggerEvent("Server:HttpGet", url, reason, newplayer);
             }
         }
 
