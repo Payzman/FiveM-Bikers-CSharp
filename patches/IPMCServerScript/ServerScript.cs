@@ -51,7 +51,8 @@ namespace Server
 
         void initPlayer(int source)
         {
-            if(database.PlayerInDatabase(source))
+            user = database.PlayerInDatabase(source);
+            if(user != null)
             {
                 // Load player information
                 Debug.WriteLine("We know that dude");
@@ -61,6 +62,7 @@ namespace Server
                 // Create a new user document
                 string url = Strings.uuids;
                 string reason = Strings.request_uuids;
+                PlayerDocument newplayer = new PlayerDocument(user.Name, user.Endpoint);
                 TriggerEvent("Server:HttpGet", url, reason);
             }
         }

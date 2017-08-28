@@ -103,12 +103,12 @@ namespace Server
             }
         }
 
-        public bool PlayerInDatabase(int source)
+        public PlayerDocument PlayerInDatabase(int source)
         {
             Player player = new PlayerList()[source];
             PlayerDocument user = users.Find(x => (x.Name == player.Name
                                                 && x.Endpoint == player.EndPoint));
-            return (user != null);
+            return user;
         }
     }
 }
