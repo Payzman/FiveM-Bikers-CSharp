@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using CitizenFX.Core;
 
-namespace Server
+namespace Server.CouchDB
 {
     class PlayerDocument
     {
@@ -9,11 +10,11 @@ namespace Server
         public PlayerDocument(dynamic obj)
         {
             database_id = obj._id;
-            if (((IDictionary<string,object>)obj).ContainsKey("name") &&
-                ((IDictionary<string,object>)obj).ContainsKey("endpoint"))
+            if (((IDictionary<string,object>)obj).ContainsKey("Name") &&
+                ((IDictionary<string,object>)obj).ContainsKey("Endpoint"))
             {
-                Name = obj.name;
-                Endpoint = obj.endpoint;
+                Name = obj.Name;
+                Endpoint = obj.Endpoint;
             }
             else
             {

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Server
+namespace Server.CouchDB
 {
     class Database
     {
         public int total_rows { get; set; }
         public int offset { get; set; }
         public List<DatabaseRows> rows { get; set; }
-
         public Database(dynamic obj)
         {
             total_rows = obj.total_rows;

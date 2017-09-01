@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 // Watch out because there is a CitizenFX Server and CitizenFX Client version!!
 using CitizenFX.Core;
-using System.Collections.Generic;
+using Server.CouchDB;
 
 namespace Server
 {
@@ -19,11 +19,13 @@ namespace Server
         Db_State database_state;
 
         DatabaseCollection database;
+        Root couchdb;
 
         public ServerScript()
         {
             database_state = Db_State.not_connected;
-            database = new DatabaseCollection();
+            couchdb = new Root();
+            database = new DatabaseCollection(couchdb);
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
@@ -37,10 +39,10 @@ namespace Server
             switch(database_state)
             {
                 case Db_State.not_connected:
-                    database.Connect();
+                    couchdb.RequestConnnectivity();
                     break;
                 case Db_State.connected:
-                    database.GetPlayerInfo();
+                    database.players.GetPlayerInfo();
                     database_state = Db_State.idle;
                     break;
                 case Db_State.loading:
@@ -52,7 +54,7 @@ namespace Server
         void initPlayer(int source)
         {
             Player player = new PlayerList()[source];
-            PlayerDocument user = database.PlayerInDatabase(source);
+            PlayerDocument user = database.players.PlayerInDatabase(source);
             if(user != null)
             {
                 // Load player information
@@ -60,12 +62,7 @@ namespace Server
             }
             else
             {
-                // Create a new user document
-                Debug.WriteLine("Create a new User");
-                string url = Strings.uuids;
-                string reason = Strings.request_uuids;
-                PlayerDocument newplayer = new PlayerDocument(player.Name, player.EndPoint);
-                TriggerEvent("Server:HttpGet", url, reason, newplayer);
+                database.players.AddNewUser(player);
             }
         }
 
