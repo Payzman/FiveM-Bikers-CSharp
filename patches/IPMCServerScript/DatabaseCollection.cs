@@ -11,6 +11,11 @@ namespace Server.CouchDB
         Database players;
         List<string> databases;
         private List<PlayerDocument> users = new List<PlayerDocument>();
+
+        public DatabaseCollection(Root root_db)
+        {
+            this.root = root_db;
+        }
         
         public void HandleResponse(dynamic response, string reason, dynamic param)
         {
