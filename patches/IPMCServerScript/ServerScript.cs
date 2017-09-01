@@ -19,11 +19,13 @@ namespace Server
         Db_State database_state;
 
         DatabaseCollection database;
+        Root couchdb;
 
         public ServerScript()
         {
             database_state = Db_State.not_connected;
             database = new DatabaseCollection();
+            couchdb = new Root();
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
@@ -37,7 +39,7 @@ namespace Server
             switch(database_state)
             {
                 case Db_State.not_connected:
-                    database.Connect();
+                    couchdb.RequestConnnectivity();
                     break;
                 case Db_State.connected:
                     database.GetPlayerInfo();

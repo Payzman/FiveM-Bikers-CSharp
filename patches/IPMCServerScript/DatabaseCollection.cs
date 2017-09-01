@@ -81,11 +81,6 @@ namespace Server.CouchDB
             ServerScript.TriggerEvent("Server:Initialized");
         }
 
-        public void Connect()
-        {
-            ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
-        }
-
         public void Load()
         {
             ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
