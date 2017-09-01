@@ -27,10 +27,10 @@ namespace Server.CouchDB
 
         public void AddPlayerDocument(dynamic response)
         {
-            Debug.WriteLine(response.ToString());
             try
             {
                 PlayerDocument player = new PlayerDocument(response);
+                Debug.WriteLine(player.ToString());
                 users.Add(player);
                 Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
             }
