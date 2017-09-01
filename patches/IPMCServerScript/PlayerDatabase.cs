@@ -27,6 +27,7 @@ namespace Server.CouchDB
 
         public void AddPlayerDocument(dynamic response)
         {
+            Debug.WriteLine(response.ToString());
             try
             {
                 PlayerDocument player = new PlayerDocument(response);
