@@ -7,7 +7,6 @@ namespace Server.CouchDB
         public int total_rows { get; set; }
         public int offset { get; set; }
         public List<DatabaseRows> rows { get; set; }
-
         public Database(dynamic obj)
         {
             total_rows = obj.total_rows;
@@ -17,7 +16,6 @@ namespace Server.CouchDB
             {
                 rows.Add(new DatabaseRows(row));
             }
-            ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
         }
     }
 }
