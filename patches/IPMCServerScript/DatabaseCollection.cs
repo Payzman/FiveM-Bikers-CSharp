@@ -82,17 +82,6 @@ namespace Server.CouchDB
             /* other docs might be added at a later stage */
         }
 
-        public void GetPlayerInfo()
-        {
-            foreach(DatabaseRows document in Players.rows)
-            {
-                string url = Strings.player_base + "/" + document.id.ToString();
-                Debug.WriteLine("Getting entry from " + url);
-                string reason = Strings.get_single_player_doc;
-                ServerScript.TriggerEvent("Server:HttpGet", url, reason);
-            }
-        }
-
         public PlayerDocument PlayerInDatabase(int source)
         {
             Player player = new PlayerList()[source];
