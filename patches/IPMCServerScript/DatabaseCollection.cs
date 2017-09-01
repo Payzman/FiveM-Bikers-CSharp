@@ -12,6 +12,8 @@ namespace Server.CouchDB
         List<string> databases;
         private List<PlayerDocument> users = new List<PlayerDocument>();
 
+        internal PlayerDatabase Players { get => players; set => players = value; }
+
         public DatabaseCollection(Root root_db)
         {
             this.root = root_db;
@@ -28,7 +30,7 @@ namespace Server.CouchDB
                     GetAllDatabases(response);
                     break;
                 case Strings.get_player_docs:
-                    players = new PlayerDatabase(response);
+                    Players = new PlayerDatabase(response);
                     break;
                 case Strings.get_single_player_doc:
                     GetPlayerDocument(response);
@@ -82,7 +84,7 @@ namespace Server.CouchDB
 
         public void GetPlayerInfo()
         {
-            foreach(DatabaseRows document in players.rows)
+            foreach(DatabaseRows document in Players.rows)
             {
                 string url = Strings.player_base + "/" + document.id.ToString();
                 Debug.WriteLine("Getting entry from " + url);
