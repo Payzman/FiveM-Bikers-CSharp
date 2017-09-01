@@ -42,7 +42,7 @@ namespace Server
                     couchdb.RequestConnnectivity();
                     break;
                 case Db_State.connected:
-                    database.Players.GetPlayerInfo();
+                    database.players.GetPlayerInfo();
                     database_state = Db_State.idle;
                     break;
                 case Db_State.loading:
