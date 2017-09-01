@@ -30,7 +30,6 @@ namespace Server.CouchDB
             try
             {
                 PlayerDocument player = new PlayerDocument(response);
-                Debug.WriteLine(player.ToString());
                 users.Add(player);
                 Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
             }
