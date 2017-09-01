@@ -9,9 +9,9 @@
         public string name { get; set; }
     }
 
-    public class CouchDBRoot
+    public class Root
     {
-        public CouchDBRoot(dynamic obj)
+        public Root(dynamic obj)
         {
             this.couchdb = obj.couchdb;
             this.version = obj.version;

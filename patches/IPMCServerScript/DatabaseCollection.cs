@@ -7,7 +7,7 @@ namespace Server.CouchDB
     // The actual HTTP Requests and Responses are done by a lua script!
     class DatabaseCollection
     {
-        CouchDBRoot root;
+        Root root;
         Database players;
         List<string> databases;
         private List<PlayerDocument> users = new List<PlayerDocument>();
@@ -76,7 +76,7 @@ namespace Server.CouchDB
 
         private void CheckConnectivity(dynamic response)
         {
-            root = new CouchDBRoot(response);
+            root = new Root(response);
             ServerScript.TriggerEvent("Server:HttpGet", Strings.all_dbs_url, Strings.get_all_dbs);
             ServerScript.TriggerEvent("Server:Initialized");
         }
