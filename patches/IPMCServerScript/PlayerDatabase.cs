@@ -38,5 +38,13 @@ namespace Server.CouchDB
                 Debug.WriteLine(e.Message + "\nThe database entry seems to be faulty. Please check the database");
             }
         }
+
+        public PlayerDocument PlayerInDatabase(int source)
+        {
+            Player player = new PlayerList()[source];
+            PlayerDocument user = users.Find(x => (x.Name == player.Name
+                                                && x.Endpoint == player.EndPoint));
+            return user;
+        }
     }
 }

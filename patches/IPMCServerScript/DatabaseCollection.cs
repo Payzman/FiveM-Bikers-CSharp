@@ -63,13 +63,5 @@ namespace Server.CouchDB
             ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
             /* other docs might be added at a later stage */
         }
-
-        public PlayerDocument PlayerInDatabase(int source)
-        {
-            Player player = new PlayerList()[source];
-            PlayerDocument user = players.users.Find(x => (x.Name == player.Name
-                                                && x.Endpoint == player.EndPoint));
-            return user;
-        }
     }
 }

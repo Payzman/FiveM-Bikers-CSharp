@@ -54,7 +54,7 @@ namespace Server
         void initPlayer(int source)
         {
             Player player = new PlayerList()[source];
-            PlayerDocument user = database.PlayerInDatabase(source);
+            PlayerDocument user = database.players.PlayerInDatabase(source);
             if(user != null)
             {
                 // Load player information
