@@ -29,7 +29,9 @@
             this.couchdb = obj.couchdb;
             this.version = obj.version;
             this.vendor = new Vendor(obj.vendor);
-            ServerScript.TriggerEvent("Server:HttpGet", Strings.all_dbs_url, Strings.get_all_dbs);
+            string url = Strings.all_dbs_url;
+            string reason = Strings.get_all_dbs;
+            ServerScript.TriggerEvent("Server:HttpGet", url, reason);
             ServerScript.TriggerEvent("Server:Initialized");
         }
     }
