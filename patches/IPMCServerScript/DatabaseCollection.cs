@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using CitizenFX.Core;
-using System;
 
 namespace Server.CouchDB
 {
@@ -10,7 +9,6 @@ namespace Server.CouchDB
         Root root;
         public PlayerDatabase players;
         List<string> databases;
-        private List<PlayerDocument> users = new List<PlayerDocument>();
 
         public DatabaseCollection(Root root_db)
         {
@@ -31,7 +29,7 @@ namespace Server.CouchDB
                     players = new PlayerDatabase(response);
                     break;
                 case Strings.get_single_player_doc:
-                    GetPlayerDocument(response);
+                    players.AddPlayerDocument(response);
                     break;
                 case Strings.request_uuids:
                     AddNewUser(response, param);
@@ -48,20 +46,6 @@ namespace Server.CouchDB
             string url = Strings.player_base + "/" + uuid;
             string reason = ""; /*i dont need a callback*/
             ServerScript.TriggerEvent("Server:HttpPut", url, param, reason);
-        }
-
-        private void GetPlayerDocument(dynamic response)
-        {
-            try
-            {
-                PlayerDocument player = new PlayerDocument(response);
-                users.Add(player);
-                Debug.WriteLine("Added new player with Endpoint = " + player.Endpoint + " and Name = " + player.Name);
-            }
-            catch (ArgumentException e)
-            {
-                Debug.WriteLine(e.Message + "\nThe database entry seems to be faulty. Please check the database");
-            }
         }
 
         private void GetAllDatabases(dynamic response)
@@ -83,7 +67,7 @@ namespace Server.CouchDB
         public PlayerDocument PlayerInDatabase(int source)
         {
             Player player = new PlayerList()[source];
-            PlayerDocument user = users.Find(x => (x.Name == player.Name
+            PlayerDocument user = players.users.Find(x => (x.Name == player.Name
                                                 && x.Endpoint == player.EndPoint));
             return user;
         }
