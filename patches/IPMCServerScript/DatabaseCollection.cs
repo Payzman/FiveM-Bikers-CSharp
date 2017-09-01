@@ -8,7 +8,7 @@ namespace Server.CouchDB
     class DatabaseCollection
     {
         Root root;
-        Database players;
+        PlayerDatabase players;
         List<string> databases;
         private List<PlayerDocument> users = new List<PlayerDocument>();
 
@@ -28,7 +28,7 @@ namespace Server.CouchDB
                     GetAllDatabases(response);
                     break;
                 case Strings.get_player_docs:
-                    players = new Database(response);
+                    players = new PlayerDatabase(response);
                     break;
                 case Strings.get_single_player_doc:
                     GetPlayerDocument(response);
