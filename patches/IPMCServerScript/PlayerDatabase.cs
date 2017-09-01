@@ -46,5 +46,14 @@ namespace Server.CouchDB
                                                 && x.Endpoint == player.EndPoint));
             return user;
         }
+
+        public void AddNewUser(Player player)
+        {
+            Debug.WriteLine("Create a new User");
+            string url = Strings.uuids;
+            string reason = Strings.request_uuids;
+            PlayerDocument newplayer = new PlayerDocument(player.Name, player.EndPoint);
+            ServerScript.TriggerEvent("Server:HttpGet", url, reason, newplayer);
+        }
     }
 }
