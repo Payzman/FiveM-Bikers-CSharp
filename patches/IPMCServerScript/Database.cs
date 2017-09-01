@@ -17,6 +17,7 @@ namespace Server.CouchDB
             {
                 rows.Add(new DatabaseRows(row));
             }
+            ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
         }
     }
 }

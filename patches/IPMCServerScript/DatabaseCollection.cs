@@ -28,7 +28,7 @@ namespace Server.CouchDB
                     GetAllDatabases(response);
                     break;
                 case Strings.get_player_docs:
-                    CheckPlayerDatabase(response);
+                    players = new Database(response);
                     break;
                 case Strings.get_single_player_doc:
                     GetPlayerDocument(response);
@@ -64,12 +64,6 @@ namespace Server.CouchDB
             }
         }
 
-        private void CheckPlayerDatabase(dynamic response)
-        {
-            players = new Database(response);
-            ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
-        }
-
         private void GetAllDatabases(dynamic response)
         {
             databases = new List<string>();
@@ -81,7 +75,9 @@ namespace Server.CouchDB
 
         public void Load()
         {
+            /* get all player docs */
             ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
+            /* other docs might be added at a later stage */
         }
 
         public void GetPlayerInfo()
