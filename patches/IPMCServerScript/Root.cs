@@ -11,12 +11,6 @@
 
     public class Root
     {
-        public Root(dynamic obj)
-        {
-            this.couchdb = obj.couchdb;
-            this.version = obj.version;
-            this.vendor = new Vendor(obj.vendor);
-        }
         public Root()
         {
             //stub
@@ -30,9 +24,13 @@
             ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
         }
 
-        public void CheckConnectivity()
+        public void CheckConnectivity(dynamic obj)
         {
-
+            this.couchdb = obj.couchdb;
+            this.version = obj.version;
+            this.vendor = new Vendor(obj.vendor);
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.all_dbs_url, Strings.get_all_dbs);
+            ServerScript.TriggerEvent("Server:Initialized");
         }
     }
 }

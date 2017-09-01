@@ -17,7 +17,7 @@ namespace Server.CouchDB
             switch(reason)
             {
                 case Strings.reason_connectivity:
-                    CheckConnectivity(response);
+                    root.CheckConnectivity(response);
                     break;
                 case Strings.get_all_dbs:
                     GetAllDatabases(response);
@@ -72,13 +72,6 @@ namespace Server.CouchDB
             {
                 databases.Add(response.ToString());
             }
-        }
-
-        private void CheckConnectivity(dynamic response)
-        {
-            root = new Root(response);
-            ServerScript.TriggerEvent("Server:HttpGet", Strings.all_dbs_url, Strings.get_all_dbs);
-            ServerScript.TriggerEvent("Server:Initialized");
         }
 
         public void Load()
