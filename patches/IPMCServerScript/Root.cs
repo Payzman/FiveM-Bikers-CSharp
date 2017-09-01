@@ -20,5 +20,15 @@
         public string couchdb { get; set; }
         public string version { get; set; }
         public Vendor vendor { get; set; }
+
+        public void RequestConnnectivity()
+        {
+
+        }
+
+        public void CheckConnectivity()
+        {
+
+        }
     }
 }
