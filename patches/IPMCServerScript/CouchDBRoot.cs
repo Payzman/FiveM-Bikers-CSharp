@@ -1,4 +1,4 @@
-﻿namespace Server
+﻿namespace Server.CouchDB
 {
     public class Vendor
     {

@@ -2,7 +2,7 @@
 using CitizenFX.Core;
 using System;
 
-namespace Server
+namespace Server.CouchDB
 {
     // The actual HTTP Requests and Responses are done by a lua script!
     class DatabaseCollection
