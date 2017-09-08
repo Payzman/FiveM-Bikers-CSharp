@@ -2,6 +2,7 @@
 using CitizenFX.Core.UI;
 using CitizenFX.Core;
 using CitizenFX.Core.Native;
+using System;
 
 namespace Client
 {
@@ -31,10 +32,22 @@ namespace Client
             // Set title bar patch
             UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItemTitles, Strings.titles, 1, Strings.MenuDescriptionSetTitle);
             set_patches.AddItem(bar_title);
+            // Boogeyman
+            UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
+            set_patches.AddItem(boogeyman);
             // Use a handler to handle user input (choosing buttons etc.)
             set_patches.OnListChange += SetPatchHandler;
+            set_patches.OnCheckboxChange += CheckboxHandler;
             // Refresh the set patches menu
             set_patches.RefreshIndex();
+        }
+
+        private void CheckboxHandler(UIMenu sender, UIMenuCheckboxItem checkboxItem, bool Checked)
+        {
+            if (checkboxItem.Text == "Boogeyman")
+            {
+                ped.SetBoogeymanPatch(Checked);
+            }
         }
 
         public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
@@ -45,7 +58,7 @@ namespace Client
                 {
                     ped.ApplyBottomRocker(index);
                 }
-                if (selectedItem.Text == Strings.MenuItemTitles)
+                else if (selectedItem.Text == Strings.MenuItemTitles)
                 {
                     ped.ApplyTitleBarPatch(index);
                 }
