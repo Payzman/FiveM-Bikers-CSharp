@@ -24,7 +24,6 @@ namespace Client
         private void UpdateDecorations()
         {
             player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-            Debug.WriteLine(this.ToString());
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
