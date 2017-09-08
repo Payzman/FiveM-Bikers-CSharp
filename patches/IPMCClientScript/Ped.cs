@@ -6,36 +6,55 @@ namespace Client
 {
     class Ped
     {
+        private Tuple<string, string> charter;
+        private Tuple<string, string> title;
+        private int player_ped_hash;
+        private int custom_overlay_hash;
+        private int mp_biker_hash;
 
         public Ped()
         {
-            //STUB
+            player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            custom_overlay_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection);
+            mp_biker_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.BikerDlcOverlayCollection);
+        }
+
+        private void UpdateDecorations()
+        {
+            ClearDecorations();
+            SetBottomRocker();
+            SetTitleBarPatch();
+        }
+
+        private void ClearDecorations()
+        {
+            Function.Call(Hash.CLEAR_PED_DECORATIONS, player_ped_hash);
+        }
+
+        private void SetBottomRocker()
+        {
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
+            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+            Screen.ShowNotification(Strings.ChangeBottomRocker(charter.Item2));
+        }
+
+        private void SetTitleBarPatch()
+        {
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
+            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, mp_biker_hash, texture_hash);
+            Screen.ShowNotification(Strings.ChangeTitle(charter.Item2));
         }
 
         public void ApplyBottomRocker(int index)
         {
-            Tuple<string, string> name_hash = GetCharterFromIndex(index);
-            String hash = name_hash.Item1;
-            String charter_name = name_hash.Item2;
-            int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-            int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection);
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, hash);
-            Function.Call(Hash.CLEAR_PED_DECORATIONS, player_ped_hash);
-            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, collection_hash, texture_hash);
-            Screen.ShowNotification(Strings.ChangeBottomRocker(charter_name));
+            charter = GetCharterFromIndex(index);
+            UpdateDecorations();
         }
 
         public void ApplyTitleBarPatch(int index)
         {
-            Tuple<string, string> name_hash = GetTitleFromIndex(index);
-            String hash = name_hash.Item1;
-            String title_name = name_hash.Item2;
-            int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
-            int collection_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.BikerDlcOverlayCollection);
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, hash);
-            Function.Call(Hash.CLEAR_PED_DECORATIONS, player_ped_hash);
-            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, collection_hash, texture_hash);
-            Screen.ShowNotification(Strings.ChangeTitle(title_name));
+            title = GetTitleFromIndex(index);
+            UpdateDecorations();
         }
 
         public Tuple<String,String> GetCharterFromIndex(int index)
