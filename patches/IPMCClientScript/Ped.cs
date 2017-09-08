@@ -14,6 +14,8 @@ namespace Client
 
         public Ped()
         {
+            charter = new Tuple<string, string>("none", "none");
+            title = new Tuple<string, string>("none", "none");
             player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
             custom_overlay_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection);
             mp_biker_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.BikerDlcOverlayCollection);
@@ -97,6 +99,16 @@ namespace Client
                 default:
                     throw new Exception();
             }
+        }
+        
+        public override string ToString()
+        {
+            return "Ped Instance \n" +
+                "Charter = " + charter.ToString() + "\n" +
+                "Title = " + title.ToString() + "\n" +
+                "Player Ped Hash = " + player_ped_hash.ToString() + "\n" +
+                "Custom Overlay Hash = " + custom_overlay_hash + "\n" +
+                "Biker DLC hash = " + mp_biker_hash;
         }
     }
 }
