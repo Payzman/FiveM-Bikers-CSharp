@@ -21,9 +21,9 @@ namespace Client
 
         private void UpdateDecorations()
         {
-            ClearDecorations();
-            SetBottomRocker();
-            SetTitleBarPatch();
+            this.ClearDecorations();
+            this.SetBottomRocker();
+            this.SetTitleBarPatch();
         }
 
         private void ClearDecorations()
@@ -40,9 +40,9 @@ namespace Client
 
         private void SetTitleBarPatch()
         {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, title.Item1);
             Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, mp_biker_hash, texture_hash);
-            Screen.ShowNotification(Strings.ChangeTitle(charter.Item2));
+            Screen.ShowNotification(Strings.ChangeTitle(title.Item2));
         }
 
         public void ApplyBottomRocker(int index)
