@@ -10,11 +10,13 @@ namespace Client
         private MenuPool pool;
         private UIMenu parent;
         private UIMenu set_patches;
+        private Ped ped;
 
         public PatchesMenu(MenuPool pool, UIMenu parent)
         {
             this.pool = pool;
             this.parent = parent;
+            ped = new Ped();
             AddSetPatchesMenu();
         }
 
@@ -41,12 +43,10 @@ namespace Client
             {
                 if (selectedItem.Text == Strings.MenuItemCharter)
                 {
-                    Ped ped = new Ped();
                     ped.ApplyBottomRocker(index);
                 }
                 if (selectedItem.Text == Strings.MenuItemTitles)
                 {
-                    Ped ped = new Ped();
                     ped.ApplyTitleBarPatch(index);
                 }
             }
