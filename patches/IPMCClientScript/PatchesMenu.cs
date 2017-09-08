@@ -14,7 +14,6 @@ namespace Client
 
         public PatchesMenu(MenuPool pool, UIMenu parent)
         {
-            Debug.WriteLine("Creating a new PatchesMenu instance");
             this.pool = pool;
             this.parent = parent;
             ped = new Ped();

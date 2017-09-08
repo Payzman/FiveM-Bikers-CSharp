@@ -1,4 +1,5 @@
 ﻿using System;
+using CitizenFX.Core;
 using CitizenFX.Core.UI;
 using CitizenFX.Core.Native;
 
@@ -16,13 +17,14 @@ namespace Client
         {
             charter = new Tuple<string, string>("none", "none");
             title = new Tuple<string, string>("none", "none");
-            player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
             custom_overlay_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection);
             mp_biker_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.BikerDlcOverlayCollection);
         }
 
         private void UpdateDecorations()
         {
+            player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            Debug.WriteLine(this.ToString());
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
