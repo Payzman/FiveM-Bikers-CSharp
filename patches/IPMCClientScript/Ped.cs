@@ -9,6 +9,7 @@ namespace Client
     {
         private Tuple<string, string> charter;
         private Tuple<string, string> title;
+        private string boogeyman;
         private int player_ped_hash;
         private int custom_overlay_hash;
         private int mp_biker_hash;
@@ -17,6 +18,7 @@ namespace Client
         {
             charter = new Tuple<string, string>("none", "none");
             title = new Tuple<string, string>("none", "none");
+            boogeyman = "none";
             custom_overlay_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection);
             mp_biker_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.BikerDlcOverlayCollection);
         }
@@ -27,6 +29,7 @@ namespace Client
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
+            SetBoogeymanBarPatch();
         }
 
         private void ClearDecorations()
@@ -48,6 +51,12 @@ namespace Client
             Screen.ShowNotification(Strings.ChangeTitle(title.Item2));
         }
 
+        private void SetBoogeymanBarPatch()
+        {
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, boogeyman);
+            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+        }
+
         public void ApplyBottomRocker(int index)
         {
             charter = GetCharterFromIndex(index);
@@ -57,6 +66,12 @@ namespace Client
         public void ApplyTitleBarPatch(int index)
         {
             title = GetTitleFromIndex(index);
+            UpdateDecorations();
+        }
+
+        public void SetBoogeymanPatch(bool Checked)
+        {
+            boogeyman = GetBoogeymanFromIndex(Checked);
             UpdateDecorations();
         }
 
@@ -101,7 +116,19 @@ namespace Client
                     throw new Exception();
             }
         }
-        
+
+        public string GetBoogeymanFromIndex(bool Checked)
+        {
+            if (Checked)
+            {
+                return "boogeyman_M";
+            }
+            else
+            {
+                return "none";
+            }
+        }
+
         public override string ToString()
         {
             return "Ped Instance \n" +
