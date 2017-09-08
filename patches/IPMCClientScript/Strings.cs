@@ -7,13 +7,22 @@ namespace Client
     {
         /* PART 1: SIMPLE STRINGS */
         /* Overlay Collections */
-        public const String OverlayCollection = "ipmc_overlays";
+        public const String OverlayCollection         = "ipmc_overlays";
+        public const String BikerDlcOverlayCollection = "mpBiker_overlays";
         /* Patch text hashes for males */
         public const String PatchNationalMaleTextHash     = "ipmc_national_M";
         public const String PatchPaletoBayMaleTextHash    = "ipmc_paleto_bay_M";
         public const String PatchRanchoMaleTextHash       = "ipmc_rancho_M";
         public const String PatchDelPerroMaleTextHash     = "ipmc_del_perro_M";
         public const String PatchLaMesaMaleTextHash       = "ipmc_la_mesa_M";
+        /* Text hashes for titles (bar patch) - taken from biker DLC*/
+        public const String BarPatchNoTitleTextHash       = "none"; //Exception - needed for having no bar patch!
+        public const String BarPatchPresidentTextHash     = "MP_Biker_Rank_000_M";
+        public const String BarPatchVicePresidentTextHash = "MP_Biker_Rank_001_M";
+        public const String BarPatchSgtAtArmsTextHash     = "MP_Biker_Rank_002_M";
+        public const String BarPatchRoadCaptainTextHash   = "MP_Biker_Rank_003_M";
+        public const String BarPatchProspectTextHash      = "MP_Biker_Rank_004_M";
+        public const String BarPatchEnforcerTextHash      = "MP_Biker_Rank_015_M";
         /* Charter Names */
         public const String CharterNameNational   = "National";
         public const String CharterNamePaletoBay  = "Paleto Bay";
@@ -59,6 +68,10 @@ namespace Client
         public static String ChangeBottomRocker(String charter_name)
         {
             return "Changing bottom rocker to " + charter_name;
+        }
+        public static String ChangeTitle(String title_name)
+        {
+            return "Changing title bar patch to " + title_name;
         }
         /* String Collections e.g. for menus etc.*/
 
