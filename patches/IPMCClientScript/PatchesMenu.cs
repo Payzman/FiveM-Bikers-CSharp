@@ -16,8 +16,8 @@ namespace Client
         {
             this.pool = pool;
             this.parent = parent;
-            AddSetPatchesMenu();
             ped = new Ped();
+            AddSetPatchesMenu();
         }
 
         private void AddSetPatchesMenu()
