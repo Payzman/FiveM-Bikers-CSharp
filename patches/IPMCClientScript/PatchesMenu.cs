@@ -41,8 +41,13 @@ namespace Client
             {
                 if (selectedItem.Text == Strings.MenuItemCharter)
                 {
-                    Ped ipmcped = new Ped();
-                    ipmcped.ApplyBottomRocker(index);
+                    Ped ped = new Ped();
+                    ped.ApplyBottomRocker(index);
+                }
+                if (selectedItem.Text == Strings.MenuItemTitles)
+                {
+                    Ped ped = new Ped();
+                    ped.ApplyTitleBarPatch(index);
                 }
             }
         }
