@@ -24,7 +24,7 @@ namespace Client
             title = new Tuple<string, string>("none", "none");
             boogeyman = "none";
             custom_overlay_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
-            mp_biker_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.BikerDlcOverlayCollection);
+            mp_biker_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
         }
 
         private void UpdateDecorations()
