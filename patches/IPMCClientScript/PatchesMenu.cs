@@ -38,6 +38,10 @@ namespace Client
 
             UIMenuCheckboxItem guardian = new UIMenuCheckboxItem("Guardian", false, "PVP Commendation Guardian");
             set_patches.AddItem(guardian);
+
+            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem("Mayhem", false, "PVP Commendation Mayhem");
+            set_patches.AddItem(mayhem);
+
             // Use a handler to handle user input (choosing buttons etc.)
             set_patches.OnListChange += SetPatchHandler;
             set_patches.OnCheckboxChange += CheckboxHandler;
@@ -54,6 +58,10 @@ namespace Client
             else if (checkboxItem.Text == "Guardian")
             {
                 ped.SetGuardianPatch(Checked);
+            }
+            else if (checkboxItem.Text == "Mayhem")
+            {
+                ped.SetMayhemPatch(Checked);
             }
         }
 
