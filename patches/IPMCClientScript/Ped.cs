@@ -15,6 +15,7 @@ namespace Client
         private int mp_biker_hash;
         private bool guardian;
         private bool mayhem;
+        private bool pow;
 
         public Ped()
         {
@@ -34,6 +35,7 @@ namespace Client
             SetBoogeymanBarPatch();
             ApplyGuardianBarPatch();
             ApplyMayhemBarPatch();
+            ApplyPowBarPatch();
         }
 
         private void ClearDecorations()
@@ -79,6 +81,15 @@ namespace Client
             }
         }
 
+        private void ApplyPowBarPatch()
+        {
+            if (mayhem == true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
+                Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+            }
+        }
+
         public void ApplyBottomRocker(int index)
         {
             charter = GetCharterFromIndex(index);
@@ -106,6 +117,12 @@ namespace Client
         public void SetMayhemPatch(bool Checked)
         {
             mayhem = Checked;
+            UpdateDecorations();
+        }
+
+        public void SetPowPatch(bool Checked)
+        {
+            pow = Checked;
             UpdateDecorations();
         }
 

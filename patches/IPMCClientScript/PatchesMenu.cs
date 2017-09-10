@@ -42,6 +42,8 @@ namespace Client
             UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem("Mayhem", false, "PVP Commendation Mayhem");
             set_patches.AddItem(mayhem);
 
+            UIMenuCheckboxItem pow = new UIMenuCheckboxItem("Prisoner of War", false, "PVP Commendation Prisoner of War");
+            set_patches.AddItem(pow);
             // Use a handler to handle user input (choosing buttons etc.)
             set_patches.OnListChange += SetPatchHandler;
             set_patches.OnCheckboxChange += CheckboxHandler;
@@ -62,6 +64,10 @@ namespace Client
             else if (checkboxItem.Text == "Mayhem")
             {
                 ped.SetMayhemPatch(Checked);
+            }
+            else if (checkboxItem.Text == "Prisoner of War")
+            {
+                ped.SetPowPatch(Checked);
             }
         }
 
