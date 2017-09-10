@@ -7,8 +7,11 @@ namespace Client
     {
         /* PART 1: SIMPLE STRINGS */
         /* Overlay Collections */
-        public const String OverlayCollection         = "ipmc_overlays";
-        public const String BikerDlcOverlayCollection = "mpBiker_overlays";
+        static class OverlayCollection
+        {
+            public const String Custom   = "ipmc_overlays";
+            public const String BikerDlc = "mpBiker_overlays";
+        }
         /* Patch text hashes for males */
         public const String PatchNationalMaleTextHash     = "ipmc_national_M";
         public const String PatchPaletoBayMaleTextHash    = "ipmc_paleto_bay_M";
