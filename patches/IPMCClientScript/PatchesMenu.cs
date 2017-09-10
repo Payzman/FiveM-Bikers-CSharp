@@ -32,9 +32,21 @@ namespace Client
             // Set title bar patch
             UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItemTitles, Strings.titles, 1, Strings.MenuDescriptionSetTitle);
             set_patches.AddItem(bar_title);
-            // Boogeyman
+
             UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
             set_patches.AddItem(boogeyman);
+
+            UIMenuCheckboxItem guardian = new UIMenuCheckboxItem("Guardian", false, "PVP Commendation Guardian");
+            set_patches.AddItem(guardian);
+
+            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem("Mayhem", false, "PVP Commendation Mayhem");
+            set_patches.AddItem(mayhem);
+
+            UIMenuCheckboxItem pow = new UIMenuCheckboxItem("Prisoner of War", false, "PVP Commendation Prisoner of War");
+            set_patches.AddItem(pow);
+
+            UIMenuCheckboxItem valor = new UIMenuCheckboxItem("Valor", false, "PVP Commendation Valor");
+            set_patches.AddItem(valor);
             // Use a handler to handle user input (choosing buttons etc.)
             set_patches.OnListChange += SetPatchHandler;
             set_patches.OnCheckboxChange += CheckboxHandler;
@@ -47,6 +59,22 @@ namespace Client
             if (checkboxItem.Text == "Boogeyman")
             {
                 ped.SetBoogeymanPatch(Checked);
+            }
+            else if (checkboxItem.Text == "Guardian")
+            {
+                ped.SetGuardianPatch(Checked);
+            }
+            else if (checkboxItem.Text == "Mayhem")
+            {
+                ped.SetMayhemPatch(Checked);
+            }
+            else if (checkboxItem.Text == "Prisoner of War")
+            {
+                ped.SetPowPatch(Checked);
+            }
+            else if (checkboxItem.Text == "Valor")
+            {
+                ped.SetValorPatch(Checked);
             }
         }
 
