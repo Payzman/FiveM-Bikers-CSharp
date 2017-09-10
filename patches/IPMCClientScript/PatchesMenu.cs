@@ -72,6 +72,10 @@ namespace Client
             {
                 ped.SetPowPatch(Checked);
             }
+            else if (checkboxItem.Text == "Valor")
+            {
+                ped.SetValorPatch(Checked);
+            }
         }
 
         public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)

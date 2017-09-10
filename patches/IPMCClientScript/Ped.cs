@@ -137,6 +137,12 @@ namespace Client
             UpdateDecorations();
         }
 
+        public void SetValorPatch(bool Checked)
+        {
+            valor = Checked;
+            UpdateDecorations();
+        }
+
         public Tuple<String,String> GetCharterFromIndex(int index)
         {
             switch(index)
