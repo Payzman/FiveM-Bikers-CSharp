@@ -13,6 +13,7 @@ namespace Client
         private int player_ped_hash;
         private int custom_overlay_hash;
         private int mp_biker_hash;
+        private bool guardian;
 
         public Ped()
         {
@@ -30,6 +31,7 @@ namespace Client
             this.SetBottomRocker();
             this.SetTitleBarPatch();
             SetBoogeymanBarPatch();
+            ApplyGuardianBarPatch();
         }
 
         private void ClearDecorations()
@@ -57,6 +59,15 @@ namespace Client
             Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
         }
 
+        private void ApplyGuardianBarPatch()
+        {
+            if (guardian==true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "guardian_M");
+                Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+            }
+        }
+
         public void ApplyBottomRocker(int index)
         {
             charter = GetCharterFromIndex(index);
@@ -72,6 +83,12 @@ namespace Client
         public void SetBoogeymanPatch(bool Checked)
         {
             boogeyman = GetBoogeymanFromIndex(Checked);
+            UpdateDecorations();
+        }
+
+        public void SetGuardianPatch(bool Checked)
+        {
+            guardian = Checked;
             UpdateDecorations();
         }
 
