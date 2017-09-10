@@ -44,6 +44,9 @@ namespace Client
 
             UIMenuCheckboxItem pow = new UIMenuCheckboxItem("Prisoner of War", false, "PVP Commendation Prisoner of War");
             set_patches.AddItem(pow);
+
+            UIMenuCheckboxItem valor = new UIMenuCheckboxItem("Valor", false, "PVP Commendation Valor");
+            set_patches.AddItem(valor);
             // Use a handler to handle user input (choosing buttons etc.)
             set_patches.OnListChange += SetPatchHandler;
             set_patches.OnCheckboxChange += CheckboxHandler;

@@ -16,6 +16,7 @@ namespace Client
         private bool guardian;
         private bool mayhem;
         private bool pow;
+        private bool valor;
 
         public Ped()
         {
@@ -36,6 +37,7 @@ namespace Client
             ApplyGuardianBarPatch();
             ApplyMayhemBarPatch();
             ApplyPowBarPatch();
+            ApplyValorBarPatch();
         }
 
         private void ClearDecorations()
@@ -83,9 +85,18 @@ namespace Client
 
         private void ApplyPowBarPatch()
         {
-            if (mayhem == true)
+            if (pow == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
+                Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+            }
+        }
+
+        private void ApplyValorBarPatch()
+        {
+            if (valor == true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "valor_M");
                 Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
             }
         }
