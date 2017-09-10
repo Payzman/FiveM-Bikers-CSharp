@@ -7,7 +7,7 @@ namespace Client
     {
         /* PART 1: SIMPLE STRINGS */
         /* Overlay Collections */
-        static class OverlayCollection
+        public static class OverlayCollection
         {
             public const String Custom   = "ipmc_overlays";
             public const String BikerDlc = "mpBiker_overlays";
