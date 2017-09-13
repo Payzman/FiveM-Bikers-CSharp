@@ -154,9 +154,9 @@ namespace Client
                 case 2:
                     return new Tuple<string, string>(Strings.BackpatchTextHash.Rancho,    Strings.CharterNameRancho);
                 case 3:
-                    return new Tuple<string, string>(Strings.PatchDelPerroMaleTextHash,  Strings.CharterNameDelPerro);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.DelPerro,  Strings.CharterNameDelPerro);
                 case 4:
-                    return new Tuple<string, string>(Strings.PatchLaMesaMaleTextHash,    Strings.CharterNameLaMesa);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.LaMesa,    Strings.CharterNameLaMesa);
                 default:
                     throw new Exception();
             }

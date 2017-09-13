@@ -15,13 +15,12 @@ namespace Client
         /* Patch text hashes for males */
         public static class BackpatchTextHash
         {
-            public const String National = "ipmc_national_M";
+            public const String National  = "ipmc_national_M";
             public const String PaletoBay = "impc_paleto_bay_M";
-            public const String Rancho = "ipmc_ranco_M";
+            public const String Rancho    = "ipmc_ranco_M";
+            public const String DelPerro  = "ipmc_del_perro_M";
+            public const String LaMesa    = "ipmc_la_mesa_M";
         }
-        public const String PatchRanchoMaleTextHash       = "ipmc_rancho_M";
-        public const String PatchDelPerroMaleTextHash     = "ipmc_del_perro_M";
-        public const String PatchLaMesaMaleTextHash       = "ipmc_la_mesa_M";
         /* Text hashes for titles (bar patch) - taken from biker DLC*/
         public const String BarPatchNoTitleTextHash       = "none"; //Exception - needed for having no bar patch!
         public const String BarPatchPresidentTextHash     = "MP_Biker_Rank_000_M";
