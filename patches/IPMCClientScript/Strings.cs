@@ -16,7 +16,8 @@ namespace Client
         public static class BackpatchTextHash
         {
             public const String National = "ipmc_national_M";
-            public const string PaletoBay = "impc_paleto_bay_M";
+            public const String PaletoBay = "impc_paleto_bay_M";
+            public const String Rancho = "ipmc_ranco_M";
         }
         public const String PatchRanchoMaleTextHash       = "ipmc_rancho_M";
         public const String PatchDelPerroMaleTextHash     = "ipmc_del_perro_M";

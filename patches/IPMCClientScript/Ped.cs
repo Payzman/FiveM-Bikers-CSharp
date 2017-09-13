@@ -152,7 +152,7 @@ namespace Client
                 case 1:
                     return new Tuple<string, string>(Strings.BackpatchTextHash.PaletoBay, Strings.CharterNamePaletoBay);
                 case 2:
-                    return new Tuple<string, string>(Strings.PatchRanchoMaleTextHash,    Strings.CharterNameRancho);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.Rancho,    Strings.CharterNameRancho);
                 case 3:
                     return new Tuple<string, string>(Strings.PatchDelPerroMaleTextHash,  Strings.CharterNameDelPerro);
                 case 4:
