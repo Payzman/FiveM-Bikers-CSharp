@@ -13,7 +13,10 @@ namespace Client
             public const String BikerDlc = "mpBiker_overlays";
         }
         /* Patch text hashes for males */
-        public const String PatchNationalMaleTextHash     = "ipmc_national_M";
+        public static class BackpatchTextHash
+        {
+            public const String National = "ipmc_national_M";
+        }
         public const String PatchPaletoBayMaleTextHash    = "ipmc_paleto_bay_M";
         public const String PatchRanchoMaleTextHash       = "ipmc_rancho_M";
         public const String PatchDelPerroMaleTextHash     = "ipmc_del_perro_M";
