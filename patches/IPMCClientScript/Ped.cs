@@ -148,7 +148,7 @@ namespace Client
             switch(index)
             {
                 case 0:
-                    return new Tuple<string, string>(Strings.PatchNationalMaleTextHash,  Strings.CharterNameNational);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.National,  Strings.CharterNameNational);
                 case 1:
                     return new Tuple<string, string>(Strings.PatchPaletoBayMaleTextHash, Strings.CharterNamePaletoBay);
                 case 2:
