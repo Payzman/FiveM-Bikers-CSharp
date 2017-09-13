@@ -30,8 +30,8 @@ namespace Client
             public const String SgtAtArms     = "MP_Biker_Rank_002_M";
             public const String RoadCaptain   = "MP_Biker_Rank_003_M";
             public const String Prospect      = "MP_Biker_Rank_004_M";
+            public const String Enforcer      = "MP_Biker_Rank_015_M";
         }
-        public const String BarPatchEnforcerTextHash      = "MP_Biker_Rank_015_M";
         /* Charter Names */
         public const String CharterNameNational   = "National";
         public const String CharterNamePaletoBay  = "Paleto Bay";
