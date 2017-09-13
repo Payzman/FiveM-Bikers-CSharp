@@ -6,6 +6,7 @@ namespace Client
     static class Strings
     {
         /* PART 1: SIMPLE STRINGS */
+        public const String NoTextHash = "none"; //Is used for everything where just 'no' overlay shall be used.
         /* Overlay Collections */
         public static class OverlayCollection
         {
@@ -30,7 +31,6 @@ namespace Client
             public const String RoadCaptain   = "MP_Biker_Rank_003_M";
             public const String Prospect      = "MP_Biker_Rank_004_M";
         }
-        public const String BarPatchNoTitleTextHash       = "none"; //Exception - needed for having no bar patch!
         public const String BarPatchEnforcerTextHash      = "MP_Biker_Rank_015_M";
         /* Charter Names */
         public const String CharterNameNational   = "National";

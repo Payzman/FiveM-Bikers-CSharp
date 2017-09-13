@@ -167,7 +167,7 @@ namespace Client
             switch(index)
             {
                 case 0:
-                    return new Tuple<string, string>(Strings.BarPatchNoTitleTextHash, Strings.TitleNone);
+                    return new Tuple<string, string>(Strings.NoTextHash, Strings.TitleNone);
                 case 1:
                     return new Tuple<string, string>(Strings.BarPatchTextHash.President, Strings.TitlePresident);
                 case 2:
