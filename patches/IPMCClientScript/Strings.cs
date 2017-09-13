@@ -27,9 +27,9 @@ namespace Client
             public const String President     = "MP_Biker_Rank_000_M";
             public const String VicePresident = "MP_Biker_Rank_001_M";
             public const String SgtAtArms     = "MP_Biker_Rank_002_M";
+            public const String RoadCaptain   = "MP_Biker_Rank_003_M";
         }
         public const String BarPatchNoTitleTextHash       = "none"; //Exception - needed for having no bar patch!
-        public const String BarPatchRoadCaptainTextHash   = "MP_Biker_Rank_003_M";
         public const String BarPatchProspectTextHash      = "MP_Biker_Rank_004_M";
         public const String BarPatchEnforcerTextHash      = "MP_Biker_Rank_015_M";
         /* Charter Names */

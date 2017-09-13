@@ -175,7 +175,7 @@ namespace Client
                 case 3:
                     return new Tuple<string, string>(Strings.BarPatchTextHash.SgtAtArms, Strings.TitleSeargentAtArms);
                 case 4:
-                    return new Tuple<string, string>(Strings.BarPatchRoadCaptainTextHash, Strings.TitleRoadCaptain);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.RoadCaptain, Strings.TitleRoadCaptain);
                 case 5:
                     return new Tuple<string, string>(Strings.BarPatchEnforcerTextHash, Strings.TitleEnforcer);
                 case 6:
