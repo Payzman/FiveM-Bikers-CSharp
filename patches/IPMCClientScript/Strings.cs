@@ -22,9 +22,12 @@ namespace Client
             public const String LaMesa    = "ipmc_la_mesa_M";
         }
         /* Text hashes for titles (bar patch) - taken from biker DLC*/
+        public static class BarPatchTextHash
+        {
+            public const String President     = "MP_Biker_Rank_000_M";
+            public const String VicePresident = "MP_Biker_Rank_001_M";
+        }
         public const String BarPatchNoTitleTextHash       = "none"; //Exception - needed for having no bar patch!
-        public const String BarPatchPresidentTextHash     = "MP_Biker_Rank_000_M";
-        public const String BarPatchVicePresidentTextHash = "MP_Biker_Rank_001_M";
         public const String BarPatchSgtAtArmsTextHash     = "MP_Biker_Rank_002_M";
         public const String BarPatchRoadCaptainTextHash   = "MP_Biker_Rank_003_M";
         public const String BarPatchProspectTextHash      = "MP_Biker_Rank_004_M";

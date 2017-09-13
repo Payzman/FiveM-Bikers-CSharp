@@ -169,9 +169,9 @@ namespace Client
                 case 0:
                     return new Tuple<string, string>(Strings.BarPatchNoTitleTextHash, Strings.TitleNone);
                 case 1:
-                    return new Tuple<string, string>(Strings.BarPatchPresidentTextHash, Strings.TitlePresident);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.President, Strings.TitlePresident);
                 case 2:
-                    return new Tuple<string, string>(Strings.BarPatchVicePresidentTextHash, Strings.TitleVicePresident);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.VicePresident, Strings.TitleVicePresident);
                 case 3:
                     return new Tuple<string, string>(Strings.BarPatchSgtAtArmsTextHash, Strings.TitleSeargentAtArms);
                 case 4:
