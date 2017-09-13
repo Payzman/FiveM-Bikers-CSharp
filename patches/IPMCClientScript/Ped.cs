@@ -179,7 +179,7 @@ namespace Client
                 case 5:
                     return new Tuple<string, string>(Strings.BarPatchEnforcerTextHash, Strings.TitleEnforcer);
                 case 6:
-                    return new Tuple<string, string>(Strings.BarPatchProspectTextHash, Strings.TitleProspect);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.Prospect, Strings.TitleProspect);
                 default:
                     throw new Exception();
             }
