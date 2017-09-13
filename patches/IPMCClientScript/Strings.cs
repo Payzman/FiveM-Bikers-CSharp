@@ -89,11 +89,11 @@ namespace Client
 
         public static List<dynamic> charters = new List<dynamic>()
         {
-            CharterNameNational,
-            CharterNamePaletoBay,
-            CharterNameRancho,
-            CharterNameDelPerro,
-            CharterNameLaMesa,
+            CharterName.National,
+            CharterName.PaletoBay,
+            CharterName.Rancho,
+            CharterName.DelPerro,
+            CharterName.LaMesa,
         };
 
         public static List<dynamic> titles = new List<dynamic>()
