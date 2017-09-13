@@ -42,13 +42,16 @@ namespace Client
             public const String LaMesa    = "La Mesa";
         }
         /* Titles (Officers etc.) */
-        public const String TitleNone           = "None";
-        public const String TitlePresident      = "President";
-        public const String TitleVicePresident  = "Vice President";
-        public const String TitleSeargentAtArms = "Sgt. at Arms";
-        public const String TitleRoadCaptain    = "Road Captain";
-        public const String TitleProspect       = "Prospect";
-        public const String TitleEnforcer       = "Enforcer";
+        public static class Title
+        {
+            public const String None = "None";
+            public const String President = "President";
+            public const String VicePresident = "Vice President";
+            public const String SeargentAtArms = "Sgt. at Arms";
+            public const String RoadCaptain = "Road Captain";
+            public const String Prospect = "Prospect";
+            public const String Enforcer = "Enforcer";
+        }
         /* Menu Titles */
         public const String MenuTitleInteraction = "Interaction Menu";
         public const String MenuTitlePatch       = "Apply Patches";
@@ -98,13 +101,13 @@ namespace Client
 
         public static List<dynamic> titles = new List<dynamic>()
         {
-            TitleNone,
-            TitlePresident,
-            TitleVicePresident,
-            TitleSeargentAtArms,
-            TitleRoadCaptain,
-            TitleEnforcer,
-            TitleProspect,
+            Title.None,
+            Title.President,
+            Title.VicePresident,
+            Title.SeargentAtArms,
+            Title.RoadCaptain,
+            Title.Enforcer,
+            Title.Prospect,
         };
     }
 }

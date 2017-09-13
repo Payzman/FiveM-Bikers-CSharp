@@ -167,19 +167,19 @@ namespace Client
             switch(index)
             {
                 case 0:
-                    return new Tuple<string, string>(Strings.NoTextHash, Strings.TitleNone);
+                    return new Tuple<string, string>(Strings.NoTextHash, Strings.Title.None);
                 case 1:
-                    return new Tuple<string, string>(Strings.BarPatchTextHash.President, Strings.TitlePresident);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.President, Strings.Title.President);
                 case 2:
-                    return new Tuple<string, string>(Strings.BarPatchTextHash.VicePresident, Strings.TitleVicePresident);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.VicePresident, Strings.Title.VicePresident);
                 case 3:
-                    return new Tuple<string, string>(Strings.BarPatchTextHash.SgtAtArms, Strings.TitleSeargentAtArms);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.SgtAtArms, Strings.Title.SeargentAtArms);
                 case 4:
-                    return new Tuple<string, string>(Strings.BarPatchTextHash.RoadCaptain, Strings.TitleRoadCaptain);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.RoadCaptain, Strings.Title.RoadCaptain);
                 case 5:
-                    return new Tuple<string, string>(Strings.BarPatchTextHash.Enforcer, Strings.TitleEnforcer);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.Enforcer, Strings.Title.Enforcer);
                 case 6:
-                    return new Tuple<string, string>(Strings.BarPatchTextHash.Prospect, Strings.TitleProspect);
+                    return new Tuple<string, string>(Strings.BarPatchTextHash.Prospect, Strings.Title.Prospect);
                 default:
                     throw new Exception();
             }
