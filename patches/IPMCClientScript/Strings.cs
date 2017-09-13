@@ -33,11 +33,14 @@ namespace Client
             public const String Enforcer      = "MP_Biker_Rank_015_M";
         }
         /* Charter Names */
-        public const String CharterNameNational   = "National";
-        public const String CharterNamePaletoBay  = "Paleto Bay";
-        public const String CharterNameRancho     = "Rancho";
-        public const String CharterNameDelPerro   = "Del Perro";
-        public const String CharterNameLaMesa     = "La Mesa";
+        public static class CharterName
+        {
+            public const String National  = "National";
+            public const String PaletoBay = "Paleto Bay";
+            public const String Rancho    = "Rancho";
+            public const String DelPerro  = "Del Perro";
+            public const String LaMesa    = "La Mesa";
+        }
         /* Titles (Officers etc.) */
         public const String TitleNone           = "None";
         public const String TitlePresident      = "President";
