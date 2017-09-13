@@ -148,15 +148,15 @@ namespace Client
             switch(index)
             {
                 case 0:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.National,  Strings.CharterNameNational);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.National,  Strings.CharterName.National);
                 case 1:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.PaletoBay, Strings.CharterNamePaletoBay);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.PaletoBay, Strings.CharterName.PaletoBay);
                 case 2:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.Rancho,    Strings.CharterNameRancho);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.Rancho,    Strings.CharterName.Rancho);
                 case 3:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.DelPerro,  Strings.CharterNameDelPerro);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.DelPerro,  Strings.CharterName.DelPerro);
                 case 4:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.LaMesa,    Strings.CharterNameLaMesa);
+                    return new Tuple<string, string>(Strings.BackpatchTextHash.LaMesa,    Strings.CharterName.LaMesa);
                 default:
                     throw new Exception();
             }
