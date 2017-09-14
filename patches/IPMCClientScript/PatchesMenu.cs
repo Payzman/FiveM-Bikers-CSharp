@@ -17,6 +17,21 @@
             AddSetPatchesMenu();
         }
 
+        public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        {
+            if (sender == setPatches)
+            {
+                if (selectedItem.Text == Strings.MenuItem.Charter)
+                {
+                    ped.ApplyBottomRocker(index);
+                }
+                else if (selectedItem.Text == Strings.MenuItem.Titles)
+                {
+                    ped.ApplyTitleBarPatch(index);
+                }
+            }
+        }
+
         private void AddSetPatchesMenu()
         {
             setPatches = pool.AddSubMenu(parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
@@ -69,21 +84,6 @@
             else if (checkboxItem.Text == "Valor")
             {
                 ped.SetValorPatch(checkboxChecked);
-            }
-        }
-
-        public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
-        {
-            if (sender == setPatches)
-            {
-                if (selectedItem.Text == Strings.MenuItem.Charter)
-                {
-                    ped.ApplyBottomRocker(index);
-                }
-                else if (selectedItem.Text == Strings.MenuItem.Titles)
-                {
-                    ped.ApplyTitleBarPatch(index);
-                }
             }
         }
     }
