@@ -34,12 +34,12 @@ namespace Client
         {
             PatchesMenu patches_menu = new PatchesMenu(menus, interaction_menu);
             // default clothes menu is just for WIP
-            UIMenuItem default_clothes = new UIMenuItem(Strings.MenuItemDefaultClothes);
+            UIMenuItem default_clothes = new UIMenuItem(Strings.MenuItem.DefaultClothes);
             interaction_menu.AddItem(default_clothes);
             // Recording submenu
             RecordingMenu recording_menu = new RecordingMenu(menus, interaction_menu);
             // Leave Session
-            UIMenuItem leave_session = new UIMenuItem(Strings.MenuItemLeaveSession);
+            UIMenuItem leave_session = new UIMenuItem(Strings.MenuItem.LeaveSession);
             interaction_menu.AddItem(leave_session);
             // Define the interaction menu item handler
             interaction_menu.OnItemSelect += ItemHandler;
@@ -61,10 +61,10 @@ namespace Client
         {
             switch(selectedItem.Text)
             {
-                case Strings.MenuItemDefaultClothes:
+                case Strings.MenuItem.DefaultClothes:
                     DefaultClothes();
                     break;
-                case Strings.MenuItemLeaveSession:
+                case Strings.MenuItem.LeaveSession:
                     LeaveSession();
                     break;
                 default:

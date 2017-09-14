@@ -60,13 +60,16 @@ namespace Client
             public const String Recording   = "Recording Menu";
         }
         /* Menu Items */
-        public const String MenuItemCharter          = "Charter";
-        public const String MenuItemDefaultClothes   = "Default Clothes";
-        public const String MenuItemLeaveSession     = "Leave Session";
-        public const String MenuItemStartRecording   = "Start Recording";
-        public const String MenuItemStopRecording    = "Stop Recording";
-        public const String MenuItemDiscardRecording = "Discard Recording";
-        public const String MenuItemTitles           = "Title";
+        public static class MenuItem
+        {
+            public const String Charter = "Charter";
+            public const String DefaultClothes = "Default Clothes";
+            public const String LeaveSession = "Leave Session";
+            public const String StartRecording = "Start Recording";
+            public const String StopRecording = "Stop Recording";
+            public const String DiscardRecording = "Discard Recording";
+            public const String Titles = "Title";
+        }
         /* Menu Subtitles */
         public const String MenuSubtitleInteraction = "";
         /* Menu Descriptions */

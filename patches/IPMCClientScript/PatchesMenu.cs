@@ -27,10 +27,10 @@ namespace Client
             // Add the submenu "set patch"
             set_patches = pool.AddSubMenu(parent, Strings.MenuTitle.Patch, Strings.MenuDescriptionSetPatch);
             // Set Patch on back
-            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItemCharter, Strings.charters, 1, Strings.MenuDescriptionSetCharter);
+            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItem.Charter, Strings.charters, 1, Strings.MenuDescriptionSetCharter);
             set_patches.AddItem(set_patches2);
             // Set title bar patch
-            UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItemTitles, Strings.titles, 1, Strings.MenuDescriptionSetTitle);
+            UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItem.Titles, Strings.titles, 1, Strings.MenuDescriptionSetTitle);
             set_patches.AddItem(bar_title);
 
             UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
@@ -82,11 +82,11 @@ namespace Client
         {
             if (sender == set_patches)
             {
-                if (selectedItem.Text == Strings.MenuItemCharter)
+                if (selectedItem.Text == Strings.MenuItem.Charter)
                 {
                     ped.ApplyBottomRocker(index);
                 }
-                else if (selectedItem.Text == Strings.MenuItemTitles)
+                else if (selectedItem.Text == Strings.MenuItem.Titles)
                 {
                     ped.ApplyTitleBarPatch(index);
                 }
