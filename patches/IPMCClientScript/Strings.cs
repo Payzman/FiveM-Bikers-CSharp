@@ -87,9 +87,12 @@ namespace Client
             public const String SetTitle = "Set your title";
         }
         /* Notifications */
-        public const String NotificationLeaveSession = "You left the session!";
-        public const String NotificationSaveClip     = "Your recorded clip was saved.";
-        public const String NotificationDiscardClip  = "Your recorded clip was discarded.";
+        public static class Notification
+        {
+            public const String LeaveSession = "You left the session!";
+            public const String SaveClip = "Your recorded clip was saved.";
+            public const String DiscardClip = "Your recorded clip was discarded.";
+        }
         /* PART 2: COMPUND STRINGS */
         /* Notifications */
         public static String ChangeBottomRocker(String charter_name)

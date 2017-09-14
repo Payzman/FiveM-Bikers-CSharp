@@ -82,7 +82,7 @@ namespace Client
         public void LeaveSession()
         {
             Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
-            Screen.ShowNotification(Strings.NotificationLeaveSession);
+            Screen.ShowNotification(Strings.Notification.LeaveSession);
         }
     }
 }
