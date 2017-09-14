@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Client
 {
-    static class Strings
+    public static class Strings
     {
         /* PART 1: SIMPLE STRINGS */
         public const String NoTextHash = "none"; //Is used for everything where just 'no' overlay shall be used.
