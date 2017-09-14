@@ -10,9 +10,9 @@ namespace Client
         private Tuple<string, string> charter;
         private Tuple<string, string> title;
         private string boogeyman;
-        private int player_ped_hash;
-        private int custom_overlay_hash;
-        private int mp_biker_hash;
+        private int playerPedHash;
+        private int customOverlayHash;
+        private int mpBikerHash;
         private bool guardian;
         private bool mayhem;
         private bool pow;
@@ -23,13 +23,13 @@ namespace Client
             charter = new Tuple<string, string>("none", "none");
             title = new Tuple<string, string>("none", "none");
             boogeyman = "none";
-            custom_overlay_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
-            mp_biker_hash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
+            customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
+            mpBikerHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
         }
 
         private void UpdateDecorations()
         {
-            player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
@@ -42,27 +42,27 @@ namespace Client
 
         private void ClearDecorations()
         {
-            Function.Call(Hash.CLEAR_PED_DECORATIONS, player_ped_hash);
+            Function.Call(Hash.CLEAR_PED_DECORATIONS, playerPedHash);
         }
 
         private void SetBottomRocker()
         {
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
             Screen.ShowNotification(Strings.Notification.ChangeBottomRocker(charter.Item2));
         }
 
         private void SetTitleBarPatch()
         {
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, title.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, mp_biker_hash, texture_hash);
+            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, mpBikerHash, texture_hash);
             Screen.ShowNotification(Strings.Notification.ChangeTitle(title.Item2));
         }
 
         private void SetBoogeymanBarPatch()
         {
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, boogeyman);
-            Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
         }
 
         private void ApplyGuardianBarPatch()
@@ -70,7 +70,7 @@ namespace Client
             if (guardian==true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "guardian_M");
-                Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
             }
         }
 
@@ -79,7 +79,7 @@ namespace Client
             if (mayhem == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "mayhem_M");
-                Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
             }
         }
 
@@ -88,7 +88,7 @@ namespace Client
             if (pow == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
-                Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
             }
         }
 
@@ -97,7 +97,7 @@ namespace Client
             if (valor == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "valor_M");
-                Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
             }
         }
 
@@ -202,9 +202,9 @@ namespace Client
             return "Ped Instance \n" +
                 "Charter = " + charter.ToString() + "\n" +
                 "Title = " + title.ToString() + "\n" +
-                "Player Ped Hash = " + player_ped_hash.ToString() + "\n" +
-                "Custom Overlay Hash = " + custom_overlay_hash + "\n" +
-                "Biker DLC hash = " + mp_biker_hash;
+                "Player Ped Hash = " + playerPedHash.ToString() + "\n" +
+                "Custom Overlay Hash = " + customOverlayHash + "\n" +
+                "Biker DLC hash = " + mpBikerHash;
         }
     }
 }
