@@ -19,19 +19,19 @@ namespace Client
         {
             Player player = LocalPlayer;
             menus = new InteractionMenu(player);
-            // @ every tick (small time frame) the function OnTick is called.
             Tick += OnTick;
         }
 
+        /* Every Tick this one is called */
         public async Task OnTick()
         {
             await Task.FromResult(0);
             menus.ProcessMenus();
+
             // Since FiveM does not use an interaction menu we can just
             // override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
             {
-                // Toggle visibility of the interaction menu
                 menus.ToggleInteractionMenu();
             }
         }
