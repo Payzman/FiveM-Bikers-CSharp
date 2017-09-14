@@ -1,11 +1,7 @@
-﻿using NativeUI;
-using CitizenFX.Core.UI;
-using CitizenFX.Core;
-using CitizenFX.Core.Native;
-using System;
-
-namespace Client
+﻿namespace Client
 {
+    using NativeUI;
+
     public class PatchesMenu
     {
         private MenuPool pool;
