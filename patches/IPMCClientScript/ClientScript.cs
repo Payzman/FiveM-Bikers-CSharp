@@ -8,7 +8,7 @@ namespace Client
     using System.Threading.Tasks;
     using CitizenFX.Core;
 
-    public class ClientScript: BaseScript
+    public class ClientScript : BaseScript
     {
         private InteractionMenu menus;
 
