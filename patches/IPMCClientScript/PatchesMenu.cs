@@ -23,13 +23,11 @@ namespace Client
 
         private void AddSetPatchesMenu()
         {
-            // Add items for the interaction menu here:
-            // Add the submenu "set patch"
             set_patches = pool.AddSubMenu(parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
-            // Set Patch on back
+
             UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItem.Charter, Strings.charters, 1, Strings.MenuDescription.SetCharter);
             set_patches.AddItem(set_patches2);
-            // Set title bar patch
+
             UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItem.Titles, Strings.titles, 1, Strings.MenuDescription.SetTitle);
             set_patches.AddItem(bar_title);
 
@@ -47,10 +45,10 @@ namespace Client
 
             UIMenuCheckboxItem valor = new UIMenuCheckboxItem("Valor", false, "PVP Commendation Valor");
             set_patches.AddItem(valor);
-            // Use a handler to handle user input (choosing buttons etc.)
+
             set_patches.OnListChange += SetPatchHandler;
             set_patches.OnCheckboxChange += CheckboxHandler;
-            // Refresh the set patches menu
+
             set_patches.RefreshIndex();
         }
 

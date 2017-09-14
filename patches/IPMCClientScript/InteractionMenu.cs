@@ -34,7 +34,7 @@
         public void ItemHandler(
             UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            switch(selectedItem.Text)
+            switch (selectedItem.Text)
             {
                 case Strings.MenuItem.DefaultClothes:
                     this.DefaultClothes();
