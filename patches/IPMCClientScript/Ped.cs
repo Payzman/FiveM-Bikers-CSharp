@@ -19,53 +19,53 @@
 
         public Ped()
         {
-            charter = new Tuple<string, string>("none", "none");
-            title = new Tuple<string, string>("none", "none");
-            boogeyman = "none";
-            customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
-            bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
+            this.charter = new Tuple<string, string>("none", "none");
+            this.title = new Tuple<string, string>("none", "none");
+            this.boogeyman = "none";
+            this.customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
+            this.bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
         }
 
         public void ApplyBottomRocker(int index)
         {
-            charter = GetCharterFromIndex(index);
-            UpdateDecorations();
+            this.charter = this.GetCharterFromIndex(index);
+            this.UpdateDecorations();
         }
 
         public void ApplyTitleBarPatch(int index)
         {
-            title = GetTitleFromIndex(index);
-            UpdateDecorations();
+            this.title = this.GetTitleFromIndex(index);
+            this.UpdateDecorations();
         }
 
         public void SetBoogeymanPatch(bool checkboxChecked)
         {
-            boogeyman = GetBoogeymanFromIndex(checkboxChecked);
-            UpdateDecorations();
+            this.boogeyman = this.GetBoogeymanFromIndex(checkboxChecked);
+            this.UpdateDecorations();
         }
 
         public void SetGuardianPatch(bool checkboxChecked)
         {
-            guardian = checkboxChecked;
-            UpdateDecorations();
+            this.guardian = checkboxChecked;
+            this.UpdateDecorations();
         }
 
         public void SetMayhemPatch(bool checkboxChecked)
         {
-            mayhem = checkboxChecked;
-            UpdateDecorations();
+            this.mayhem = checkboxChecked;
+            this.UpdateDecorations();
         }
 
         public void SetPowPatch(bool checkboxChecked)
         {
-            pow = checkboxChecked;
-            UpdateDecorations();
+            this.pow = checkboxChecked;
+            this.UpdateDecorations();
         }
 
         public void SetValorPatch(bool checkboxChecked)
         {
-            valor = checkboxChecked;
-            UpdateDecorations();
+            this.valor = checkboxChecked;
+            this.UpdateDecorations();
         }
 
         public Tuple<String,String> GetCharterFromIndex(int index)
@@ -125,84 +125,84 @@
         public override string ToString()
         {
             return "Ped Instance \n" +
-                "Charter = " + charter.ToString() + "\n" +
-                "Title = " + title.ToString() + "\n" +
-                "Player Ped Hash = " + playerPedHash.ToString() + "\n" +
-                "Custom Overlay Hash = " + customOverlayHash + "\n" +
-                "Biker DLC hash = " + bikerDlcHash;
+                "Charter = " + this.charter.ToString() + "\n" +
+                "Title = " + this.title.ToString() + "\n" +
+                "Player Ped Hash = " + this.playerPedHash.ToString() + "\n" +
+                "Custom Overlay Hash = " + this.customOverlayHash + "\n" +
+                "Biker DLC hash = " + this.bikerDlcHash;
         }
 
         private void UpdateDecorations()
         {
-            playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            this.playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
-            SetBoogeymanBarPatch();
-            ApplyGuardianBarPatch();
-            ApplyMayhemBarPatch();
-            ApplyPowBarPatch();
-            ApplyValorBarPatch();
+            this.SetBoogeymanBarPatch();
+            this.ApplyGuardianBarPatch();
+            this.ApplyMayhemBarPatch();
+            this.ApplyPowBarPatch();
+            this.ApplyValorBarPatch();
         }
 
         private void ClearDecorations()
         {
-            Function.Call(Hash.CLEAR_PED_DECORATIONS, playerPedHash);
+            Function.Call(Hash.CLEAR_PED_DECORATIONS, this.playerPedHash);
         }
 
         private void SetBottomRocker()
         {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
-            Screen.ShowNotification(Strings.Notification.ChangeBottomRocker(charter.Item2));
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, this.charter.Item1);
+            Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
+            Screen.ShowNotification(Strings.Notification.ChangeBottomRocker(this.charter.Item2));
         }
 
         private void SetTitleBarPatch()
         {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, title.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, bikerDlcHash, texture_hash);
-            Screen.ShowNotification(Strings.Notification.ChangeTitle(title.Item2));
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, this.title.Item1);
+            Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.bikerDlcHash, texture_hash);
+            Screen.ShowNotification(Strings.Notification.ChangeTitle(this.title.Item2));
         }
 
         private void SetBoogeymanBarPatch()
         {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, boogeyman);
-            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, this.boogeyman);
+            Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
         }
 
         private void ApplyGuardianBarPatch()
         {
-            if (guardian == true)
+            if (this.guardian == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "guardian_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
             }
         }
 
         private void ApplyMayhemBarPatch()
         {
-            if (mayhem == true)
+            if (this.mayhem == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "mayhem_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
             }
         }
 
         private void ApplyPowBarPatch()
         {
-            if (pow == true)
+            if (this.pow == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
             }
         }
 
         private void ApplyValorBarPatch()
         {
-            if (valor == true)
+            if (this.valor == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "valor_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
             }
         }
     }
