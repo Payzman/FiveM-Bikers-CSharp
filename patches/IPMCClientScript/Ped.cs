@@ -26,80 +26,6 @@
             bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
         }
 
-        private void UpdateDecorations()
-        {
-            playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
-            this.ClearDecorations();
-            this.SetBottomRocker();
-            this.SetTitleBarPatch();
-            SetBoogeymanBarPatch();
-            ApplyGuardianBarPatch();
-            ApplyMayhemBarPatch();
-            ApplyPowBarPatch();
-            ApplyValorBarPatch();
-        }
-
-        private void ClearDecorations()
-        {
-            Function.Call(Hash.CLEAR_PED_DECORATIONS, playerPedHash);
-        }
-
-        private void SetBottomRocker()
-        {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
-            Screen.ShowNotification(Strings.Notification.ChangeBottomRocker(charter.Item2));
-        }
-
-        private void SetTitleBarPatch()
-        {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, title.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, bikerDlcHash, texture_hash);
-            Screen.ShowNotification(Strings.Notification.ChangeTitle(title.Item2));
-        }
-
-        private void SetBoogeymanBarPatch()
-        {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, boogeyman);
-            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
-        }
-
-        private void ApplyGuardianBarPatch()
-        {
-            if (guardian==true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "guardian_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
-            }
-        }
-
-        private void ApplyMayhemBarPatch()
-        {
-            if (mayhem == true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "mayhem_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
-            }
-        }
-
-        private void ApplyPowBarPatch()
-        {
-            if (pow == true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
-            }
-        }
-
-        private void ApplyValorBarPatch()
-        {
-            if (valor == true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "valor_M");
-                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
-            }
-        }
-
         public void ApplyBottomRocker(int index)
         {
             charter = GetCharterFromIndex(index);
@@ -204,6 +130,80 @@
                 "Player Ped Hash = " + playerPedHash.ToString() + "\n" +
                 "Custom Overlay Hash = " + customOverlayHash + "\n" +
                 "Biker DLC hash = " + bikerDlcHash;
+        }
+
+        private void UpdateDecorations()
+        {
+            playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
+            this.ClearDecorations();
+            this.SetBottomRocker();
+            this.SetTitleBarPatch();
+            SetBoogeymanBarPatch();
+            ApplyGuardianBarPatch();
+            ApplyMayhemBarPatch();
+            ApplyPowBarPatch();
+            ApplyValorBarPatch();
+        }
+
+        private void ClearDecorations()
+        {
+            Function.Call(Hash.CLEAR_PED_DECORATIONS, playerPedHash);
+        }
+
+        private void SetBottomRocker()
+        {
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
+            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+            Screen.ShowNotification(Strings.Notification.ChangeBottomRocker(charter.Item2));
+        }
+
+        private void SetTitleBarPatch()
+        {
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, title.Item1);
+            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, bikerDlcHash, texture_hash);
+            Screen.ShowNotification(Strings.Notification.ChangeTitle(title.Item2));
+        }
+
+        private void SetBoogeymanBarPatch()
+        {
+            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, boogeyman);
+            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+        }
+
+        private void ApplyGuardianBarPatch()
+        {
+            if (guardian == true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "guardian_M");
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+            }
+        }
+
+        private void ApplyMayhemBarPatch()
+        {
+            if (mayhem == true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "mayhem_M");
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+            }
+        }
+
+        private void ApplyPowBarPatch()
+        {
+            if (pow == true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+            }
+        }
+
+        private void ApplyValorBarPatch()
+        {
+            if (valor == true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "valor_M");
+                Function.Call(Hash._SET_PED_DECORATION, playerPedHash, customOverlayHash, texture_hash);
+            }
         }
     }
 }
