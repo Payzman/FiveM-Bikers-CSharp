@@ -71,7 +71,10 @@ namespace Client
             public const String Titles = "Title";
         }
         /* Menu Subtitles */
-        public const String MenuSubtitleInteraction = "";
+        public static class MenuSubtitle
+        {
+            public const String Interaction = "";
+        }
         /* Menu Descriptions */
         public const String MenuDescriptionSetPatch         = "Options to change what patches and badges you wear";
         public const String MenuDescriptionSetCharter       = "Set your charter";
@@ -94,8 +97,7 @@ namespace Client
         {
             return "Changing title bar patch to " + title_name;
         }
-        /* String Collections e.g. for menus etc.*/
-
+        /* PART 3: String Collections e.g. for menus etc.*/
         public static List<dynamic> charters = new List<dynamic>()
         {
             CharterName.National,

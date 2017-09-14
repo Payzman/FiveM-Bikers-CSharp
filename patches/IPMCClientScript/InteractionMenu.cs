@@ -23,7 +23,7 @@ namespace Client
         private void AddInteractionMenu()
         {
             // Add additional menus here
-            interaction_menu = new UIMenu(Strings.MenuTitle.Interaction, Strings.MenuSubtitleInteraction);
+            interaction_menu = new UIMenu(Strings.MenuTitle.Interaction, Strings.MenuSubtitle.Interaction);
             menus.Add(interaction_menu);
             AddInteractionMenuItems();
             // Refresh the interaction menu
