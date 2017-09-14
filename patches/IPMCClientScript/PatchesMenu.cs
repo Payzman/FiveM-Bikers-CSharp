@@ -36,10 +36,10 @@
         {
             this.setPatches = this.pool.AddSubMenu(this.parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
 
-            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItem.Charter, Strings.charters, 1, Strings.MenuDescription.SetCharter);
+            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItem.Charter, Strings.charters(), 1, Strings.MenuDescription.SetCharter);
             this.setPatches.AddItem(set_patches2);
 
-            UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItem.Titles, Strings.titles, 1, Strings.MenuDescription.SetTitle);
+            UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItem.Titles, Strings.titles(), 1, Strings.MenuDescription.SetTitle);
             this.setPatches.AddItem(bar_title);
 
             UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
