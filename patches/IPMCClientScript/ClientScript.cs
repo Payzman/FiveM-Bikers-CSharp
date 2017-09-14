@@ -15,21 +15,21 @@ namespace Client
         public ClientScript()
         {
             Player player = LocalPlayer;
-            menus = new InteractionMenu(player);
-            Tick += OnTick;
+            this.menus = new InteractionMenu(player);
+            this.Tick += this.OnTick;
         }
 
         /* Every Tick this one is called */
         public async Task OnTick()
         {
             await Task.FromResult(0);
-            menus.ProcessMenus();
+            this.menus.ProcessMenus();
 
             // Since FiveM does not use an interaction menu we can just
             // override it here.
             if (Game.IsControlJustReleased(0, Control.InteractionMenu))
             {
-                menus.ToggleInteractionMenu();
+                this.menus.ToggleInteractionMenu();
             }
         }
     }
