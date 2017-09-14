@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Client
+﻿namespace Client
 {
+    using System;
+    using System.Collections.Generic;
     public static class Strings
     {
         /* PART 1: SIMPLE STRINGS */
