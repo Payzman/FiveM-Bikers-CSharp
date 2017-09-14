@@ -5,7 +5,7 @@ using CitizenFX.Core.Native;
 
 namespace Client
 {
-    class RecordingMenu
+    public class RecordingMenu
     {
         private MenuPool pool;
         private UIMenu parent;
