@@ -13,7 +13,7 @@ namespace Client
 {
     public class ClientScript: BaseScript
     {
-        InteractionMenu menus;
+        private InteractionMenu menus;
 
         public ClientScript()
         {
