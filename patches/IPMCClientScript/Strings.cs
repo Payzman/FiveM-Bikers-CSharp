@@ -2,9 +2,37 @@
 {
     using System;
     using System.Collections.Generic;
+
     public static class Strings
     {
-        /* PART 1: SIMPLE STRINGS */
+        /* PART 1: String Collections e.g. for menus etc.*/
+        public static List<dynamic> Charters()
+        {
+            return new List<dynamic>()
+            {
+                CharterName.National,
+                CharterName.PaletoBay,
+                CharterName.Rancho,
+                CharterName.DelPerro,
+                CharterName.LaMesa
+            };
+        }
+
+        public static List<dynamic> Titles()
+        {
+            return new List<dynamic>()
+            {
+                Title.None,
+                Title.President,
+                Title.VicePresident,
+                Title.SeargentAtArms,
+                Title.RoadCaptain,
+                Title.Enforcer,
+                Title.Prospect,
+            };
+        }
+
+        /* PART 2: SIMPLE STRINGS */
         public const String NoTextHash = "none"; //Is used for everything where just 'no' overlay shall be used.
         /* Overlay Collections */
         public static class OverlayCollection
@@ -110,33 +138,6 @@
             {
                 return "Changing title bar patch to " + title_name;
             }
-        }
-
-        /* PART 3: String Collections e.g. for menus etc.*/
-        public static List<dynamic> Charters()
-        {
-            return new List<dynamic>()
-            {
-                CharterName.National,
-                CharterName.PaletoBay,
-                CharterName.Rancho,
-                CharterName.DelPerro,
-                CharterName.LaMesa
-            };
-        }
-
-        public static List<dynamic> Titles()
-        {
-            return new List<dynamic>()
-            {
-                Title.None,
-                Title.President,
-                Title.VicePresident,
-                Title.SeargentAtArms,
-                Title.RoadCaptain,
-                Title.Enforcer,
-                Title.Prospect,
-            };
         }
     }
 }
