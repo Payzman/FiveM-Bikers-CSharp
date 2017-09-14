@@ -13,22 +13,22 @@
 
         public InteractionMenu(Player p)
         {
-            menus = new MenuPool();
-            AddInteractionMenu();
-            player = p;
+            this.menus = new MenuPool();
+            this.AddInteractionMenu();
+            this.player = p;
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
         public void ProcessMenus()
         {
-            menus.ProcessMenus();
+            this.menus.ProcessMenus();
         }
 
         // TODO: A function which just does it for every menu will be created
         // eventually
         public void ToggleInteractionMenu()
         {
-            interactionMenu.Visible = !interactionMenu.Visible;
+            this.interactionMenu.Visible = !this.interactionMenu.Visible;
         }
 
         public void ItemHandler(
@@ -37,10 +37,10 @@
             switch(selectedItem.Text)
             {
                 case Strings.MenuItem.DefaultClothes:
-                    DefaultClothes();
+                    this.DefaultClothes();
                     break;
                 case Strings.MenuItem.LeaveSession:
-                    LeaveSession();
+                    this.LeaveSession();
                     break;
                 default:
                     break;
@@ -62,33 +62,33 @@
 
         private void AddInteractionMenu()
         {
-            interactionMenu = new UIMenu(
+            this.interactionMenu = new UIMenu(
                 Strings.MenuTitle.Interaction, 
                 Strings.MenuSubtitle.Interaction);
-            menus.Add(interactionMenu);
-            AddInteractionMenuItems();
+            this.menus.Add(this.interactionMenu);
+            this.AddInteractionMenuItems();
 
-            interactionMenu.RefreshIndex();
+            this.interactionMenu.RefreshIndex();
         }
 
         private void AddInteractionMenuItems()
         {
             PatchesMenu patches_menu = new PatchesMenu(
-                menus, interactionMenu);
+                this.menus, this.interactionMenu);
 
             // default clothes menu is just for WIP
             UIMenuItem default_clothes =
                 new UIMenuItem(Strings.MenuItem.DefaultClothes);
-            interactionMenu.AddItem(default_clothes);
+            this.interactionMenu.AddItem(default_clothes);
 
             RecordingMenu recording_menu =
-                new RecordingMenu(menus, interactionMenu);
+                new RecordingMenu(this.menus, this.interactionMenu);
 
             UIMenuItem leave_session =
                 new UIMenuItem(Strings.MenuItem.LeaveSession);
-            interactionMenu.AddItem(leave_session);
+            this.interactionMenu.AddItem(leave_session);
 
-            interactionMenu.OnItemSelect += ItemHandler;
+            this.interactionMenu.OnItemSelect += this.ItemHandler;
         }
     }
 }
