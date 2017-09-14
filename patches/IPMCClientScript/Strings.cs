@@ -97,6 +97,7 @@ namespace Client
             {
                 return "Changing bottom rocker to " + charter_name;
             }
+
             public static String ChangeTitle(String title_name)
             {
                 return "Changing title bar patch to " + title_name;
