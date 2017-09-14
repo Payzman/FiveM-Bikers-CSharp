@@ -9,7 +9,7 @@ namespace Client
     {
         private Player player;
         private MenuPool menus;
-        private UIMenu interaction_menu;
+        private UIMenu interactionMenu;
 
         public InteractionMenu(Player p)
         {
@@ -20,32 +20,32 @@ namespace Client
 
         private void AddInteractionMenu()
         {
-            interaction_menu = new UIMenu(Strings.MenuTitle.Interaction, 
+            interactionMenu = new UIMenu(Strings.MenuTitle.Interaction, 
                                           Strings.MenuSubtitle.Interaction);
-            menus.Add(interaction_menu);
+            menus.Add(interactionMenu);
             AddInteractionMenuItems();
 
-            interaction_menu.RefreshIndex();
+            interactionMenu.RefreshIndex();
         }
 
         private void AddInteractionMenuItems()
         {
             PatchesMenu patches_menu = new PatchesMenu(menus, 
-                                                       interaction_menu);
+                                                       interactionMenu);
 
             // default clothes menu is just for WIP
             UIMenuItem default_clothes = 
                 new UIMenuItem(Strings.MenuItem.DefaultClothes);
-            interaction_menu.AddItem(default_clothes);
+            interactionMenu.AddItem(default_clothes);
 
             RecordingMenu recording_menu = 
-                new RecordingMenu(menus, interaction_menu);
+                new RecordingMenu(menus, interactionMenu);
 
             UIMenuItem leave_session = 
                 new UIMenuItem(Strings.MenuItem.LeaveSession);
-            interaction_menu.AddItem(leave_session);
+            interactionMenu.AddItem(leave_session);
 
-            interaction_menu.OnItemSelect += ItemHandler;
+            interactionMenu.OnItemSelect += ItemHandler;
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
@@ -58,7 +58,7 @@ namespace Client
         // eventually
         public void ToggleInteractionMenu()
         {
-            interaction_menu.Visible = !interaction_menu.Visible;
+            interactionMenu.Visible = !interactionMenu.Visible;
         }
 
         public void ItemHandler(UIMenu sender, 
