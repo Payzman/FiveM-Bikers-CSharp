@@ -18,36 +18,6 @@
             player = p;
         }
 
-        private void AddInteractionMenu()
-        {
-            interactionMenu = new UIMenu(Strings.MenuTitle.Interaction, 
-                                          Strings.MenuSubtitle.Interaction);
-            menus.Add(interactionMenu);
-            AddInteractionMenuItems();
-
-            interactionMenu.RefreshIndex();
-        }
-
-        private void AddInteractionMenuItems()
-        {
-            PatchesMenu patches_menu = new PatchesMenu(menus, 
-                                                       interactionMenu);
-
-            // default clothes menu is just for WIP
-            UIMenuItem default_clothes = 
-                new UIMenuItem(Strings.MenuItem.DefaultClothes);
-            interactionMenu.AddItem(default_clothes);
-
-            RecordingMenu recording_menu = 
-                new RecordingMenu(menus, interactionMenu);
-
-            UIMenuItem leave_session = 
-                new UIMenuItem(Strings.MenuItem.LeaveSession);
-            interactionMenu.AddItem(leave_session);
-
-            interactionMenu.OnItemSelect += ItemHandler;
-        }
-
         // Wrapper so it can easily be used in IPMCScript.cs
         public void ProcessMenus()
         {
@@ -89,6 +59,36 @@
         {
             Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
             Screen.ShowNotification(Strings.Notification.LeaveSession);
+        }
+
+        private void AddInteractionMenu()
+        {
+            interactionMenu = new UIMenu(Strings.MenuTitle.Interaction,
+                                          Strings.MenuSubtitle.Interaction);
+            menus.Add(interactionMenu);
+            AddInteractionMenuItems();
+
+            interactionMenu.RefreshIndex();
+        }
+
+        private void AddInteractionMenuItems()
+        {
+            PatchesMenu patches_menu = new PatchesMenu(menus,
+                                                       interactionMenu);
+
+            // default clothes menu is just for WIP
+            UIMenuItem default_clothes =
+                new UIMenuItem(Strings.MenuItem.DefaultClothes);
+            interactionMenu.AddItem(default_clothes);
+
+            RecordingMenu recording_menu =
+                new RecordingMenu(menus, interactionMenu);
+
+            UIMenuItem leave_session =
+                new UIMenuItem(Strings.MenuItem.LeaveSession);
+            interactionMenu.AddItem(leave_session);
+
+            interactionMenu.OnItemSelect += ItemHandler;
         }
     }
 }
