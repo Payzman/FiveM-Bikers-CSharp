@@ -1,10 +1,9 @@
-﻿using NativeUI;
-using CitizenFX.Core.UI;
-using CitizenFX.Core;
-using CitizenFX.Core.Native;
-
-namespace Client
+﻿namespace Client
 {
+    using CitizenFX.Core.Native;
+    using CitizenFX.Core.UI;
+    using NativeUI;
+
     public class RecordingMenu
     {
         private MenuPool pool;
