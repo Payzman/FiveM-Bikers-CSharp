@@ -5,7 +5,7 @@ using CitizenFX.Core.Native;
 
 namespace Client
 {
-    class Ped
+    public class Ped
     {
         private Tuple<string, string> charter;
         private Tuple<string, string> title;
