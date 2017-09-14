@@ -13,7 +13,6 @@ namespace Client
 
         public InteractionMenu(Player p)
         {
-            // Create menu pool
             menus = new MenuPool();
             AddInteractionMenu();
             player = p;
