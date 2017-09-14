@@ -1,10 +1,10 @@
-﻿using NativeUI;
-using CitizenFX.Core.UI;
-using CitizenFX.Core;
-using CitizenFX.Core.Native;
-
-namespace Client
+﻿namespace Client
 {
+    using NativeUI;
+    using CitizenFX.Core.UI;
+    using CitizenFX.Core;
+    using CitizenFX.Core.Native;
+
     public class InteractionMenu
     {
         private Player player;
