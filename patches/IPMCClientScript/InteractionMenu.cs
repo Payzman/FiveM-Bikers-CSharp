@@ -21,12 +21,11 @@ namespace Client
 
         private void AddInteractionMenu()
         {
-            // Add additional menus here
             interaction_menu = new UIMenu(Strings.MenuTitle.Interaction, 
                                           Strings.MenuSubtitle.Interaction);
             menus.Add(interaction_menu);
             AddInteractionMenuItems();
-            // Refresh the interaction menu
+
             interaction_menu.RefreshIndex();
         }
 
@@ -38,14 +37,14 @@ namespace Client
             UIMenuItem default_clothes = 
                 new UIMenuItem(Strings.MenuItem.DefaultClothes);
             interaction_menu.AddItem(default_clothes);
-            // Recording submenu
+
             RecordingMenu recording_menu = 
                 new RecordingMenu(menus, interaction_menu);
-            // Leave Session
+
             UIMenuItem leave_session = 
                 new UIMenuItem(Strings.MenuItem.LeaveSession);
             interaction_menu.AddItem(leave_session);
-            // Define the interaction menu item handler
+
             interaction_menu.OnItemSelect += ItemHandler;
         }
 
