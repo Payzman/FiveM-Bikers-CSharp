@@ -1,10 +1,9 @@
-﻿using System;
-using CitizenFX.Core;
-using CitizenFX.Core.UI;
-using CitizenFX.Core.Native;
-
-namespace Client
+﻿namespace Client
 {
+    using CitizenFX.Core.UI;
+    using CitizenFX.Core.Native;
+    using System;
+
     public class Ped
     {
         private Tuple<string, string> charter;
