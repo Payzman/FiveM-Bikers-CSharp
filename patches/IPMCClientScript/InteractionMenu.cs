@@ -32,6 +32,7 @@ namespace Client
         {
             PatchesMenu patches_menu = new PatchesMenu(menus, 
                                                        interaction_menu);
+
             // default clothes menu is just for WIP
             UIMenuItem default_clothes = 
                 new UIMenuItem(Strings.MenuItem.DefaultClothes);
