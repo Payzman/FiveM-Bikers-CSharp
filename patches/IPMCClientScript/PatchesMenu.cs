@@ -52,27 +52,27 @@ namespace Client
             setPatches.RefreshIndex();
         }
 
-        private void CheckboxHandler(UIMenu sender, UIMenuCheckboxItem checkboxItem, bool Checked)
+        private void CheckboxHandler(UIMenu sender, UIMenuCheckboxItem checkboxItem, bool checkboxChecked)
         {
             if (checkboxItem.Text == "Boogeyman")
             {
-                ped.SetBoogeymanPatch(Checked);
+                ped.SetBoogeymanPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Guardian")
             {
-                ped.SetGuardianPatch(Checked);
+                ped.SetGuardianPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Mayhem")
             {
-                ped.SetMayhemPatch(Checked);
+                ped.SetMayhemPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Prisoner of War")
             {
-                ped.SetPowPatch(Checked);
+                ped.SetPowPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Valor")
             {
-                ped.SetValorPatch(Checked);
+                ped.SetValorPatch(checkboxChecked);
             }
         }
 
