@@ -5,7 +5,8 @@
 
     public static class Strings
     {
-        /* PART 1: String Collections e.g. for menus etc.*/
+        public const String NoTextHash = "none"; //Is used for everything where just 'no' overlay shall be used.
+
         public static List<dynamic> Charters()
         {
             return new List<dynamic>()
@@ -32,8 +33,6 @@
             };
         }
 
-        /* PART 2: SIMPLE STRINGS */
-        public const String NoTextHash = "none"; //Is used for everything where just 'no' overlay shall be used.
         /* Overlay Collections */
         public static class OverlayCollection
         {
