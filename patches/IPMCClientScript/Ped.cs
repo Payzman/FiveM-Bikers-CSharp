@@ -68,7 +68,7 @@
             this.UpdateDecorations();
         }
 
-        public Tuple<String,String> GetCharterFromIndex(int index)
+        public Tuple<string, string> GetCharterFromIndex(int index)
         {
             switch(index)
             {
@@ -87,7 +87,7 @@
             }
         }
 
-        public Tuple<String,String> GetTitleFromIndex(int index)
+        public Tuple<string, string> GetTitleFromIndex(int index)
         {
             switch(index)
             {
