@@ -1,8 +1,8 @@
 ﻿namespace Client
 {
-    using CitizenFX.Core.UI;
-    using CitizenFX.Core.Native;
     using System;
+    using CitizenFX.Core.Native;
+    using CitizenFX.Core.UI;
 
     public class Ped
     {
