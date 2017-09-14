@@ -10,7 +10,7 @@ namespace Client
     {
         private MenuPool pool;
         private UIMenu parent;
-        private UIMenu set_patches;
+        private UIMenu setPatches;
         private Ped ped;
 
         public PatchesMenu(MenuPool pool, UIMenu parent)
@@ -23,33 +23,33 @@ namespace Client
 
         private void AddSetPatchesMenu()
         {
-            set_patches = pool.AddSubMenu(parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
+            setPatches = pool.AddSubMenu(parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
 
             UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItem.Charter, Strings.charters, 1, Strings.MenuDescription.SetCharter);
-            set_patches.AddItem(set_patches2);
+            setPatches.AddItem(set_patches2);
 
             UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItem.Titles, Strings.titles, 1, Strings.MenuDescription.SetTitle);
-            set_patches.AddItem(bar_title);
+            setPatches.AddItem(bar_title);
 
             UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
-            set_patches.AddItem(boogeyman);
+            setPatches.AddItem(boogeyman);
 
             UIMenuCheckboxItem guardian = new UIMenuCheckboxItem("Guardian", false, "PVP Commendation Guardian");
-            set_patches.AddItem(guardian);
+            setPatches.AddItem(guardian);
 
             UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem("Mayhem", false, "PVP Commendation Mayhem");
-            set_patches.AddItem(mayhem);
+            setPatches.AddItem(mayhem);
 
             UIMenuCheckboxItem pow = new UIMenuCheckboxItem("Prisoner of War", false, "PVP Commendation Prisoner of War");
-            set_patches.AddItem(pow);
+            setPatches.AddItem(pow);
 
             UIMenuCheckboxItem valor = new UIMenuCheckboxItem("Valor", false, "PVP Commendation Valor");
-            set_patches.AddItem(valor);
+            setPatches.AddItem(valor);
 
-            set_patches.OnListChange += SetPatchHandler;
-            set_patches.OnCheckboxChange += CheckboxHandler;
+            setPatches.OnListChange += SetPatchHandler;
+            setPatches.OnCheckboxChange += CheckboxHandler;
 
-            set_patches.RefreshIndex();
+            setPatches.RefreshIndex();
         }
 
         private void CheckboxHandler(UIMenu sender, UIMenuCheckboxItem checkboxItem, bool Checked)
@@ -78,7 +78,7 @@ namespace Client
 
         public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            if (sender == set_patches)
+            if (sender == setPatches)
             {
                 if (selectedItem.Text == Strings.MenuItem.Charter)
                 {
