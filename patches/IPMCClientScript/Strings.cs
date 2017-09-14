@@ -76,13 +76,16 @@ namespace Client
             public const String Interaction = "";
         }
         /* Menu Descriptions */
-        public const String MenuDescriptionSetPatch         = "Options to change what patches and badges you wear";
-        public const String MenuDescriptionSetCharter       = "Set your charter";
-        public const String MenuDescriptionRecording        = "Recording options for rockstar editor";
-        public const String MenuDescriptionStartRecording   = "Start recording";
-        public const String MenuDescriptionStopRecording    = "Stop recording and save it";
-        public const String MenuDescriptionDiscardRecording = "Stop recording and discard it";
-        public const String MenuDescriptionSetTitle         = "Set your title";
+        public static class MenuDescription
+        {
+            public const String SetPatch = "Options to change what patches and badges you wear";
+            public const String SetCharter = "Set your charter";
+            public const String Recording = "Recording options for rockstar editor";
+            public const String StartRecording = "Start recording";
+            public const String StopRecording = "Stop recording and save it";
+            public const String DiscardRecording = "Stop recording and discard it";
+            public const String SetTitle = "Set your title";
+        }
         /* Notifications */
         public const String NotificationLeaveSession = "You left the session!";
         public const String NotificationSaveClip     = "Your recorded clip was saved.";
