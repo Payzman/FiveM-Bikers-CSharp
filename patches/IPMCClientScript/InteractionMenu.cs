@@ -5,9 +5,9 @@ using CitizenFX.Core.Native;
 
 namespace Client
 {
-    class InteractionMenu
+    public class InteractionMenu
     {
-        Player player;
+        private Player player;
         private MenuPool menus;
         private UIMenu interaction_menu;
 
