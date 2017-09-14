@@ -31,9 +31,8 @@
             interactionMenu.Visible = !interactionMenu.Visible;
         }
 
-        public void ItemHandler(UIMenu sender, 
-                                UIMenuItem selectedItem, 
-                                int index)
+        public void ItemHandler(
+            UIMenu sender, UIMenuItem selectedItem, int index)
         {
             switch(selectedItem.Text)
             {
@@ -63,8 +62,9 @@
 
         private void AddInteractionMenu()
         {
-            interactionMenu = new UIMenu(Strings.MenuTitle.Interaction,
-                                          Strings.MenuSubtitle.Interaction);
+            interactionMenu = new UIMenu(
+                Strings.MenuTitle.Interaction, 
+                Strings.MenuSubtitle.Interaction);
             menus.Add(interactionMenu);
             AddInteractionMenuItems();
 
@@ -73,8 +73,8 @@
 
         private void AddInteractionMenuItems()
         {
-            PatchesMenu patches_menu = new PatchesMenu(menus,
-                                                       interactionMenu);
+            PatchesMenu patches_menu = new PatchesMenu(
+                menus, interactionMenu);
 
             // default clothes menu is just for WIP
             UIMenuItem default_clothes =
