@@ -49,14 +49,14 @@ namespace Client
         {
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, charter.Item1);
             Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, custom_overlay_hash, texture_hash);
-            Screen.ShowNotification(Strings.ChangeBottomRocker(charter.Item2));
+            Screen.ShowNotification(Strings.Notification.ChangeBottomRocker(charter.Item2));
         }
 
         private void SetTitleBarPatch()
         {
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, title.Item1);
             Function.Call(Hash._SET_PED_DECORATION, player_ped_hash, mp_biker_hash, texture_hash);
-            Screen.ShowNotification(Strings.ChangeTitle(title.Item2));
+            Screen.ShowNotification(Strings.Notification.ChangeTitle(title.Item2));
         }
 
         private void SetBoogeymanBarPatch()

@@ -92,16 +92,15 @@ namespace Client
             public const String LeaveSession = "You left the session!";
             public const String SaveClip = "Your recorded clip was saved.";
             public const String DiscardClip = "Your recorded clip was discarded.";
-        }
-        /* PART 2: COMPUND STRINGS */
-        /* Notifications */
-        public static String ChangeBottomRocker(String charter_name)
-        {
-            return "Changing bottom rocker to " + charter_name;
-        }
-        public static String ChangeTitle(String title_name)
-        {
-            return "Changing title bar patch to " + title_name;
+            /* Compund Strings */
+            public static String ChangeBottomRocker(String charter_name)
+            {
+                return "Changing bottom rocker to " + charter_name;
+            }
+            public static String ChangeTitle(String title_name)
+            {
+                return "Changing title bar patch to " + title_name;
+            }
         }
         /* PART 3: String Collections e.g. for menus etc.*/
         public static List<dynamic> charters = new List<dynamic>()
