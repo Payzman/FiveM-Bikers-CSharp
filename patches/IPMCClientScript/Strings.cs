@@ -114,24 +114,30 @@ namespace Client
         }
 
         /* PART 3: String Collections e.g. for menus etc.*/
-        public static List<dynamic> charters = new List<dynamic>()
+        public static List<dynamic> charters()
         {
-            CharterName.National,
-            CharterName.PaletoBay,
-            CharterName.Rancho,
-            CharterName.DelPerro,
-            CharterName.LaMesa,
-        };
+            return new List<dynamic>()
+            {
+                CharterName.National,
+                CharterName.PaletoBay,
+                CharterName.Rancho,
+                CharterName.DelPerro,
+                CharterName.LaMesa
+            };
+        }
 
-        public static List<dynamic> titles = new List<dynamic>()
+        public static List<dynamic> titles()
         {
-            Title.None,
-            Title.President,
-            Title.VicePresident,
-            Title.SeargentAtArms,
-            Title.RoadCaptain,
-            Title.Enforcer,
-            Title.Prospect,
-        };
+            return new List<dynamic>()
+            {
+                Title.None,
+                Title.President,
+                Title.VicePresident,
+                Title.SeargentAtArms,
+                Title.RoadCaptain,
+                Title.Enforcer,
+                Title.Prospect,
+            };
+        }
     }
 }
