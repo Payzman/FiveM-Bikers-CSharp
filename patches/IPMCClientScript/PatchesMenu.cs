@@ -13,77 +13,77 @@
         {
             this.pool = pool;
             this.parent = parent;
-            ped = new Ped();
-            AddSetPatchesMenu();
+            this.ped = new Ped();
+            this.AddSetPatchesMenu();
         }
 
         public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            if (sender == setPatches)
+            if (sender == this.setPatches)
             {
                 if (selectedItem.Text == Strings.MenuItem.Charter)
                 {
-                    ped.ApplyBottomRocker(index);
+                    this.ped.ApplyBottomRocker(index);
                 }
                 else if (selectedItem.Text == Strings.MenuItem.Titles)
                 {
-                    ped.ApplyTitleBarPatch(index);
+                    this.ped.ApplyTitleBarPatch(index);
                 }
             }
         }
 
         private void AddSetPatchesMenu()
         {
-            setPatches = pool.AddSubMenu(parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
+            this.setPatches = this.pool.AddSubMenu(this.parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
 
             UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItem.Charter, Strings.charters, 1, Strings.MenuDescription.SetCharter);
-            setPatches.AddItem(set_patches2);
+            this.setPatches.AddItem(set_patches2);
 
             UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItem.Titles, Strings.titles, 1, Strings.MenuDescription.SetTitle);
-            setPatches.AddItem(bar_title);
+            this.setPatches.AddItem(bar_title);
 
             UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
-            setPatches.AddItem(boogeyman);
+            this.setPatches.AddItem(boogeyman);
 
             UIMenuCheckboxItem guardian = new UIMenuCheckboxItem("Guardian", false, "PVP Commendation Guardian");
-            setPatches.AddItem(guardian);
+            this.setPatches.AddItem(guardian);
 
             UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem("Mayhem", false, "PVP Commendation Mayhem");
-            setPatches.AddItem(mayhem);
+            this.setPatches.AddItem(mayhem);
 
             UIMenuCheckboxItem pow = new UIMenuCheckboxItem("Prisoner of War", false, "PVP Commendation Prisoner of War");
-            setPatches.AddItem(pow);
+            this.setPatches.AddItem(pow);
 
             UIMenuCheckboxItem valor = new UIMenuCheckboxItem("Valor", false, "PVP Commendation Valor");
-            setPatches.AddItem(valor);
+            this.setPatches.AddItem(valor);
 
-            setPatches.OnListChange += SetPatchHandler;
-            setPatches.OnCheckboxChange += CheckboxHandler;
+            this.setPatches.OnListChange += this.SetPatchHandler;
+            this.setPatches.OnCheckboxChange += this.CheckboxHandler;
 
-            setPatches.RefreshIndex();
+            this.setPatches.RefreshIndex();
         }
 
         private void CheckboxHandler(UIMenu sender, UIMenuCheckboxItem checkboxItem, bool checkboxChecked)
         {
             if (checkboxItem.Text == "Boogeyman")
             {
-                ped.SetBoogeymanPatch(checkboxChecked);
+                this.ped.SetBoogeymanPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Guardian")
             {
-                ped.SetGuardianPatch(checkboxChecked);
+                this.ped.SetGuardianPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Mayhem")
             {
-                ped.SetMayhemPatch(checkboxChecked);
+                this.ped.SetMayhemPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Prisoner of War")
             {
-                ped.SetPowPatch(checkboxChecked);
+                this.ped.SetPowPatch(checkboxChecked);
             }
             else if (checkboxItem.Text == "Valor")
             {
-                ped.SetValorPatch(checkboxChecked);
+                this.ped.SetValorPatch(checkboxChecked);
             }
         }
     }
