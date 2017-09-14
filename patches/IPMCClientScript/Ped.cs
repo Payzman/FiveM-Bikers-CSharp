@@ -70,7 +70,7 @@
 
         public Tuple<string, string> GetCharterFromIndex(int index)
         {
-            switch(index)
+            switch (index)
             {
                 case 0:
                     return new Tuple<string, string>(Strings.BackpatchTextHash.National,  Strings.CharterName.National);
@@ -89,7 +89,7 @@
 
         public Tuple<string, string> GetTitleFromIndex(int index)
         {
-            switch(index)
+            switch (index)
             {
                 case 0:
                     return new Tuple<string, string>(Strings.NoTextHash, Strings.Title.None);
