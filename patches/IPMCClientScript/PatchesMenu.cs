@@ -25,7 +25,7 @@ namespace Client
         {
             // Add items for the interaction menu here:
             // Add the submenu "set patch"
-            set_patches = pool.AddSubMenu(parent, Strings.MenuTitlePatch, Strings.MenuDescriptionSetPatch);
+            set_patches = pool.AddSubMenu(parent, Strings.MenuTitle.Patch, Strings.MenuDescriptionSetPatch);
             // Set Patch on back
             UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItemCharter, Strings.charters, 1, Strings.MenuDescriptionSetCharter);
             set_patches.AddItem(set_patches2);

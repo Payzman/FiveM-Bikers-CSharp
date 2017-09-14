@@ -53,9 +53,12 @@ namespace Client
             public const String Enforcer = "Enforcer";
         }
         /* Menu Titles */
-        public const String MenuTitleInteraction = "Interaction Menu";
-        public const String MenuTitlePatch       = "Apply Patches";
-        public const String MenuTitleRecording   = "Recording Menu";
+        public static class MenuTitle
+        {
+            public const String Interaction = "Interaction Menu";
+            public const String Patch       = "Apply Patches";
+            public const String Recording   = "Recording Menu";
+        }
         /* Menu Items */
         public const String MenuItemCharter          = "Charter";
         public const String MenuItemDefaultClothes   = "Default Clothes";

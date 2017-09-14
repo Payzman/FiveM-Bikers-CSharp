@@ -20,7 +20,7 @@ namespace Client
 
         private void AddRecordingMenu()
         {
-            recording = pool.AddSubMenu(parent, Strings.MenuTitleRecording, Strings.MenuDescriptionRecording);
+            recording = pool.AddSubMenu(parent, Strings.MenuTitle.Recording, Strings.MenuDescriptionRecording);
             UIMenuItem start_recording = new UIMenuItem(Strings.MenuItemStartRecording, Strings.MenuDescriptionStartRecording);
             UIMenuItem stop_recording = new UIMenuItem(Strings.MenuItemStopRecording, Strings.MenuDescriptionStopRecording);
             UIMenuItem discard_recording = new UIMenuItem(Strings.MenuItemDiscardRecording, Strings.MenuDescriptionDiscardRecording);
