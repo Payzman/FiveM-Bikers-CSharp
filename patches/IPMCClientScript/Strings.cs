@@ -13,6 +13,7 @@ namespace Client
             public const String Custom   = "ipmc_overlays";
             public const String BikerDlc = "mpBiker_overlays";
         }
+
         /* Patch text hashes for males */
         public static class BackpatchTextHash
         {
@@ -22,6 +23,7 @@ namespace Client
             public const String DelPerro  = "ipmc_del_perro_M";
             public const String LaMesa    = "ipmc_la_mesa_M";
         }
+
         /* Text hashes for titles (bar patch) - taken from biker DLC*/
         public static class BarPatchTextHash
         {
@@ -32,6 +34,7 @@ namespace Client
             public const String Prospect      = "MP_Biker_Rank_004_M";
             public const String Enforcer      = "MP_Biker_Rank_015_M";
         }
+
         /* Charter Names */
         public static class CharterName
         {
@@ -41,6 +44,7 @@ namespace Client
             public const String DelPerro  = "Del Perro";
             public const String LaMesa    = "La Mesa";
         }
+
         /* Titles (Officers etc.) */
         public static class Title
         {
@@ -52,6 +56,7 @@ namespace Client
             public const String Prospect = "Prospect";
             public const String Enforcer = "Enforcer";
         }
+
         /* Menu Titles */
         public static class MenuTitle
         {
@@ -59,6 +64,7 @@ namespace Client
             public const String Patch       = "Apply Patches";
             public const String Recording   = "Recording Menu";
         }
+
         /* Menu Items */
         public static class MenuItem
         {
@@ -70,11 +76,13 @@ namespace Client
             public const String DiscardRecording = "Discard Recording";
             public const String Titles = "Title";
         }
+
         /* Menu Subtitles */
         public static class MenuSubtitle
         {
             public const String Interaction = "";
         }
+
         /* Menu Descriptions */
         public static class MenuDescription
         {
@@ -86,6 +94,7 @@ namespace Client
             public const String DiscardRecording = "Stop recording and discard it";
             public const String SetTitle = "Set your title";
         }
+
         /* Notifications */
         public static class Notification
         {
@@ -103,6 +112,7 @@ namespace Client
                 return "Changing title bar patch to " + title_name;
             }
         }
+
         /* PART 3: String Collections e.g. for menus etc.*/
         public static List<dynamic> charters = new List<dynamic>()
         {
