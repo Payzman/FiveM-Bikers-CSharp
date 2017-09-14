@@ -10,8 +10,7 @@ namespace Client
         Player player;
         private MenuPool menus;
         private UIMenu interaction_menu;
-        // Creates all the interactive menus and calls them.
-        // Constructor: Initialization
+
         public InteractionMenu(Player p)
         {
             // Create menu pool
