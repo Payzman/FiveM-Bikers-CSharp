@@ -12,7 +12,7 @@ namespace Client
         private string boogeyman;
         private int playerPedHash;
         private int customOverlayHash;
-        private int mpBikerHash;
+        private int bikerDlcHash;
         private bool guardian;
         private bool mayhem;
         private bool pow;
@@ -24,7 +24,7 @@ namespace Client
             title = new Tuple<string, string>("none", "none");
             boogeyman = "none";
             customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
-            mpBikerHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
+            bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
         }
 
         private void UpdateDecorations()
@@ -55,7 +55,7 @@ namespace Client
         private void SetTitleBarPatch()
         {
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, title.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, mpBikerHash, texture_hash);
+            Function.Call(Hash._SET_PED_DECORATION, playerPedHash, bikerDlcHash, texture_hash);
             Screen.ShowNotification(Strings.Notification.ChangeTitle(title.Item2));
         }
 
@@ -204,7 +204,7 @@ namespace Client
                 "Title = " + title.ToString() + "\n" +
                 "Player Ped Hash = " + playerPedHash.ToString() + "\n" +
                 "Custom Overlay Hash = " + customOverlayHash + "\n" +
-                "Biker DLC hash = " + mpBikerHash;
+                "Biker DLC hash = " + bikerDlcHash;
         }
     }
 }
