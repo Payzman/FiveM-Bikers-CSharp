@@ -14,7 +14,7 @@
         {
             this.pool = pool;
             this.parent = parent;
-            AddRecordingMenu();
+            this.AddRecordingMenu();
         }
 
         public void RecordingHandler(UIMenu sender, UIMenuItem selectedItem, int index)
@@ -37,14 +37,14 @@
 
         private void AddRecordingMenu()
         {
-            recording = pool.AddSubMenu(parent, Strings.MenuTitle.Recording, Strings.MenuDescription.Recording);
+            this.recording = this.pool.AddSubMenu(this.parent, Strings.MenuTitle.Recording, Strings.MenuDescription.Recording);
             UIMenuItem start_recording = new UIMenuItem(Strings.MenuItem.StartRecording, Strings.MenuDescription.StartRecording);
             UIMenuItem stop_recording = new UIMenuItem(Strings.MenuItem.StopRecording, Strings.MenuDescription.StopRecording);
             UIMenuItem discard_recording = new UIMenuItem(Strings.MenuItem.DiscardRecording, Strings.MenuDescription.DiscardRecording);
-            recording.AddItem(start_recording);
-            recording.AddItem(stop_recording);
-            recording.AddItem(discard_recording);
-            recording.OnItemSelect += RecordingHandler;
+            this.recording.AddItem(start_recording);
+            this.recording.AddItem(stop_recording);
+            this.recording.AddItem(discard_recording);
+            this.recording.OnItemSelect += this.RecordingHandler;
         }
     }
 }
