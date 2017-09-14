@@ -5,7 +5,7 @@
 
     public static class Strings
     {
-        public const string NoTextHash = "none"; //Is used for everything where just 'no' overlay shall be used.
+        public const string NoTextHash = "none"; // Is used for everything where just 'no' overlay shall be used.
 
         public static List<dynamic> Charters()
         {
