@@ -113,33 +113,33 @@ namespace Client
             UpdateDecorations();
         }
 
-        public void SetBoogeymanPatch(bool Checked)
+        public void SetBoogeymanPatch(bool checkboxChecked)
         {
-            boogeyman = GetBoogeymanFromIndex(Checked);
+            boogeyman = GetBoogeymanFromIndex(checkboxChecked);
             UpdateDecorations();
         }
 
-        public void SetGuardianPatch(bool Checked)
+        public void SetGuardianPatch(bool checkboxChecked)
         {
-            guardian = Checked;
+            guardian = checkboxChecked;
             UpdateDecorations();
         }
 
-        public void SetMayhemPatch(bool Checked)
+        public void SetMayhemPatch(bool checkboxChecked)
         {
-            mayhem = Checked;
+            mayhem = checkboxChecked;
             UpdateDecorations();
         }
 
-        public void SetPowPatch(bool Checked)
+        public void SetPowPatch(bool checkboxChecked)
         {
-            pow = Checked;
+            pow = checkboxChecked;
             UpdateDecorations();
         }
 
-        public void SetValorPatch(bool Checked)
+        public void SetValorPatch(bool checkboxChecked)
         {
-            valor = Checked;
+            valor = checkboxChecked;
             UpdateDecorations();
         }
 
@@ -185,9 +185,9 @@ namespace Client
             }
         }
 
-        public string GetBoogeymanFromIndex(bool Checked)
+        public string GetBoogeymanFromIndex(bool checkboxChecked)
         {
-            if (Checked)
+            if (checkboxChecked)
             {
                 return "boogeyman_M";
             }
