@@ -6,7 +6,7 @@ using System;
 
 namespace Client
 {
-    class PatchesMenu
+    public class PatchesMenu
     {
         private MenuPool pool;
         private UIMenu parent;
