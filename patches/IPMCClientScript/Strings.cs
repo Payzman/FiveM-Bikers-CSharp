@@ -114,7 +114,7 @@ namespace Client
         }
 
         /* PART 3: String Collections e.g. for menus etc.*/
-        public static List<dynamic> charters()
+        public static List<dynamic> Charters()
         {
             return new List<dynamic>()
             {
@@ -126,7 +126,7 @@ namespace Client
             };
         }
 
-        public static List<dynamic> titles()
+        public static List<dynamic> Titles()
         {
             return new List<dynamic>()
             {
