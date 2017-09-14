@@ -23,7 +23,8 @@ namespace Client
         private void AddInteractionMenu()
         {
             // Add additional menus here
-            interaction_menu = new UIMenu(Strings.MenuTitle.Interaction, Strings.MenuSubtitle.Interaction);
+            interaction_menu = new UIMenu(Strings.MenuTitle.Interaction, 
+                                          Strings.MenuSubtitle.Interaction);
             menus.Add(interaction_menu);
             AddInteractionMenuItems();
             // Refresh the interaction menu
@@ -32,14 +33,18 @@ namespace Client
 
         private void AddInteractionMenuItems()
         {
-            PatchesMenu patches_menu = new PatchesMenu(menus, interaction_menu);
+            PatchesMenu patches_menu = new PatchesMenu(menus, 
+                                                       interaction_menu);
             // default clothes menu is just for WIP
-            UIMenuItem default_clothes = new UIMenuItem(Strings.MenuItem.DefaultClothes);
+            UIMenuItem default_clothes = 
+                new UIMenuItem(Strings.MenuItem.DefaultClothes);
             interaction_menu.AddItem(default_clothes);
             // Recording submenu
-            RecordingMenu recording_menu = new RecordingMenu(menus, interaction_menu);
+            RecordingMenu recording_menu = 
+                new RecordingMenu(menus, interaction_menu);
             // Leave Session
-            UIMenuItem leave_session = new UIMenuItem(Strings.MenuItem.LeaveSession);
+            UIMenuItem leave_session = 
+                new UIMenuItem(Strings.MenuItem.LeaveSession);
             interaction_menu.AddItem(leave_session);
             // Define the interaction menu item handler
             interaction_menu.OnItemSelect += ItemHandler;
@@ -51,13 +56,16 @@ namespace Client
             menus.ProcessMenus();
         }
 
-        // TODO: A function which just does it for every menu will be created eventually
+        // TODO: A function which just does it for every menu will be created
+        // eventually
         public void ToggleInteractionMenu()
         {
             interaction_menu.Visible = !interaction_menu.Visible;
         }
 
-        public void ItemHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        public void ItemHandler(UIMenu sender, 
+                                UIMenuItem selectedItem, 
+                                int index)
         {
             switch(selectedItem.Text)
             {
