@@ -120,6 +120,7 @@
             public const string StopRecording = "Stop recording and save it";
             public const string DiscardRecording = "Stop recording and discard it";
             public const string SetTitle = "Set your title";
+            public const string Boogeyman = "PVP Commendation Boogeyman";
         }
 
         /* Notifications */
