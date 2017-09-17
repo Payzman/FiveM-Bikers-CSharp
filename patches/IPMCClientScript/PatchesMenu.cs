@@ -57,7 +57,7 @@
             this.setPatches.AddItem(bar_title);
 
             UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem(
-                "Boogeyman", 
+                Strings.MenuItem.Boogeyman, 
                 false, 
                 "PVP Commendation Boogeyman");
             this.setPatches.AddItem(boogeyman);

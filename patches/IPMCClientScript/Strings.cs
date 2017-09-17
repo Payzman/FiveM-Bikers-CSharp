@@ -101,6 +101,7 @@
             public const string StopRecording = "Stop Recording";
             public const string DiscardRecording = "Discard Recording";
             public const string Titles = "Title";
+            public const string Boogeyman = "Boogeyman";
         }
 
         /* Menu Subtitles */
