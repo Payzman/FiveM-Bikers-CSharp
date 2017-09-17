@@ -42,12 +42,12 @@
                 Strings.MenuTitle.Patch, 
                 Strings.MenuDescription.SetPatch);
 
-            UIMenuListItem set_patches2 = new UIMenuListItem(
+            UIMenuListItem backpatch = new UIMenuListItem(
                 Strings.MenuItem.Charter, 
                 Strings.Charters(), 
                 1, 
                 Strings.MenuDescription.SetCharter);
-            this.setPatches.AddItem(set_patches2);
+            this.setPatches.AddItem(backpatch);
 
             UIMenuListItem bar_title = new UIMenuListItem(
                 Strings.MenuItem.Titles, 
