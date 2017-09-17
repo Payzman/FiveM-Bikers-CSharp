@@ -17,7 +17,10 @@
             this.AddSetPatchesMenu();
         }
 
-        public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        public void SetPatchHandler(
+            UIMenu sender, 
+            UIMenuItem selectedItem, 
+            int index)
         {
             if (sender == this.setPatches)
             {
@@ -34,27 +37,53 @@
 
         private void AddSetPatchesMenu()
         {
-            this.setPatches = this.pool.AddSubMenu(this.parent, Strings.MenuTitle.Patch, Strings.MenuDescription.SetPatch);
+            this.setPatches = this.pool.AddSubMenu(
+                this.parent, 
+                Strings.MenuTitle.Patch, 
+                Strings.MenuDescription.SetPatch);
 
-            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItem.Charter, Strings.Charters(), 1, Strings.MenuDescription.SetCharter);
+            UIMenuListItem set_patches2 = new UIMenuListItem(
+                Strings.MenuItem.Charter, 
+                Strings.Charters(), 
+                1, 
+                Strings.MenuDescription.SetCharter);
             this.setPatches.AddItem(set_patches2);
 
-            UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItem.Titles, Strings.Titles(), 1, Strings.MenuDescription.SetTitle);
+            UIMenuListItem bar_title = new UIMenuListItem(
+                Strings.MenuItem.Titles, 
+                Strings.Titles(), 
+                1, 
+                Strings.MenuDescription.SetTitle);
             this.setPatches.AddItem(bar_title);
 
-            UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
+            UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem(
+                "Boogeyman", 
+                false, 
+                "PVP Commendation Boogeyman");
             this.setPatches.AddItem(boogeyman);
 
-            UIMenuCheckboxItem guardian = new UIMenuCheckboxItem("Guardian", false, "PVP Commendation Guardian");
+            UIMenuCheckboxItem guardian = new UIMenuCheckboxItem(
+                "Guardian", 
+                false, 
+                "PVP Commendation Guardian");
             this.setPatches.AddItem(guardian);
 
-            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem("Mayhem", false, "PVP Commendation Mayhem");
+            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem(
+                "Mayhem", 
+                false, 
+                "PVP Commendation Mayhem");
             this.setPatches.AddItem(mayhem);
 
-            UIMenuCheckboxItem pow = new UIMenuCheckboxItem("Prisoner of War", false, "PVP Commendation Prisoner of War");
+            UIMenuCheckboxItem pow = new UIMenuCheckboxItem(
+                "Prisoner of War", 
+                false, 
+                "PVP Commendation Prisoner of War");
             this.setPatches.AddItem(pow);
 
-            UIMenuCheckboxItem valor = new UIMenuCheckboxItem("Valor", false, "PVP Commendation Valor");
+            UIMenuCheckboxItem valor = new UIMenuCheckboxItem(
+                "Valor", 
+                false, 
+                "PVP Commendation Valor");
             this.setPatches.AddItem(valor);
 
             this.setPatches.OnListChange += this.SetPatchHandler;
@@ -63,7 +92,10 @@
             this.setPatches.RefreshIndex();
         }
 
-        private void CheckboxHandler(UIMenu sender, UIMenuCheckboxItem checkboxItem, bool checkboxChecked)
+        private void CheckboxHandler(
+            UIMenu sender, 
+            UIMenuCheckboxItem checkboxItem, 
+            bool checkboxChecked)
         {
             if (checkboxItem.Text == "Boogeyman")
             {
