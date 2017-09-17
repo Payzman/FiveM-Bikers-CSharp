@@ -102,6 +102,7 @@
             public const string DiscardRecording = "Discard Recording";
             public const string Titles = "Title";
             public const string Boogeyman = "Boogeyman";
+            public const string Guardian = "Guardian";
         }
 
         /* Menu Subtitles */
@@ -121,6 +122,7 @@
             public const string DiscardRecording = "Stop recording and discard it";
             public const string SetTitle = "Set your title";
             public const string Boogeyman = "PVP Commendation Boogeyman";
+            public const string Guardian = "PVP Commendation Guardian";
         }
 
         /* Notifications */
