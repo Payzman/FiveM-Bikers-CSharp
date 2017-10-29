@@ -11,11 +11,6 @@
         private int playerPedHash;
         private int customOverlayHash;
         private int bikerDlcHash;
-        public bool Guardian;
-        public bool Mayhem;
-        public bool Pow;
-        public bool Valor;
-        public bool Boogeyman;
 
         public Ped()
         {
@@ -23,6 +18,36 @@
             this.title = new Tuple<string, string>("none", "none");
             this.customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
             this.bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
+        }
+
+        public bool Guardian
+        {
+            get { return this.Guardian; }
+            set { this.Guardian = value; }
+        }
+
+        public bool Mayhem
+        {
+            get { return this.Mayhem; }
+            set { this.Mayhem = value; }
+        }
+
+        public bool Pow
+        {
+            get { return this.Mayhem; }
+            set { this.Mayhem = value; }
+        }
+
+        public bool Valor
+        {
+            get { return this.Mayhem; }
+            set { this.Mayhem = value; }
+        }
+
+        public bool Boogeyman
+        {
+            get { return this.Mayhem; }
+            set { this.Mayhem = value; }
         }
 
         public void ApplyBottomRocker(int index)

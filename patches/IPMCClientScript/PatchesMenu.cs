@@ -28,7 +28,7 @@
 
             this.setPatches.AddItem(MenuItems.BarTitle);
 
-            AddPvpCommendationPatches();
+            this.AddPvpCommendationPatches();
 
             this.setPatches.OnListChange += this.SetPatchHandler;
             this.setPatches.OnCheckboxChange += this.CheckboxHandler;
@@ -45,7 +45,7 @@
             this.setPatches.AddItem(MenuItems.Valor);
         }
 
-        public void SetPatchHandler(
+        private void SetPatchHandler(
             UIMenu sender,
             UIMenuItem selectedItem,
             int index)
@@ -61,6 +61,7 @@
                     this.ped.ApplyTitleBarPatch(index);
                 }
             }
+
             this.ped.UpdateDecorations();
         }
 
@@ -89,6 +90,7 @@
                 default:
                     break;
             }
+
             this.ped.UpdateDecorations();
         }
     }
