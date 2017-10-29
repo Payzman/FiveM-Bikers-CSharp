@@ -4,9 +4,9 @@
 
     public class Patch
     {
+        public bool Active { get; set; }
         private int CollectionHash;
         private int NameHash;
-        public bool Active { get; set; }
 
         public Patch(int collection, string name)
         {
