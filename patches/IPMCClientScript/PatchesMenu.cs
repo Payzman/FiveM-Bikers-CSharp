@@ -69,21 +69,21 @@
             this.setPatches.AddItem(guardian);
 
             UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem(
-                "Mayhem", 
+                Strings.MenuItem.Mayhem, 
                 false, 
-                "PVP Commendation Mayhem");
+                Strings.MenuDescription.Mayhem);
             this.setPatches.AddItem(mayhem);
 
             UIMenuCheckboxItem pow = new UIMenuCheckboxItem(
-                "Prisoner of War", 
+                Strings.MenuItem.Pow, 
                 false, 
-                "PVP Commendation Prisoner of War");
+                Strings.MenuDescription.Pow);
             this.setPatches.AddItem(pow);
 
             UIMenuCheckboxItem valor = new UIMenuCheckboxItem(
-                "Valor", 
+                Strings.MenuItem.Valor, 
                 false, 
-                "PVP Commendation Valor");
+                Strings.MenuDescription.Valor);
             this.setPatches.AddItem(valor);
 
             this.setPatches.OnListChange += this.SetPatchHandler;

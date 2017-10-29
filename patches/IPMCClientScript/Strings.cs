@@ -103,6 +103,9 @@
             public const string Titles = "Title";
             public const string Boogeyman = "Boogeyman";
             public const string Guardian = "Guardian";
+            public const string Mayhem = "Mayhem";
+            public const string Pow = "Prisoner of War";
+            public const string Valor = "Valor";
         }
 
         /* Menu Subtitles */
@@ -123,6 +126,9 @@
             public const string SetTitle = "Set your title";
             public const string Boogeyman = "PVP Commendation Boogeyman";
             public const string Guardian = "PVP Commendation Guardian";
+            public const string Mayhem = "PVP Commendation Mayhem";
+            public const string Pow = "PVP Commendation Prisoner of War";
+            public const string Valor = "PVP Commendation Valor";
         }
 
         /* Notifications */
