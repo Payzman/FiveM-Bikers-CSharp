@@ -46,6 +46,8 @@
 
             this.setPatches.AddItem(MenuItems.BarTitle);
 
+            AddPvpCommendationPatches();
+
             this.setPatches.OnListChange += this.SetPatchHandler;
             this.setPatches.OnCheckboxChange += this.CheckboxHandler;
 
@@ -66,25 +68,25 @@
             UIMenuCheckboxItem checkboxItem, 
             bool checkboxChecked)
         {
-            if (checkboxItem.Text == "Boogeyman")
+            switch (checkboxItem.Text)
             {
-                this.ped.SetBoogeymanPatch(checkboxChecked);
-            }
-            else if (checkboxItem.Text == "Guardian")
-            {
-                this.ped.SetGuardianPatch(checkboxChecked);
-            }
-            else if (checkboxItem.Text == "Mayhem")
-            {
-                this.ped.SetMayhemPatch(checkboxChecked);
-            }
-            else if (checkboxItem.Text == "Prisoner of War")
-            {
-                this.ped.SetPowPatch(checkboxChecked);
-            }
-            else if (checkboxItem.Text == "Valor")
-            {
-                this.ped.SetValorPatch(checkboxChecked);
+                case Strings.MenuItem.Boogeyman:
+                    this.ped.SetBoogeymanPatch(checkboxChecked);
+                    break;
+                case Strings.MenuItem.Guardian:
+                    this.ped.SetGuardianPatch(checkboxChecked);
+                    break;
+                case Strings.MenuItem.Mayhem:
+                    this.ped.SetMayhemPatch(checkboxChecked);
+                    break;
+                case Strings.MenuItem.Pow:
+                    this.ped.SetPowPatch(checkboxChecked);
+                    break;
+                case Strings.MenuItem.Valor:
+                    this.ped.SetValorPatch(checkboxChecked);
+                    break;
+                default:
+                    break;
             }
         }
     }
