@@ -44,8 +44,8 @@
         public static class BackpatchTextHash
         {
             public const string National  = "ipmc_national_M";
-            public const string PaletoBay = "impc_paleto_bay_M";
-            public const string Rancho    = "ipmc_ranco_M";
+            public const string PaletoBay = "ipmc_paleto_bay_M";
+            public const string Rancho    = "ipmc_rancho_M";
             public const string DelPerro  = "ipmc_del_perro_M";
             public const string LaMesa    = "ipmc_la_mesa_M";
         }
