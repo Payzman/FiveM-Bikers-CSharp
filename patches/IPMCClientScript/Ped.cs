@@ -104,18 +104,6 @@
             }
         }
 
-        public string GetBoogeymanFromIndex(bool checkboxChecked)
-        {
-            if (checkboxChecked)
-            {
-                return "boogeyman_M";
-            }
-            else
-            {
-                return "none";
-            }
-        }
-
         public override string ToString()
         {
             return "Ped Instance \n" +
