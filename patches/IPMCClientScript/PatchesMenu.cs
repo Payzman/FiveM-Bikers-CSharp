@@ -73,7 +73,7 @@
             switch (checkboxItem.Text)
             {
                 case Strings.MenuItem.Boogeyman:
-                    this.ped.Boogeyman = checkboxChecked;
+                    ped.Boogeyman.active = checkboxChecked;
                     break;
                 case Strings.MenuItem.Guardian:
                     this.ped.Guardian = checkboxChecked;

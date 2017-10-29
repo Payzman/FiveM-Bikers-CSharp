@@ -12,7 +12,7 @@
         private int customOverlayHash;
         private int bikerDlcHash;
 
-        private Patch Boogeyman;
+        public Patch Boogeyman;
 
         public Ped()
         {

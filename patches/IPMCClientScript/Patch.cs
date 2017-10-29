@@ -2,7 +2,7 @@
 {
     using CitizenFX.Core.Native;
 
-    class Patch
+    public class Patch
     {
         private int collection_hash;
         private int name_hash;
