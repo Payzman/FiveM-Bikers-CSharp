@@ -17,24 +17,6 @@
             this.AddSetPatchesMenu();
         }
 
-        public void SetPatchHandler(
-            UIMenu sender, 
-            UIMenuItem selectedItem, 
-            int index)
-        {
-            if (sender == this.setPatches)
-            {
-                if (selectedItem.Text == Strings.MenuItem.Charter)
-                {
-                    this.ped.ApplyBottomRocker(index);
-                }
-                else if (selectedItem.Text == Strings.MenuItem.Titles)
-                {
-                    this.ped.ApplyTitleBarPatch(index);
-                }
-            }
-        }
-
         private void AddSetPatchesMenu()
         {
             this.setPatches = this.pool.AddSubMenu(
@@ -63,6 +45,25 @@
             this.setPatches.AddItem(MenuItems.Valor);
         }
 
+        public void SetPatchHandler(
+            UIMenu sender,
+            UIMenuItem selectedItem,
+            int index)
+        {
+            if (sender == this.setPatches)
+            {
+                if (selectedItem.Text == Strings.MenuItem.Charter)
+                {
+                    this.ped.ApplyBottomRocker(index);
+                }
+                else if (selectedItem.Text == Strings.MenuItem.Titles)
+                {
+                    this.ped.ApplyTitleBarPatch(index);
+                }
+            }
+            this.ped.UpdateDecorations();
+        }
+
         private void CheckboxHandler(
             UIMenu sender, 
             UIMenuCheckboxItem checkboxItem, 
@@ -71,23 +72,24 @@
             switch (checkboxItem.Text)
             {
                 case Strings.MenuItem.Boogeyman:
-                    this.ped.SetBoogeymanPatch(checkboxChecked);
+                    this.ped.Boogeyman = checkboxChecked;
                     break;
                 case Strings.MenuItem.Guardian:
-                    this.ped.SetGuardianPatch(checkboxChecked);
+                    this.ped.Guardian = checkboxChecked;
                     break;
                 case Strings.MenuItem.Mayhem:
-                    this.ped.SetMayhemPatch(checkboxChecked);
+                    this.ped.Mayhem = checkboxChecked;
                     break;
                 case Strings.MenuItem.Pow:
-                    this.ped.SetPowPatch(checkboxChecked);
+                    this.ped.Pow = checkboxChecked;
                     break;
                 case Strings.MenuItem.Valor:
-                    this.ped.SetValorPatch(checkboxChecked);
+                    this.ped.Valor = checkboxChecked;
                     break;
                 default:
                     break;
             }
+            this.ped.UpdateDecorations();
         }
     }
 }

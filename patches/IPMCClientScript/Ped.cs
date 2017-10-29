@@ -8,20 +8,19 @@
     {
         private Tuple<string, string> charter;
         private Tuple<string, string> title;
-        private string boogeyman;
         private int playerPedHash;
         private int customOverlayHash;
         private int bikerDlcHash;
-        private bool guardian;
-        private bool mayhem;
-        private bool pow;
-        private bool valor;
+        public bool Guardian;
+        public bool Mayhem;
+        public bool Pow;
+        public bool Valor;
+        public bool Boogeyman;
 
         public Ped()
         {
             this.charter = new Tuple<string, string>("none", "none");
             this.title = new Tuple<string, string>("none", "none");
-            this.boogeyman = "none";
             this.customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
             this.bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
         }
@@ -35,36 +34,6 @@
         public void ApplyTitleBarPatch(int index)
         {
             this.title = this.GetTitleFromIndex(index);
-            this.UpdateDecorations();
-        }
-
-        public void SetBoogeymanPatch(bool checkboxChecked)
-        {
-            this.boogeyman = this.GetBoogeymanFromIndex(checkboxChecked);
-            this.UpdateDecorations();
-        }
-
-        public void SetGuardianPatch(bool checkboxChecked)
-        {
-            this.guardian = checkboxChecked;
-            this.UpdateDecorations();
-        }
-
-        public void SetMayhemPatch(bool checkboxChecked)
-        {
-            this.mayhem = checkboxChecked;
-            this.UpdateDecorations();
-        }
-
-        public void SetPowPatch(bool checkboxChecked)
-        {
-            this.pow = checkboxChecked;
-            this.UpdateDecorations();
-        }
-
-        public void SetValorPatch(bool checkboxChecked)
-        {
-            this.valor = checkboxChecked;
             this.UpdateDecorations();
         }
 
@@ -132,7 +101,7 @@
                 "Biker DLC hash = " + this.bikerDlcHash;
         }
 
-        private void UpdateDecorations()
+        public void UpdateDecorations()
         {
             /* You cannot enable or disable single decorations. The only way
              * is to disable all decorations and reenable all decorations you
@@ -169,13 +138,16 @@
 
         private void SetBoogeymanBarPatch()
         {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, this.boogeyman);
-            Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
+            if (this.Boogeyman == true)
+            {
+                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "boogeyman_M");
+                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
+            }
         }
 
         private void ApplyGuardianBarPatch()
         {
-            if (this.guardian == true)
+            if (this.Guardian == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "guardian_M");
                 Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
@@ -184,7 +156,7 @@
 
         private void ApplyMayhemBarPatch()
         {
-            if (this.mayhem == true)
+            if (this.Mayhem == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "mayhem_M");
                 Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
@@ -193,7 +165,7 @@
 
         private void ApplyPowBarPatch()
         {
-            if (this.pow == true)
+            if (this.Pow == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
                 Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
@@ -202,7 +174,7 @@
 
         private void ApplyValorBarPatch()
         {
-            if (this.valor == true)
+            if (this.Valor == true)
             {
                 int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "valor_M");
                 Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
