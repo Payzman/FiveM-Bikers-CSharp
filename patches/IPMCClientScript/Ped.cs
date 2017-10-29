@@ -135,7 +135,7 @@
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
-            this.SetBoogeymanBarPatch();
+            this.ApplyBoogeymanBarPatch();
             this.ApplyGuardianBarPatch();
             this.ApplyMayhemBarPatch();
             this.ApplyPowBarPatch();
@@ -161,7 +161,7 @@
             Screen.ShowNotification(Strings.Notification.ChangeTitle(this.title.Item2));
         }
 
-        private void SetBoogeymanBarPatch()
+        private void ApplyBoogeymanBarPatch()
         {
             if (this.Boogeyman == true)
             {
