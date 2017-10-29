@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InteractionMenu.cs" />
+    <Compile Include="MenuItems.cs" />
     <Compile Include="PatchesMenu.cs" />
     <Compile Include="Ped.cs" />
     <Compile Include="ClientScript.cs" />
