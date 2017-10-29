@@ -12,21 +12,16 @@
         private int customOverlayHash;
         private int bikerDlcHash;
 
-        public Patch Boogeyman;
-
         public Ped()
         {
             this.charter = new Tuple<string, string>("none", "none");
             this.title = new Tuple<string, string>("none", "none");
             this.customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
             this.bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
-            InitPatches();
+            this.InitPatches();
         }
 
-        private void InitPatches()
-        {
-            this.Boogeyman = new Patch(this.customOverlayHash, "boogeyman_M");
-        }
+        public Patch Boogeyman { get; set; }
 
         public bool Guardian
         {
@@ -125,11 +120,16 @@
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
-            Boogeyman.Apply(this.playerPedHash);
+            this.Boogeyman.Apply(this.playerPedHash);
             this.ApplyGuardianBarPatch();
             this.ApplyMayhemBarPatch();
             this.ApplyPowBarPatch();
             this.ApplyValorBarPatch();
+        }
+
+        private void InitPatches()
+        {
+            this.Boogeyman = new Patch(this.customOverlayHash, "boogeyman_M");
         }
 
         private void ClearDecorations()

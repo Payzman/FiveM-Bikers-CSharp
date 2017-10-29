@@ -4,21 +4,22 @@
 
     public class Patch
     {
-        public bool Active { get; set; }
-        private int CollectionHash;
-        private int NameHash;
+        private int collectionHash;
+        private int nameHash;
 
         public Patch(int collection, string name)
         {
-            this.CollectionHash = collection;
-            this.NameHash = Function.Call<int>(Hash.GET_HASH_KEY, name);
+            this.collectionHash = collection;
+            this.nameHash = Function.Call<int>(Hash.GET_HASH_KEY, name);
         }
+
+        public bool Active { get; set; }
 
         public void Apply(int ped_hash)
         {
-            if(this.Active)
+            if (this.Active)
             {
-                Function.Call(Hash._SET_PED_DECORATION, ped_hash, CollectionHash, NameHash);
+                Function.Call(Hash._SET_PED_DECORATION, ped_hash, this.collectionHash, this.nameHash);
             }
         }
     }
