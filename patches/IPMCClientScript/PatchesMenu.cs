@@ -56,40 +56,35 @@
                 Strings.MenuDescription.SetTitle);
             this.setPatches.AddItem(bar_title);
 
-            UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem(
-                Strings.MenuItem.Boogeyman, 
-                false, 
-                Strings.MenuDescription.Boogeyman);
-            this.setPatches.AddItem(boogeyman);
-
-            UIMenuCheckboxItem guardian = new UIMenuCheckboxItem(
-                Strings.MenuItem.Guardian, 
-                false, 
-                Strings.MenuDescription.Guardian);
-            this.setPatches.AddItem(guardian);
-
-            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem(
-                Strings.MenuItem.Mayhem, 
-                false, 
-                Strings.MenuDescription.Mayhem);
-            this.setPatches.AddItem(mayhem);
-
-            UIMenuCheckboxItem pow = new UIMenuCheckboxItem(
-                Strings.MenuItem.Pow, 
-                false, 
-                Strings.MenuDescription.Pow);
-            this.setPatches.AddItem(pow);
-
-            UIMenuCheckboxItem valor = new UIMenuCheckboxItem(
-                Strings.MenuItem.Valor, 
-                false, 
-                Strings.MenuDescription.Valor);
-            this.setPatches.AddItem(valor);
-
             this.setPatches.OnListChange += this.SetPatchHandler;
             this.setPatches.OnCheckboxChange += this.CheckboxHandler;
 
             this.setPatches.RefreshIndex();
+        }
+
+        private void AddPvpCommendationPatches()
+        {
+            UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem( 
+                Strings.MenuItem.Boogeyman, false, 
+                Strings.MenuDescription.Boogeyman);
+            UIMenuCheckboxItem guardian = new UIMenuCheckboxItem(
+                Strings.MenuItem.Guardian, false,
+                Strings.MenuDescription.Guardian);
+            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem(
+                Strings.MenuItem.Mayhem, false,
+                Strings.MenuDescription.Mayhem);
+            UIMenuCheckboxItem pow = new UIMenuCheckboxItem(
+                Strings.MenuItem.Pow, false,
+                Strings.MenuDescription.Pow);
+            UIMenuCheckboxItem valor = new UIMenuCheckboxItem(
+                Strings.MenuItem.Valor, false,
+                Strings.MenuDescription.Valor);
+
+            this.setPatches.AddItem(pow);
+            this.setPatches.AddItem(mayhem);
+            this.setPatches.AddItem(guardian);
+            this.setPatches.AddItem(boogeyman);
+            this.setPatches.AddItem(valor);
         }
 
         private void CheckboxHandler(
