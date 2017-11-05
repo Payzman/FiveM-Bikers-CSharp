@@ -23,29 +23,13 @@
 
         public Patch Boogeyman { get; set; }
 
-        public bool Guardian
-        {
-            get { return this.Guardian; }
-            set { this.Guardian = value; }
-        }
+        public bool Guardian { get; set; }
 
-        public bool Mayhem
-        {
-            get { return this.Mayhem; }
-            set { this.Mayhem = value; }
-        }
+        public bool Mayhem { get; set; }
 
-        public bool Pow
-        {
-            get { return this.Pow; }
-            set { this.Pow = value; }
-        }
+        public bool Pow { get; set; }
 
-        public bool Valor
-        {
-            get { return this.Valor; }
-            set { this.Valor = value; }
-        }
+        public bool Valor { get; set; }
 
         public void ApplyBottomRocker(int index)
         {
@@ -116,6 +100,7 @@
             /* You cannot enable or disable single decorations. The only way
              * is to disable all decorations and reenable all decorations you
              * want on the PC */
+            /*
             this.playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
             this.ClearDecorations();
             this.SetBottomRocker();
@@ -125,6 +110,7 @@
             this.ApplyMayhemBarPatch();
             this.ApplyPowBarPatch();
             this.ApplyValorBarPatch();
+            */
         }
 
         private void InitPatches()

@@ -1,5 +1,7 @@
 ﻿namespace Client
 {
+    using CitizenFX;
+    using CitizenFX.Core;
     using NativeUI;
 
     public class PatchesMenu
@@ -107,6 +109,11 @@
             UIMenuCheckboxItem checkboxItem, 
             bool checkboxChecked)
         {
+            Debug.WriteLine("Entering Checkboxhandler with...");
+            Debug.WriteLine("\t sender = " + sender.ToString());
+            Debug.WriteLine("\t checkboxItem = " + checkboxItem.Text);
+            Debug.WriteLine("\t checkboxChecked = " + checkboxChecked.ToString());
+            Debug.WriteLine("\t Current Ped instance = " + ped.ToString());
             switch (checkboxItem.Text)
             {
                 case Strings.MenuItem.Boogeyman:
@@ -127,6 +134,7 @@
                 default:
                     break;
             }
+            
 
             this.ped.UpdateDecorations();
         }
