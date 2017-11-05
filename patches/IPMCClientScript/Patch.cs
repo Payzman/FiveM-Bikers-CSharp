@@ -1,5 +1,6 @@
 ﻿namespace Client
 {
+    using CitizenFX.Core;
     using CitizenFX.Core.Native;
 
     public class Patch

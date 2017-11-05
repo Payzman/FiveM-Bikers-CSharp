@@ -2,9 +2,9 @@
 {
     using NativeUI;
 
-    public static class MenuItems
+    public class MenuItems
     {
-        public static UIMenuListItem Backpatch
+        public UIMenuListItem Backpatch
         {
             get
             {
