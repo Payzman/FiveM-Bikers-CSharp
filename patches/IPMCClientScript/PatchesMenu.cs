@@ -78,16 +78,16 @@
                     this.ped.Boogeyman.Active = checkboxChecked;
                     break;
                 case Strings.MenuItem.Guardian:
-                    this.ped.Guardian = checkboxChecked;
+                    this.ped.Guardian.Active = checkboxChecked;
                     break;
                 case Strings.MenuItem.Mayhem:
-                    this.ped.Mayhem = checkboxChecked;
+                    this.ped.Mayhem.Active = checkboxChecked;
                     break;
                 case Strings.MenuItem.Pow:
-                    this.ped.Pow = checkboxChecked;
+                    this.ped.Pow.Active = checkboxChecked;
                     break;
                 case Strings.MenuItem.Valor:
-                    this.ped.Valor = checkboxChecked;
+                    this.ped.Valor.Active = checkboxChecked;
                     break;
                 default:
                     break;

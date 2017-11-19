@@ -16,8 +16,8 @@
 
         public bool Active { get; set; }
 
-        public void Apply(int ped_hash)
-        {
+        public void Update(int ped_hash)
+        { /* You can only delete all decorations and reset them */
             if (this.Active)
             {
                 Function.Call(Hash._SET_PED_DECORATION, ped_hash, this.collectionHash, this.nameHash);

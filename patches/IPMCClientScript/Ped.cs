@@ -23,13 +23,13 @@
 
         public Patch Boogeyman { get; set; }
 
-        public bool Guardian { get; set; }
+        public Patch Guardian { get; set; }
 
-        public bool Mayhem { get; set; }
+        public Patch Mayhem { get; set; }
 
-        public bool Pow { get; set; }
+        public Patch Pow { get; set; }
 
-        public bool Valor { get; set; }
+        public Patch Valor { get; set; }
 
         public void ApplyBottomRocker(int index)
         {
@@ -105,16 +105,20 @@
             this.ClearDecorations();
             this.SetBottomRocker();
             this.SetTitleBarPatch();
-            this.Boogeyman.Apply(this.playerPedHash);
-            this.ApplyGuardianBarPatch();
-            this.ApplyMayhemBarPatch();
-            this.ApplyPowBarPatch();
-            this.ApplyValorBarPatch();
+            this.Boogeyman.Update(this.playerPedHash);
+            this.Guardian.Update(this.playerPedHash);
+            this.Mayhem.Update(this.playerPedHash);
+            this.Pow.Update(this.playerPedHash);
+            this.Valor.Update(this.playerPedHash);
         }
 
         private void InitPatches()
         {
             this.Boogeyman = new Patch(this.customOverlayHash, "boogeyman_M");
+            this.Guardian = new Patch(this.customOverlayHash, "guardian_M");
+            this.Mayhem = new Patch(this.customOverlayHash, "mayhem_M");
+            this.Pow = new Patch(this.customOverlayHash, "pow_M");
+            this.Valor = new Patch(this.customOverlayHash, "valor_M");
         }
 
         private void ClearDecorations()
@@ -134,42 +138,6 @@
             int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, this.title.Item1);
             Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.bikerDlcHash, texture_hash);
             Screen.ShowNotification(Strings.Notification.ChangeTitle(this.title.Item2));
-        }
-
-        private void ApplyGuardianBarPatch()
-        {
-            if (this.Guardian == true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "guardian_M");
-                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
-            }
-        }
-
-        private void ApplyMayhemBarPatch()
-        {
-            if (this.Mayhem == true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "mayhem_M");
-                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
-            }
-        }
-
-        private void ApplyPowBarPatch()
-        {
-            if (this.Pow == true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "pow_M");
-                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
-            }
-        }
-
-        private void ApplyValorBarPatch()
-        {
-            if (this.Valor == true)
-            {
-                int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, "valor_M");
-                Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
-            }
         }
     }
 }
