@@ -26,21 +26,9 @@
                 Strings.MenuTitle.Patch, 
                 Strings.MenuDescription.SetPatch);
 
-            UIMenuListItem backpatch = new UIMenuListItem(
-                    Strings.MenuItem.Charter,
-                    Strings.Charters(),
-                    1,
-                    Strings.MenuDescription.SetCharter);
-
             this.setPatches.AddItem(MenuItems.Backpatch);
 
-            UIMenuListItem bartitle = new UIMenuListItem(
-                    Strings.MenuItem.Titles,
-                    Strings.Titles(),
-                    1,
-                    Strings.MenuDescription.SetTitle);
-
-            this.setPatches.AddItem(bartitle);
+            this.setPatches.AddItem(MenuItems.BarTitle);
 
             this.AddPvpCommendationPatches();
 
@@ -52,36 +40,11 @@
 
         private void AddPvpCommendationPatches()
         {
-            UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem(
-                    Strings.MenuItem.Boogeyman,
-                    false,
-                    Strings.MenuDescription.Boogeyman);
-
-            UIMenuCheckboxItem guardian = new UIMenuCheckboxItem(
-                    Strings.MenuItem.Guardian,
-                    false,
-                    Strings.MenuDescription.Guardian);
-
-            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem(
-                    Strings.MenuItem.Mayhem,
-                    false,
-                    Strings.MenuDescription.Mayhem);
-
-            UIMenuCheckboxItem pow = new UIMenuCheckboxItem(
-                    Strings.MenuItem.Pow,
-                    false,
-                    Strings.MenuDescription.Pow);
-
-            UIMenuCheckboxItem valor = new UIMenuCheckboxItem(
-                    Strings.MenuItem.Valor,
-                    false,
-                    Strings.MenuDescription.Valor);
-
-            this.setPatches.AddItem(pow);
-            this.setPatches.AddItem(mayhem);
-            this.setPatches.AddItem(guardian);
-            this.setPatches.AddItem(boogeyman);
-            this.setPatches.AddItem(valor);
+            this.setPatches.AddItem(MenuItems.Pow);
+            this.setPatches.AddItem(MenuItems.Mayhem);
+            this.setPatches.AddItem(MenuItems.Guardian);
+            this.setPatches.AddItem(MenuItems.Boogeyman);
+            this.setPatches.AddItem(MenuItems.Valor);
         }
 
         private void SetPatchHandler(
