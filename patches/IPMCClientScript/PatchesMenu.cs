@@ -32,7 +32,7 @@
                     1,
                     Strings.MenuDescription.SetCharter);
 
-            this.setPatches.AddItem(backpatch);
+            this.setPatches.AddItem(MenuItems.Backpatch);
 
             UIMenuListItem bartitle = new UIMenuListItem(
                     Strings.MenuItem.Titles,
@@ -130,7 +130,6 @@
                     break;
             }
             
-
             this.ped.UpdateDecorations();
         }
     }

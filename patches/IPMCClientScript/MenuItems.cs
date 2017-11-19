@@ -2,9 +2,12 @@
 {
     using NativeUI;
 
-    public class MenuItems
+    public static class MenuItems
     {
-        public UIMenuListItem Backpatch
+        /* At a later stage this class will be used to dynamically populate
+         * some of the menu options (hopefully). For now this is used in a
+         * hard-coded way.*/
+        public static UIMenuListItem Backpatch
         {
             get
             {
