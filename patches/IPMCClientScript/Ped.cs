@@ -3,10 +3,10 @@
     using System;
     using CitizenFX.Core.Native;
     using CitizenFX.Core.UI;
+    using System.Collections.Generic;
 
     public class Ped
     {
-        private Tuple<string, string> charter;
         private Tuple<string, string> title;
         private int playerPedHash;
         private int customOverlayHash;
@@ -14,7 +14,6 @@
 
         public Ped()
         {
-            this.charter = new Tuple<string, string>("none", "none");
             this.title = new Tuple<string, string>("none", "none");
             this.customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
             this.bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
@@ -22,44 +21,17 @@
         }
 
         public Patch Boogeyman { get; set; }
-
         public Patch Guardian { get; set; }
-
         public Patch Mayhem { get; set; }
-
         public Patch Pow { get; set; }
-
         public Patch Valor { get; set; }
 
-        public void ApplyBottomRocker(int index)
-        {
-            this.charter = this.GetCharterFromIndex(index);
-            this.UpdateDecorations();
-        }
+        public List<Patch> Backpatch { get; set; }
 
         public void ApplyTitleBarPatch(int index)
         {
             this.title = this.GetTitleFromIndex(index);
             this.UpdateDecorations();
-        }
-
-        public Tuple<string, string> GetCharterFromIndex(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.National,  Strings.CharterName.National);
-                case 1:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.PaletoBay, Strings.CharterName.PaletoBay);
-                case 2:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.Rancho,    Strings.CharterName.Rancho);
-                case 3:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.DelPerro,  Strings.CharterName.DelPerro);
-                case 4:
-                    return new Tuple<string, string>(Strings.BackpatchTextHash.LaMesa,    Strings.CharterName.LaMesa);
-                default:
-                    throw new Exception();
-            }
         }
 
         public Tuple<string, string> GetTitleFromIndex(int index)
@@ -85,16 +57,6 @@
             }
         }
 
-        public override string ToString()
-        {
-            return "Ped Instance \n" +
-                "Charter = " + this.charter.ToString() + "\n" +
-                "Title = " + this.title.ToString() + "\n" +
-                "Player Ped Hash = " + this.playerPedHash.ToString() + "\n" +
-                "Custom Overlay Hash = " + this.customOverlayHash + "\n" +
-                "Biker DLC hash = " + this.bikerDlcHash;
-        }
-
         public void UpdateDecorations()
         {
             /* You cannot enable or disable single decorations. The only way
@@ -103,7 +65,10 @@
             
             this.playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
             this.ClearDecorations();
-            this.SetBottomRocker();
+            foreach (Patch patch in this.Backpatch)
+            {
+                patch.Update(this.playerPedHash);
+            }
             this.SetTitleBarPatch();
             this.Boogeyman.Update(this.playerPedHash);
             this.Guardian.Update(this.playerPedHash);
@@ -119,18 +84,18 @@
             this.Mayhem = new Patch(this.customOverlayHash, "mayhem_M");
             this.Pow = new Patch(this.customOverlayHash, "pow_M");
             this.Valor = new Patch(this.customOverlayHash, "valor_M");
+            this.Backpatch = new List<Patch>();
+            Backpatch.Add(new Patch(this.customOverlayHash, "none"));
+            Backpatch.Add(new Patch(this.customOverlayHash, Strings.BackpatchTextHash.National));
+            Backpatch.Add(new Patch(this.customOverlayHash, Strings.BackpatchTextHash.PaletoBay));
+            Backpatch.Add(new Patch(this.customOverlayHash, Strings.BackpatchTextHash.Rancho));
+            Backpatch.Add(new Patch(this.customOverlayHash, Strings.BackpatchTextHash.DelPerro));
+            Backpatch.Add(new Patch(this.customOverlayHash, Strings.BackpatchTextHash.LaMesa));
         }
 
         private void ClearDecorations()
         {
             Function.Call(Hash.CLEAR_PED_DECORATIONS, this.playerPedHash);
-        }
-
-        private void SetBottomRocker()
-        {
-            int texture_hash = Function.Call<int>(Hash.GET_HASH_KEY, this.charter.Item1);
-            Function.Call(Hash._SET_PED_DECORATION, this.playerPedHash, this.customOverlayHash, texture_hash);
-            Screen.ShowNotification(Strings.Notification.ChangeBottomRocker(this.charter.Item2));
         }
 
         private void SetTitleBarPatch()

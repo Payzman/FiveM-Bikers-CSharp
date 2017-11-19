@@ -56,7 +56,17 @@
             {
                 if (selectedItem.Text == Strings.MenuItem.Charter)
                 {
-                    this.ped.ApplyBottomRocker(index);
+                    for (int i = 0; i < this.ped.Backpatch.Count; i++)
+                    {
+                        if (i == index)
+                        {
+                            this.ped.Backpatch[i].Active = true;
+                        }
+                        else
+                        {
+                            this.ped.Backpatch[i].Active = false;
+                        }
+                    }
                 }
                 else if (selectedItem.Text == Strings.MenuItem.Titles)
                 {
