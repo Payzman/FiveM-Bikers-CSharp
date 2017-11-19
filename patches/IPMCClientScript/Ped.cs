@@ -100,7 +100,7 @@
             /* You cannot enable or disable single decorations. The only way
              * is to disable all decorations and reenable all decorations you
              * want on the PC */
-            /*
+            
             this.playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
             this.ClearDecorations();
             this.SetBottomRocker();
@@ -110,7 +110,6 @@
             this.ApplyMayhemBarPatch();
             this.ApplyPowBarPatch();
             this.ApplyValorBarPatch();
-            */
         }
 
         private void InitPatches()
