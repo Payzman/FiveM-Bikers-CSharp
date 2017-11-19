@@ -70,7 +70,17 @@
                 }
                 else if (selectedItem.Text == Strings.MenuItem.Titles)
                 {
-                    this.ped.ApplyTitleBarPatch(index);
+                    for (int i = 0; i < this.ped.Title.Count; i++)
+                    {
+                        if (i == index)
+                        {
+                            this.ped.Backpatch[i].Active = true;
+                        }
+                        else
+                        {
+                            this.ped.Backpatch[i].Active = false;
+                        }
+                    }
                 }
             }
 

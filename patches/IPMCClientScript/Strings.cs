@@ -11,6 +11,7 @@
         {
             return new List<dynamic>()
             {
+                CharterName.None,
                 CharterName.National,
                 CharterName.PaletoBay,
                 CharterName.Rancho,
@@ -64,6 +65,7 @@
         /* Charter Names */
         public static class CharterName
         {
+            public const string None = "None";
             public const string National  = "National";
             public const string PaletoBay = "Paleto Bay";
             public const string Rancho    = "Rancho";
