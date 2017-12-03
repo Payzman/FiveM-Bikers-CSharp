@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using CitizenFX.Core;
+    using CitizenFX.Core.UI;
     using CitizenFX.Core.Native;
     using NativeUI;
 
