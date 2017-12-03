@@ -54,21 +54,18 @@
             UIMenuItem selectedItem,
             int index)
         {
-            if (sender == this.setPatches)
+            if (selectedItem.Text == Strings.MenuItem.Charter)
             {
-                if (selectedItem.Text == Strings.MenuItem.Charter)
+                for (int i = 0; i < this.ped.Backpatch.Count; i++)
                 {
-                    for (int i = 0; i < this.ped.Backpatch.Count; i++)
-                    {
-                        this.ped.Backpatch[i].Active = (i == index);
-                    }
+                    this.ped.Backpatch[i].Active = (i == index);
                 }
-                else if (selectedItem.Text == Strings.MenuItem.Titles)
+            }
+            else if (selectedItem.Text == Strings.MenuItem.Titles)
+            {
+                for (int i = 0; i < this.ped.Title.Count; i++)
                 {
-                    for (int i = 0; i < this.ped.Title.Count; i++)
-                    {
-                        this.ped.Backpatch[i].Active = (i == index);
-                    }
+                    this.ped.Backpatch[i].Active = (i == index);
                 }
             }
 
