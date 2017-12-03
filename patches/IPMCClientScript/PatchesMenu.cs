@@ -53,11 +53,12 @@
 
         private void SetPatchHandler(
             UIMenu sender,
-            UIMenuItem selectedItem,
+            UIMenuListItem selectedItem,
             int index)
         {
             if (selectedItem.Text == Strings.MenuItem.Charter)
             {
+                Debug.WriteLine("Selected item: " + selectedItem.IndexToItem(index));
                 List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Group == "All" || item.Group == Strings.MenuItem.Charter);
                 for (int i = 0; i < patchList.Count; i++)
                 {
