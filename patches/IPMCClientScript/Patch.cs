@@ -25,12 +25,9 @@
 
         public bool Active { get; set; }
 
-        public void Update(int ped_hash)
+        public void Apply(int ped_hash)
         { /* You can only delete all decorations and reset them */
-            if (this.Active)
-            {
-                Function.Call(Hash._SET_PED_DECORATION, ped_hash, this.collectionHash, this.nameHash);
-            }
+            Function.Call(Hash._SET_PED_DECORATION, ped_hash, this.collectionHash, this.nameHash);
         }
 
         public class Collection
@@ -64,6 +61,12 @@
                     new Patch(this.customOverlayHash, Strings.BackpatchTextHash.Rancho, Strings.CharterName.Rancho, "Charter"),
                     new Patch(this.customOverlayHash, Strings.BackpatchTextHash.DelPerro, Strings.CharterName.DelPerro, "Charter"),
                     new Patch(this.customOverlayHash, Strings.BackpatchTextHash.LaMesa, Strings.CharterName.LaMesa, "Charter"),
+                    new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.President, Strings.Title.President, "Title"),
+                    new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.VicePresident, Strings.Title.VicePresident, "Title"),
+                    new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.SgtAtArms, Strings.Title.SeargentAtArms, "Title"),
+                    new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.RoadCaptain, Strings.Title.RoadCaptain, "Title"),
+                    new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Enforcer, Strings.Title.Enforcer, "Title"),
+                    new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Prospect, Strings.Title.Prospect, "Title"),
                 };
 
                 this.List = patches;

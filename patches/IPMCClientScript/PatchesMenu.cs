@@ -56,23 +56,14 @@
             UIMenuListItem selectedItem,
             int index)
         {
-            if (selectedItem.Text == Strings.MenuItem.Charter)
+            List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Group == "All" || item.Group == selectedItem.Text);
+            foreach (Patch patch in patchList)
             {
-                List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Group == "All" || item.Group == selected);
-                foreach (Patch patch in patchList)
-                {
-                    this.ped.RemovePatch(patch);
-                }
-                string patchname = selectedItem.IndexToItem(index);
-                Patch patchToAdd = patchList.Find(item => item.Name == patchname);
+                this.ped.RemovePatch(patch);
             }
-            else if (selectedItem.Text == Strings.MenuItem.Titles)
-            {
-                for (int i = 0; i < this.ped.Title.Count; i++)
-                {
-                    this.ped.Title[i].Active = i == index;
-                }
-            }
+            string patchname = selectedItem.IndexToItem(index);
+            Patch patchToAdd = patchList.Find(item => item.Name == patchname);
+            this.ped.AddPatch(patchToAdd);
 
             this.ped.UpdateDecorations();
         }
@@ -85,12 +76,10 @@
             Patch patch = this.patchCollection.List.Find(item => item.Name == checkboxItem.Text);
             if (checkboxChecked)
             {
-                patch.Active = true;
                 this.ped.AddPatch(patch);
             }
             else
             {
-                patch.Active = false;
                 this.ped.RemovePatch(patch);
             }
             
