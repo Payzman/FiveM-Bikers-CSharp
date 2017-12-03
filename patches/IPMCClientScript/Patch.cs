@@ -11,14 +11,17 @@
         private int collectionHash;
         private int nameHash;
 
-        public Patch(int collection, string hash_name, string name)
+        public Patch(int collection, string hash_name, string name, string group)
         {
             this.collectionHash = collection;
             this.nameHash = Function.Call<int>(Hash.GET_HASH_KEY, hash_name);
             this.Name = name;
+            this.Group = group;
         }
 
         public string Name { get; set; }
+
+        public string Group { get; set; }
 
         public bool Active { get; set; }
 
@@ -50,11 +53,11 @@
                 /* Currently hardcoded - later via file */
                 List<Patch> patches = new List<Patch>()
                 {
-                    new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Boogeyman),
-                    new Patch(this.customOverlayHash, "guardian_M", Strings.MenuItem.Guardian),
-                    new Patch(this.customOverlayHash, "mayhem_M", Strings.MenuItem.Mayhem),
-                    new Patch(this.customOverlayHash, "pow_M", Strings.MenuItem.Pow),
-                    new Patch(this.customOverlayHash, "valor_M", Strings.MenuItem.Valor)
+                    new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Boogeyman, "pvp"),
+                    new Patch(this.customOverlayHash, "guardian_M", Strings.MenuItem.Guardian, "pvp"),
+                    new Patch(this.customOverlayHash, "mayhem_M", Strings.MenuItem.Mayhem, "pvp"),
+                    new Patch(this.customOverlayHash, "pow_M", Strings.MenuItem.Pow, "pvp"),
+                    new Patch(this.customOverlayHash, "valor_M", Strings.MenuItem.Valor, "pvp")
                 };
 
                 this.List = patches;

@@ -67,22 +67,22 @@
         {
             this.Backpatch = new List<Patch>()
             {
-                new Patch(this.customOverlayHash, "none", "none"),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.National, Strings.CharterName.National),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.PaletoBay, Strings.CharterName.PaletoBay),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.Rancho, Strings.CharterName.Rancho),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.DelPerro, Strings.CharterName.DelPerro),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.LaMesa, Strings.CharterName.LaMesa),
+                new Patch(this.customOverlayHash, "none", "none", "All"),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.National, Strings.CharterName.National, "Charter"),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.PaletoBay, Strings.CharterName.PaletoBay, "Charter"),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.Rancho, Strings.CharterName.Rancho, "Charter"),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.DelPerro, Strings.CharterName.DelPerro, "Charter"),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.LaMesa, Strings.CharterName.LaMesa, "Charter"),
             };
             this.Title = new List<Patch>()
             {
-                new Patch(this.bikerDlcHash, "none", "none"),
-                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.President, Strings.Title.President),
-                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.VicePresident, Strings.Title.VicePresident),
-                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.SgtAtArms, Strings.Title.SeargentAtArms),
-                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.RoadCaptain, Strings.Title.RoadCaptain),
-                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Enforcer, Strings.Title.Enforcer),
-                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Prospect, Strings.Title.Prospect),
+                new Patch(this.bikerDlcHash, "none", "none", "All"),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.President, Strings.Title.President, "Title"),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.VicePresident, Strings.Title.VicePresident, "Title"),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.SgtAtArms, Strings.Title.SeargentAtArms, "Title"),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.RoadCaptain, Strings.Title.RoadCaptain, "Title"),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Enforcer, Strings.Title.Enforcer, "Title"),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Prospect, Strings.Title.Prospect, "Title"),
             };
         }
 

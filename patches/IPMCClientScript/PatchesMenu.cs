@@ -81,10 +81,12 @@
             Patch patch = this.patchCollection.List.Find(item => item.Name == checkboxItem.Text);
             if (checkboxChecked)
             {
+                patch.Active = true;
                 this.ped.AddPatch(patch);
             }
             else
             {
+                patch.Active = false;
                 this.ped.RemovePatch(patch);
             }
             
