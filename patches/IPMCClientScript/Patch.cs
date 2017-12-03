@@ -59,19 +59,6 @@
 
                 this.List = patches;
             }
-
-            public Patch SearchPatch(string name)
-            {
-                foreach (Patch patch in this.List)
-                {
-                    if (patch.Name == name)
-                    {
-                        return patch;
-                    }
-                }
-
-                return null;
-            }
         }
     }
 }
