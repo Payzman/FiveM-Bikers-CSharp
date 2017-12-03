@@ -73,13 +73,13 @@
             };
             this.Title = new List<Patch>()
             {
-                new Patch(this.customOverlayHash, "none", "none"),
-                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.President, Strings.Title.President),
-                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.VicePresident, Strings.Title.VicePresident),
-                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.SgtAtArms, Strings.Title.SeargentAtArms),
-                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.RoadCaptain, Strings.Title.RoadCaptain),
-                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.Enforcer, Strings.Title.Enforcer),
-                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.Prospect, Strings.Title.Prospect),
+                new Patch(this.bikerDlcHash, "none", "none"),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.President, Strings.Title.President),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.VicePresident, Strings.Title.VicePresident),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.SgtAtArms, Strings.Title.SeargentAtArms),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.RoadCaptain, Strings.Title.RoadCaptain),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Enforcer, Strings.Title.Enforcer),
+                new Patch(this.bikerDlcHash, Strings.BarPatchTextHash.Prospect, Strings.Title.Prospect),
             };
         }
 

@@ -22,6 +22,7 @@
         { /* You can only delete all decorations and reset them */
             if (this.Active)
             {
+                Debug.WriteLine("Updating Decoration: " + ped_hash + ", " + collectionHash + ", " + nameHash);
                 Function.Call(Hash._SET_PED_DECORATION, ped_hash, this.collectionHash, this.nameHash);
             }
         }
