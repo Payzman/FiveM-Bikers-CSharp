@@ -37,6 +37,7 @@
 
             this.setPatches.OnListChange += this.SetPatchHandler;
             this.setPatches.OnCheckboxChange += this.CheckboxHandler;
+            this.setPatches.ResetCursorOnOpen = true; //might be a fix for the rotating camera bug
 
             this.setPatches.RefreshIndex();
         }
