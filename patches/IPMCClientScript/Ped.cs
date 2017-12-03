@@ -21,8 +21,6 @@
             this.patchList = new List<Patch>();
         }
 
-        public List<Patch> Backpatch { get; set; }
-
         public List<Patch> Title { get; set; }
 
         public void AddPatch(Patch patch)
@@ -47,10 +45,6 @@
             
             this.playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
             this.ClearDecorations();
-            foreach (Patch patch in this.Backpatch)
-            {
-                patch.Update(this.playerPedHash);
-            }
 
             foreach (Patch patch in this.Title)
             {
@@ -65,15 +59,6 @@
 
         private void InitPatches()
         {
-            this.Backpatch = new List<Patch>()
-            {
-                new Patch(this.customOverlayHash, "none", "none", "All"),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.National, Strings.CharterName.National, "Charter"),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.PaletoBay, Strings.CharterName.PaletoBay, "Charter"),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.Rancho, Strings.CharterName.Rancho, "Charter"),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.DelPerro, Strings.CharterName.DelPerro, "Charter"),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.LaMesa, Strings.CharterName.LaMesa, "Charter"),
-            };
             this.Title = new List<Patch>()
             {
                 new Patch(this.bikerDlcHash, "none", "none", "All"),

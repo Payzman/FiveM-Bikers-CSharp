@@ -57,9 +57,19 @@
         {
             if (selectedItem.Text == Strings.MenuItem.Charter)
             {
-                for (int i = 0; i < this.ped.Backpatch.Count; i++)
+                List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Name == selectedItem.Text && item.Group == Strings.MenuItem.Charter);
+                for (int i = 0; i < patchList.Count; i++)
                 {
-                    this.ped.Backpatch[i].Active = i == index;
+                    if(i == index)
+                    {
+                        patchList[i].Active = true;
+                        this.ped.AddPatch(patchList[i]);
+                    }
+                    else
+                    {
+                        patchList[i].Active = false;
+                        this.ped.RemovePatch(patchList[i]);
+                    }
                 }
             }
             else if (selectedItem.Text == Strings.MenuItem.Titles)
