@@ -65,7 +65,7 @@
             {
                 for (int i = 0; i < this.ped.Title.Count; i++)
                 {
-                    this.ped.Backpatch[i].Active = (i == index);
+                    this.ped.Title[i].Active = (i == index);
                 }
             }
 
