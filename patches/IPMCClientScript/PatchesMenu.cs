@@ -11,7 +11,6 @@
         private UIMenu parent;
         private UIMenu setPatches;
         private Ped ped;
-        private List<List<Patch>> patchesList;
 
         public PatchesMenu(MenuPool pool, UIMenu parent)
         {
@@ -58,14 +57,14 @@
             {
                 for (int i = 0; i < this.ped.Backpatch.Count; i++)
                 {
-                    this.ped.Backpatch[i].Active = (i == index);
+                    this.ped.Backpatch[i].Active = i == index;
                 }
             }
             else if (selectedItem.Text == Strings.MenuItem.Titles)
             {
                 for (int i = 0; i < this.ped.Title.Count; i++)
                 {
-                    this.ped.Title[i].Active = (i == index);
+                    this.ped.Title[i].Active = i == index;
                 }
             }
 

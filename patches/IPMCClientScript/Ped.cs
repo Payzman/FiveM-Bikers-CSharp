@@ -44,10 +44,12 @@
             {
                 patch.Update(this.playerPedHash);
             }
+
             foreach (Patch patch in this.Title)
             {
                 patch.Update(this.playerPedHash);
             }
+
             this.Boogeyman.Update(this.playerPedHash);
             this.Guardian.Update(this.playerPedHash);
             this.Mayhem.Update(this.playerPedHash);
