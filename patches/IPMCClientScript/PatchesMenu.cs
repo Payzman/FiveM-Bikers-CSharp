@@ -57,10 +57,10 @@
         {
             if (selectedItem.Text == Strings.MenuItem.Charter)
             {
-                List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Name == selectedItem.Text && item.Group == Strings.MenuItem.Charter);
+                List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Group == "All" || item.Group == Strings.MenuItem.Charter);
                 for (int i = 0; i < patchList.Count; i++)
                 {
-                    if(i == index)
+                    if (i == index)
                     {
                         patchList[i].Active = true;
                         this.ped.AddPatch(patchList[i]);
