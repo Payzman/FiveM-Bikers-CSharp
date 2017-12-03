@@ -1,5 +1,6 @@
 ﻿namespace Client
 {
+    using System.Collections.Generic;
     using CitizenFX;
     using CitizenFX.Core;
     using NativeUI;
@@ -10,6 +11,7 @@
         private UIMenu parent;
         private UIMenu setPatches;
         private Ped ped;
+        private List<List<Patch>> patchesList;
 
         public PatchesMenu(MenuPool pool, UIMenu parent)
         {
@@ -58,28 +60,14 @@
                 {
                     for (int i = 0; i < this.ped.Backpatch.Count; i++)
                     {
-                        if (i == index)
-                        {
-                            this.ped.Backpatch[i].Active = true;
-                        }
-                        else
-                        {
-                            this.ped.Backpatch[i].Active = false;
-                        }
+                        this.ped.Backpatch[i].Active = (i == index);
                     }
                 }
                 else if (selectedItem.Text == Strings.MenuItem.Titles)
                 {
                     for (int i = 0; i < this.ped.Title.Count; i++)
                     {
-                        if (i == index)
-                        {
-                            this.ped.Backpatch[i].Active = true;
-                        }
-                        else
-                        {
-                            this.ped.Backpatch[i].Active = false;
-                        }
+                        this.ped.Backpatch[i].Active = (i == index);
                     }
                 }
             }

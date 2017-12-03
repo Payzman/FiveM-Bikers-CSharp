@@ -57,29 +57,29 @@
 
         private void InitPatches()
         {
-            this.Boogeyman = new Patch(this.customOverlayHash, "boogeyman_M");
-            this.Guardian = new Patch(this.customOverlayHash, "guardian_M");
-            this.Mayhem = new Patch(this.customOverlayHash, "mayhem_M");
-            this.Pow = new Patch(this.customOverlayHash, "pow_M");
-            this.Valor = new Patch(this.customOverlayHash, "valor_M");
+            this.Boogeyman = new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Boogeyman);
+            this.Guardian = new Patch(this.customOverlayHash, "guardian_M", Strings.MenuItem.Guardian);
+            this.Mayhem = new Patch(this.customOverlayHash, "mayhem_M", Strings.MenuItem.Mayhem);
+            this.Pow = new Patch(this.customOverlayHash, "pow_M", Strings.MenuItem.Pow);
+            this.Valor = new Patch(this.customOverlayHash, "valor_M", Strings.MenuItem.Valor);
             this.Backpatch = new List<Patch>()
             {
-                new Patch(this.customOverlayHash, "none"),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.National),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.PaletoBay),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.Rancho),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.DelPerro),
-                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.LaMesa),
+                new Patch(this.customOverlayHash, "none", "none"),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.National, Strings.CharterName.National),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.PaletoBay, Strings.CharterName.PaletoBay),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.Rancho, Strings.CharterName.Rancho),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.DelPerro, Strings.CharterName.DelPerro),
+                new Patch(this.customOverlayHash, Strings.BackpatchTextHash.LaMesa, Strings.CharterName.LaMesa),
             };
             this.Title = new List<Patch>()
             {
-                new Patch(this.customOverlayHash, Strings.Title.None),
-                new Patch(this.customOverlayHash, Strings.Title.President),
-                new Patch(this.customOverlayHash, Strings.Title.VicePresident),
-                new Patch(this.customOverlayHash, Strings.Title.SeargentAtArms),
-                new Patch(this.customOverlayHash, Strings.Title.RoadCaptain),
-                new Patch(this.customOverlayHash, Strings.Title.Enforcer),
-                new Patch(this.customOverlayHash, Strings.Title.Prospect),
+                new Patch(this.customOverlayHash, "none", "none"),
+                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.President, Strings.Title.President),
+                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.VicePresident, Strings.Title.VicePresident),
+                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.SgtAtArms, Strings.Title.SeargentAtArms),
+                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.RoadCaptain, Strings.Title.RoadCaptain),
+                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.Enforcer, Strings.Title.Enforcer),
+                new Patch(this.customOverlayHash, Strings.BarPatchTextHash.Prospect, Strings.Title.Prospect),
             };
         }
 
