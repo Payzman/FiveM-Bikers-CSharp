@@ -58,21 +58,13 @@
         {
             if (selectedItem.Text == Strings.MenuItem.Charter)
             {
-                Debug.WriteLine("Selected item: " + selectedItem.IndexToItem(index));
-                List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Group == "All" || item.Group == Strings.MenuItem.Charter);
-                for (int i = 0; i < patchList.Count; i++)
+                List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Group == "All" || item.Group == selected);
+                foreach (Patch patch in patchList)
                 {
-                    if (i == index)
-                    {
-                        patchList[i].Active = true;
-                        this.ped.AddPatch(patchList[i]);
-                    }
-                    else
-                    {
-                        patchList[i].Active = false;
-                        this.ped.RemovePatch(patchList[i]);
-                    }
+                    this.ped.RemovePatch(patch);
                 }
+                string patchname = selectedItem.IndexToItem(index);
+                Patch patchToAdd = patchList.Find(item => item.Name == patchname);
             }
             else if (selectedItem.Text == Strings.MenuItem.Titles)
             {
