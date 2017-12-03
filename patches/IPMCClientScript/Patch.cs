@@ -9,11 +9,13 @@
     {
         private int collectionHash;
         private int nameHash;
+        private string name;
 
         public Patch(int collection, string hash_name, string name)
         {
             this.collectionHash = collection;
             this.nameHash = Function.Call<int>(Hash.GET_HASH_KEY, hash_name);
+            this.name = name;
         }
 
         public bool Active { get; set; }
@@ -30,26 +32,38 @@
         {
             private int customOverlayHash;
             private int bikerDlcHash;
+            private List<Patch> patchCollection;
 
             public Collection()
             {
                 this.customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
                 this.bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
                 /* Here will be all the preparation stuff for reading in the file */
+                this.ReadFromFile();
             }
 
-            public List<List<Patch>> ReadFromFile()
+            public void ReadFromFile()
             {
                 /* Currently hardcoded - later via file */
-                List<List<Patch>> patches = new List<List<Patch>>()
+                List<Patch> patches = new List<Patch>()
                 {
-                    new List<Patch>()
-                    {
-                        new Patch(4, "bla", "bla"),
-                    },
+                    new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Guardian)
                 };
 
-                return patches;
+                this.patchCollection = patches;
+            }
+
+            public Patch SearchPatch(string name)
+            {
+                foreach (Patch patch in this.patchCollection)
+                {
+                    if (patch.name == name)
+                    {
+                        return patch;
+                    }
+                }
+
+                return null;
             }
         }
     }

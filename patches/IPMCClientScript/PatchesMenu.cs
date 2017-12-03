@@ -11,6 +11,7 @@
         private UIMenu parent;
         private UIMenu setPatches;
         private Ped ped;
+        private Patch.Collection patchCollection;
 
         public PatchesMenu(MenuPool pool, UIMenu parent)
         {
@@ -18,6 +19,7 @@
             this.parent = parent;
             this.ped = new Ped();
             this.AddSetPatchesMenu();
+            this.patchCollection = new Patch.Collection();
         }
 
         private void AddSetPatchesMenu()
@@ -76,11 +78,18 @@
             UIMenuCheckboxItem checkboxItem, 
             bool checkboxChecked)
         {
+            Patch patch = this.patchCollection.SearchPatch(checkboxItem.Text);
+            if (checkboxChecked)
+            {
+                this.ped.AddPatch(patch);
+            }
+            else
+            {
+                this.ped.RemovePatch(patch);
+            }
+
             switch (checkboxItem.Text)
             {
-                case Strings.MenuItem.Boogeyman:
-                    this.ped.Boogeyman.Active = checkboxChecked;
-                    break;
                 case Strings.MenuItem.Guardian:
                     this.ped.Guardian.Active = checkboxChecked;
                     break;

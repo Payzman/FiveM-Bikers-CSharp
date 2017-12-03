@@ -10,15 +10,15 @@
         private int playerPedHash;
         private int customOverlayHash;
         private int bikerDlcHash;
+        private List<Patch> patchList;
 
         public Ped()
         {
             this.customOverlayHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.Custom);
             this.bikerDlcHash = Function.Call<int>(Hash.GET_HASH_KEY, Strings.OverlayCollection.BikerDlc);
             this.InitPatches();
+            this.patchList = new List<Patch>();
         }
-
-        public Patch Boogeyman { get; set; }
 
         public Patch Guardian { get; set; }
 
@@ -31,6 +31,18 @@
         public List<Patch> Backpatch { get; set; }
 
         public List<Patch> Title { get; set; }
+
+        public void AddPatch(Patch patch)
+        {
+            this.patchList.Add(patch);
+            this.UpdateDecorations();
+        }
+
+        public void RemovePatch(Patch patch)
+        {
+            this.patchList.Remove(patch);
+            this.UpdateDecorations();
+        }
 
         public void UpdateDecorations()
         {
@@ -49,17 +61,20 @@
             {
                 patch.Update(this.playerPedHash);
             }
-
-            this.Boogeyman.Update(this.playerPedHash);
+            
             this.Guardian.Update(this.playerPedHash);
             this.Mayhem.Update(this.playerPedHash);
             this.Pow.Update(this.playerPedHash);
             this.Valor.Update(this.playerPedHash);
+
+            foreach (Patch patch in this.patchList)
+            {
+                patch.Update(this.playerPedHash);
+            }
         }
 
         private void InitPatches()
         {
-            this.Boogeyman = new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Boogeyman);
             this.Guardian = new Patch(this.customOverlayHash, "guardian_M", Strings.MenuItem.Guardian);
             this.Mayhem = new Patch(this.customOverlayHash, "mayhem_M", Strings.MenuItem.Mayhem);
             this.Pow = new Patch(this.customOverlayHash, "pow_M", Strings.MenuItem.Pow);
