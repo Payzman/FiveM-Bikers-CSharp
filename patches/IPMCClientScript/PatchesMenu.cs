@@ -78,7 +78,7 @@
             UIMenuCheckboxItem checkboxItem, 
             bool checkboxChecked)
         {
-            Patch patch = this.patchCollection.SearchPatch(checkboxItem.Text);
+            Patch patch = this.patchCollection.List.Find(item => item.Name == checkboxItem.Text);
             if (checkboxChecked)
             {
                 this.ped.AddPatch(patch);

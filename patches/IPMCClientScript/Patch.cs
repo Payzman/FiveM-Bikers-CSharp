@@ -10,14 +10,15 @@
     {
         private int collectionHash;
         private int nameHash;
-        private string name;
 
         public Patch(int collection, string hash_name, string name)
         {
             this.collectionHash = collection;
             this.nameHash = Function.Call<int>(Hash.GET_HASH_KEY, hash_name);
-            this.name = name;
+            this.Name = name;
         }
+
+        public string Name { get; set; }
 
         public bool Active { get; set; }
 
@@ -28,17 +29,11 @@
                 Function.Call(Hash._SET_PED_DECORATION, ped_hash, this.collectionHash, this.nameHash);
             }
         }
-        
-        public override string ToString()
-        {
-            return this.name;
-        }
 
         public class Collection
         {
             private int customOverlayHash;
             private int bikerDlcHash;
-            private List<Patch> patchCollection;
 
             public Collection()
             {
@@ -47,6 +42,8 @@
                 /* Here will be all the preparation stuff for reading in the file */
                 this.ReadFromFile();
             }
+
+            public List<Patch> List { get; set; }
 
             public void ReadFromFile()
             {
@@ -60,14 +57,14 @@
                     new Patch(this.customOverlayHash, "valor_M", Strings.MenuItem.Valor)
                 };
 
-                this.patchCollection = patches;
+                this.List = patches;
             }
 
             public Patch SearchPatch(string name)
             {
-                foreach (Patch patch in this.patchCollection)
+                foreach (Patch patch in this.List)
                 {
-                    if (patch.name == name)
+                    if (patch.Name == name)
                     {
                         return patch;
                     }
