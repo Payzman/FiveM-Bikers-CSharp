@@ -27,6 +27,11 @@
                 Function.Call(Hash._SET_PED_DECORATION, ped_hash, this.collectionHash, this.nameHash);
             }
         }
+        
+        public override string ToString()
+        {
+            return this.name;
+        }
 
         public class Collection
         {
@@ -47,7 +52,11 @@
                 /* Currently hardcoded - later via file */
                 List<Patch> patches = new List<Patch>()
                 {
-                    new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Guardian)
+                    new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Boogeyman),
+                    new Patch(this.customOverlayHash, "guardian_M", Strings.MenuItem.Guardian),
+                    new Patch(this.customOverlayHash, "mayhem_M", Strings.MenuItem.Mayhem),
+                    new Patch(this.customOverlayHash, "pow_M", Strings.MenuItem.Pow),
+                    new Patch(this.customOverlayHash, "valor_M", Strings.MenuItem.Valor)
                 };
 
                 this.patchCollection = patches;

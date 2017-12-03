@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using CitizenFX.Core;
     using CitizenFX.Core.Native;
     using CitizenFX.Core.UI;
 
@@ -34,12 +35,14 @@
 
         public void AddPatch(Patch patch)
         {
+            Debug.WriteLine("Adding patch " + patch.ToString());
             this.patchList.Add(patch);
             this.UpdateDecorations();
         }
 
         public void RemovePatch(Patch patch)
         {
+            Debug.WriteLine("Removing patch " + patch.ToString());
             this.patchList.Remove(patch);
             this.UpdateDecorations();
         }
@@ -75,10 +78,6 @@
 
         private void InitPatches()
         {
-            this.Guardian = new Patch(this.customOverlayHash, "guardian_M", Strings.MenuItem.Guardian);
-            this.Mayhem = new Patch(this.customOverlayHash, "mayhem_M", Strings.MenuItem.Mayhem);
-            this.Pow = new Patch(this.customOverlayHash, "pow_M", Strings.MenuItem.Pow);
-            this.Valor = new Patch(this.customOverlayHash, "valor_M", Strings.MenuItem.Valor);
             this.Backpatch = new List<Patch>()
             {
                 new Patch(this.customOverlayHash, "none", "none"),
