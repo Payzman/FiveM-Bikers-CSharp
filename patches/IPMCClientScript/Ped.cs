@@ -21,14 +21,6 @@
             this.patchList = new List<Patch>();
         }
 
-        public Patch Guardian { get; set; }
-
-        public Patch Mayhem { get; set; }
-
-        public Patch Pow { get; set; }
-
-        public Patch Valor { get; set; }
-
         public List<Patch> Backpatch { get; set; }
 
         public List<Patch> Title { get; set; }
@@ -64,11 +56,6 @@
             {
                 patch.Update(this.playerPedHash);
             }
-            
-            this.Guardian.Update(this.playerPedHash);
-            this.Mayhem.Update(this.playerPedHash);
-            this.Pow.Update(this.playerPedHash);
-            this.Valor.Update(this.playerPedHash);
 
             foreach (Patch patch in this.patchList)
             {
