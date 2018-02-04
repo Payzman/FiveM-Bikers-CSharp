@@ -69,7 +69,7 @@
             this.AddInteractionMenuItems();
 
             this.interactionMenu.RefreshIndex();
-            this.interactionMenu.MouseEdgeEnabled = false; //might be a fix for the rotating camera bug
+            this.interactionMenu.MouseEdgeEnabled = false; // might be a fix for the rotating camera bug
         }
 
         private void AddInteractionMenuItems()
