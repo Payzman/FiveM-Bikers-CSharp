@@ -24,14 +24,12 @@
 
         public void AddPatch(Patch patch)
         {
-            Debug.WriteLine("Adding patch " + patch.Name);
             this.patchList.Add(patch);
             this.UpdateDecorations();
         }
 
         public void RemovePatch(Patch patch)
         {
-            Debug.WriteLine("Removing patch " + patch.Name);
             this.patchList.Remove(patch);
             this.UpdateDecorations();
         }
