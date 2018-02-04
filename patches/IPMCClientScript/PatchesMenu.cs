@@ -61,6 +61,7 @@
             {
                 this.ped.RemovePatch(patch);
             }
+
             string patchname = selectedItem.IndexToItem(index);
             Patch patchToAdd = patchList.Find(item => item.Name == patchname);
             this.ped.AddPatch(patchToAdd);
