@@ -10,10 +10,12 @@ namespace Server.CouchDB
     {
         private State state;
         public PlayerDatabase players;
+        private DatabaseCollection dbcoll;
 
         public Connection()
         {
             state = new NotConnectedState(this);
+            dbcoll = new DatabaseCollection(new Root());
         }
 
         public void ChangeState(State state)
@@ -29,6 +31,11 @@ namespace Server.CouchDB
         public void HandleResponse()
         {
             state.HandleResponse();
+        }
+
+        public void DeprecatedHandleResponse(dynamic response, string reason, dynamic param)
+        {
+            dbcoll.DeprecatedHandleResponse(response, reason, param);
         }
     }
 }
