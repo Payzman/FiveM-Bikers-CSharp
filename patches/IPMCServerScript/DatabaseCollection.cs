@@ -14,7 +14,7 @@ namespace Server.CouchDB
             this.root = root_db;
         }
         
-        public void HandleResponse(dynamic response, string reason, dynamic param)
+        public void DeprecatedHandleResponse(dynamic response, string reason, dynamic param)
         {
             switch(reason)
             {
