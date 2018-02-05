@@ -85,6 +85,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CouchDB\Connection.cs" />
+    <Compile Include="CouchDB\State.cs" />
     <Compile Include="PlayerDatabase.cs" />
     <Compile Include="Root.cs" />
     <Compile Include="DatabaseCollection.cs" />
