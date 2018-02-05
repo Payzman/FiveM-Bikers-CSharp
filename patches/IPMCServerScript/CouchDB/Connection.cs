@@ -8,9 +8,26 @@ namespace Server.CouchDB
 {
     class Connection
     {
+        private State state;
+
         public Connection()
         {
 
+        }
+
+        public void ChangeState(State state)
+        {
+            this.state = state;
+        }
+
+        public void Request()
+        {
+            state.Request();
+        }
+
+        public void HandleResponse()
+        {
+            state.HandleResponse();
         }
     }
 }
