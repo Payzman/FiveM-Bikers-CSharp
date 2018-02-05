@@ -37,5 +37,10 @@ namespace Server.CouchDB
         {
             dbcoll.DeprecatedHandleResponse(response, reason, param);
         }
+
+        public void Load()
+        {
+            dbcoll.Load();
+        }
     }
 }
