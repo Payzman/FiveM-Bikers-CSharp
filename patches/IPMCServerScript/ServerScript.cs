@@ -20,6 +20,7 @@ namespace Server
 
         DatabaseCollection database;
         Root couchdb;
+        Connection connection;
 
         public ServerScript()
         {
@@ -30,17 +31,16 @@ namespace Server
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);
+            this.connection = new Connection();
             Tick += OnTick;
         }
 
         private async Task OnTick()
         {
             await Task.FromResult(0);
+            connection.Request();
             switch(database_state)
             {
-                case Db_State.not_connected:
-                    couchdb.RequestConnnectivity();
-                    break;
                 case Db_State.connected:
                     database.players.GetPlayerInfo();
                     database_state = Db_State.idle;

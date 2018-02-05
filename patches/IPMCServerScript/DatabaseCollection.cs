@@ -8,7 +8,6 @@ namespace Server.CouchDB
     {
         Root root;
         public PlayerDatabase players;
-        List<string> databases;
 
         public DatabaseCollection(Root root_db)
         {
@@ -22,9 +21,6 @@ namespace Server.CouchDB
                 case Strings.reason_connectivity:
                     root.CheckConnectivity(response);
                     break;
-                case Strings.get_all_dbs:
-                    GetAllDatabases(response);
-                    break;
                 case Strings.get_player_docs:
                     players = new PlayerDatabase(response);
                     break;
@@ -34,15 +30,6 @@ namespace Server.CouchDB
                 case Strings.request_uuids:
                     players.UploadNewUser(response, param);
                     break;
-            }
-        }
-
-        private void GetAllDatabases(dynamic response)
-        {
-            databases = new List<string>();
-            foreach (object obj in response)
-            {
-                databases.Add(response.ToString());
             }
         }
 

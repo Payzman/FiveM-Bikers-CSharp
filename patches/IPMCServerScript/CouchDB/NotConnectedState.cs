@@ -12,12 +12,13 @@ namespace Server.CouchDB
 
         public override void HandleResponse()
         {
-            throw new NotImplementedException();
+
         }
 
         public override void Request()
         {
-            throw new NotImplementedException();
+            // connectivity test
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
         }
     }
 }

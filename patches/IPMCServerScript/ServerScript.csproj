@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CouchDB\Connection.cs" />
+    <Compile Include="CouchDB\NotConnectedState.cs" />
     <Compile Include="CouchDB\State.cs" />
     <Compile Include="PlayerDatabase.cs" />
     <Compile Include="Root.cs" />

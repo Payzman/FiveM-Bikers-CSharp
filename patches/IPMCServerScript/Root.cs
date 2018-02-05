@@ -19,19 +19,11 @@
         public string version { get; set; }
         public Vendor vendor { get; set; }
 
-        public void RequestConnnectivity()
-        {
-            ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
-        }
-
         public void CheckConnectivity(dynamic obj)
         {
             this.couchdb = obj.couchdb;
             this.version = obj.version;
             this.vendor = new Vendor(obj.vendor);
-            string url = Strings.all_dbs_url;
-            string reason = Strings.get_all_dbs;
-            ServerScript.TriggerEvent("Server:HttpGet", url, reason);
             ServerScript.TriggerEvent("Server:Initialized");
         }
     }
