@@ -17,8 +17,7 @@ namespace Server
             idle,
         };
         Db_State database_state;
-
-        DatabaseCollection database;
+        
         Root couchdb;
         Connection connection;
 
@@ -26,9 +25,8 @@ namespace Server
         {
             database_state = Db_State.not_connected;
             couchdb = new Root();
-            database = new DatabaseCollection(couchdb);
-            this.connection = new Connection();
-            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(database.DeprecatedHandleResponse);
+            this.connection = new Connection(couchdb);
+            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(connection.DeprecatedHandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);
@@ -42,11 +40,11 @@ namespace Server
             switch(database_state)
             {
                 case Db_State.connected:
-                    database.players.GetPlayerInfo();
+                    connection.players.GetPlayerInfo();
                     database_state = Db_State.idle;
                     break;
                 case Db_State.loading:
-                    database.Load();
+                    connection.Load();
                     break;
             }
         }
@@ -54,7 +52,7 @@ namespace Server
         void initPlayer(int source)
         {
             Player player = new PlayerList()[source];
-            PlayerDocument user = database.players.PlayerInDatabase(source);
+            PlayerDocument user = connection.players.PlayerInDatabase(source);
             if(user != null)
             {
                 // Load player information
@@ -62,7 +60,7 @@ namespace Server
             }
             else
             {
-                database.players.AddNewUser(player);
+                connection.players.AddNewUser(player);
             }
         }
 
