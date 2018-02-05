@@ -12,7 +12,7 @@ namespace Server.CouchDB
 
         public Connection()
         {
-
+            state = new NotConnectedState(this);
         }
 
         public void ChangeState(State state)
