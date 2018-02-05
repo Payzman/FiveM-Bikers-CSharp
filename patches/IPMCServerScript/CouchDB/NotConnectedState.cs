@@ -9,6 +9,8 @@ namespace Server.CouchDB
     class NotConnectedState : State
     {
         public NotConnectedState(Connection connection) : base(connection) { }
+        // temporary
+        bool temp = true;
 
         public override void HandleResponse()
         {
@@ -18,7 +20,11 @@ namespace Server.CouchDB
         public override void Request()
         {
             // connectivity test
-            ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
+            if(temp)
+            {
+                ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
+                temp = false;
+            }
         }
     }
 }

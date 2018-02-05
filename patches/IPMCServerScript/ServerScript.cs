@@ -27,11 +27,11 @@ namespace Server
             database_state = Db_State.not_connected;
             couchdb = new Root();
             database = new DatabaseCollection(couchdb);
+            this.connection = new Connection();
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(database.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);
-            this.connection = new Connection();
             Tick += OnTick;
         }
 
