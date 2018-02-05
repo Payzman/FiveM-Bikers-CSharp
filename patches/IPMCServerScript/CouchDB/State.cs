@@ -8,7 +8,7 @@ namespace Server.CouchDB
 {
     abstract class State
     {
-        private Connection connection;
+        protected Connection connection;
 
         public State(Connection connection)
         {
