@@ -6,7 +6,7 @@ namespace Server.CouchDB
     // The actual HTTP Requests and Responses are done by a lua script!
     class DatabaseCollection
     {
-        Root root;
+        private Root root;
         public PlayerDatabase players;
 
         public DatabaseCollection(Root root_db)

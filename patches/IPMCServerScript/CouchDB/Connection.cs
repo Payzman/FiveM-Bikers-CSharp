@@ -9,6 +9,7 @@ namespace Server.CouchDB
     class Connection
     {
         private State state;
+        public PlayerDatabase players;
 
         public Connection()
         {
