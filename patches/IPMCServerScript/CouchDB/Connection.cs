@@ -56,7 +56,7 @@ namespace Server.CouchDB
 
         public void Load()
         {
-            dbcoll.Load();
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
         }
     }
 }
