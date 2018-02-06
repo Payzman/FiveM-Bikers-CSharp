@@ -18,14 +18,12 @@ namespace Server
         };
         Db_State database_state;
         
-        Root couchdb;
         Connection connection;
 
         public ServerScript()
         {
             database_state = Db_State.not_connected;
-            couchdb = new Root();
-            this.connection = new Connection(couchdb);
+            this.connection = new Connection();
             EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(connection.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);

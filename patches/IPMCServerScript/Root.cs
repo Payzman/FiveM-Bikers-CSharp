@@ -13,17 +13,9 @@ namespace Server.CouchDB
 
     public class Root
     {
-        public Root()
+        public Root(dynamic obj)
         {
-            //stub
-        }
-        public string couchdb { get; set; }
-        public string version { get; set; }
-        public Vendor vendor { get; set; }
-
-        public void CheckConnectivity(dynamic obj)
-        {
-            if (((IDictionary<string, object>)obj).ContainsKey("couchdb") )
+            if (((IDictionary<string, object>)obj).ContainsKey("couchdb"))
             {
                 this.couchdb = obj.couchdb;
                 this.version = obj.version;
@@ -31,5 +23,8 @@ namespace Server.CouchDB
                 ServerScript.TriggerEvent("Server:Initialized");
             }
         }
+        public string couchdb { get; set; }
+        public string version { get; set; }
+        public Vendor vendor { get; set; }
     }
 }
