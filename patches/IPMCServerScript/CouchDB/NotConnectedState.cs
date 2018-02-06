@@ -14,7 +14,7 @@ namespace Server.CouchDB
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
-            connection.root.CheckConnectivity(response);
+            connection.Root.CheckConnectivity(response);
         }
 
         public override void Request()

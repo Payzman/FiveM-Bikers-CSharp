@@ -12,13 +12,15 @@ namespace Server.CouchDB
         private State state;
         public PlayerDatabase players;
         private DatabaseCollection dbcoll;
-        public Root root;
+        private Root root;
+
+        public Root Root { get => root; set => root = value; }
 
         public Connection(Root couchdb)
         {
             state = new NotConnectedState(this);
-            this.root = couchdb;
-            dbcoll = new DatabaseCollection(root);
+            this.Root = couchdb;
+            dbcoll = new DatabaseCollection(Root);
         }
 
         public void ChangeState(State state)
