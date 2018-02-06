@@ -1,4 +1,6 @@
-﻿namespace Server.CouchDB
+﻿using System.Collections.Generic;
+
+namespace Server.CouchDB
 {
     public class Vendor
     {
@@ -21,10 +23,13 @@
 
         public void CheckConnectivity(dynamic obj)
         {
-            this.couchdb = obj.couchdb;
-            this.version = obj.version;
-            this.vendor = new Vendor(obj.vendor);
-            ServerScript.TriggerEvent("Server:Initialized");
+            if (((IDictionary<string, object>)obj).ContainsKey("couchdb") )
+            {
+                this.couchdb = obj.couchdb;
+                this.version = obj.version;
+                this.vendor = new Vendor(obj.vendor);
+                ServerScript.TriggerEvent("Server:Initialized");
+            }
         }
     }
 }

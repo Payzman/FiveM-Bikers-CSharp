@@ -17,6 +17,6 @@ namespace Server.CouchDB
 
         public abstract void Request();
 
-        public abstract void HandleResponse();
+        public abstract void HandleResponse(dynamic response, string reason, dynamic param);
     }
 }

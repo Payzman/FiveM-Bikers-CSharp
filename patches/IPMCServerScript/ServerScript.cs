@@ -26,7 +26,7 @@ namespace Server
             database_state = Db_State.not_connected;
             couchdb = new Root();
             this.connection = new Connection(couchdb);
-            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(connection.DeprecatedHandleResponse);
+            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(connection.HandleResponse);
             EventHandlers["Server:Initialized"] += new Action(Initialized);
             EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
             EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);

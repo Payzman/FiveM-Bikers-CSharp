@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CitizenFX.Core;
 
 namespace Server.CouchDB
 {
@@ -11,7 +12,7 @@ namespace Server.CouchDB
         private State state;
         public PlayerDatabase players;
         private DatabaseCollection dbcoll;
-        private Root root;
+        public Root root;
 
         public Connection(Root couchdb)
         {
@@ -30,18 +31,16 @@ namespace Server.CouchDB
             state.Request();
         }
 
-        public void HandleResponse()
+        public void HandleResponse(dynamic response, string reason, dynamic param)
         {
-            state.HandleResponse();
+            state.HandleResponse(response, reason, param);
+            DeprecatedHandleResponse(response, reason, param);
         }
 
         public void DeprecatedHandleResponse(dynamic response, string reason, dynamic param)
         {
             switch (reason)
             {
-                case Strings.reason_connectivity:
-                    root.CheckConnectivity(response);
-                    break;
                 case Strings.get_player_docs:
                     players = new PlayerDatabase(response);
                     break;

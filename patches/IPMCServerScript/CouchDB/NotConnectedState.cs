@@ -12,9 +12,9 @@ namespace Server.CouchDB
         // temporary
         bool temp = true;
 
-        public override void HandleResponse()
+        public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
-
+            connection.root.CheckConnectivity(response);
         }
 
         public override void Request()
