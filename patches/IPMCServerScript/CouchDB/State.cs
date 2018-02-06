@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.CouchDB
 {
-    abstract class State
+    public abstract class State
     {
         protected Connection connection;
 

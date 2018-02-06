@@ -7,7 +7,7 @@ using CitizenFX.Core;
 
 namespace Server.CouchDB
 {
-    class Connection
+    public class Connection
     {
         private State state;
         public PlayerDatabase players;

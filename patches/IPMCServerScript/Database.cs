@@ -2,7 +2,7 @@
 
 namespace Server.CouchDB
 {
-    class Database
+    public class Database
     {
         public int total_rows { get; set; }
         public int offset { get; set; }

@@ -5,7 +5,7 @@ using CitizenFX.Core;
 
 namespace Server.CouchDB
 {
-    class PlayerDatabase : Database
+    public class PlayerDatabase : Database
     {
         public List<PlayerDocument> users = new List<PlayerDocument>();
 
