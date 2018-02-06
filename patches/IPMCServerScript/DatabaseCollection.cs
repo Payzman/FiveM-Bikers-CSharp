@@ -16,21 +16,6 @@ namespace Server.CouchDB
         
         public void DeprecatedHandleResponse(dynamic response, string reason, dynamic param)
         {
-            switch(reason)
-            {
-                case Strings.reason_connectivity:
-                    root.CheckConnectivity(response);
-                    break;
-                case Strings.get_player_docs:
-                    players = new PlayerDatabase(response);
-                    break;
-                case Strings.get_single_player_doc:
-                    players.AddPlayerDocument(response);
-                    break;
-                case Strings.request_uuids:
-                    players.UploadNewUser(response, param);
-                    break;
-            }
         }
 
         public void Load()

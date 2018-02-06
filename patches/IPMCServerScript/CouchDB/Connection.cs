@@ -11,11 +11,13 @@ namespace Server.CouchDB
         private State state;
         public PlayerDatabase players;
         private DatabaseCollection dbcoll;
+        private Root root;
 
         public Connection(Root couchdb)
         {
             state = new NotConnectedState(this);
-            dbcoll = new DatabaseCollection(couchdb);
+            this.root = couchdb;
+            dbcoll = new DatabaseCollection(root);
         }
 
         public void ChangeState(State state)
@@ -35,8 +37,21 @@ namespace Server.CouchDB
 
         public void DeprecatedHandleResponse(dynamic response, string reason, dynamic param)
         {
-            dbcoll.DeprecatedHandleResponse(response, reason, param);
-            players = dbcoll.players;
+            switch (reason)
+            {
+                case Strings.reason_connectivity:
+                    root.CheckConnectivity(response);
+                    break;
+                case Strings.get_player_docs:
+                    players = new PlayerDatabase(response);
+                    break;
+                case Strings.get_single_player_doc:
+                    players.AddPlayerDocument(response);
+                    break;
+                case Strings.request_uuids:
+                    players.UploadNewUser(response, param);
+                    break;
+            }
         }
 
         public void Load()
