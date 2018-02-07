@@ -10,8 +10,10 @@ namespace Server.CouchDB
     public class Connection
     {
         private State state;
-        public PlayerDatabase players;
+        private PlayerDatabase players;
         private DatabaseCollection dbcoll;
+
+        public PlayerDatabase Players { get => players; set => players = value; }
 
         public Connection()
         {

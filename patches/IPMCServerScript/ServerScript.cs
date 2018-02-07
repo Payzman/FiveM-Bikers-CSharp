@@ -38,7 +38,7 @@ namespace Server
             switch(database_state)
             {
                 case Db_State.connected:
-                    connection.players.GetPlayerInfo();
+                    connection.Players.GetPlayerInfo();
                     database_state = Db_State.idle;
                     break;
                 case Db_State.loading:
@@ -50,7 +50,7 @@ namespace Server
         void initPlayer(int source)
         {
             Player player = new PlayerList()[source];
-            PlayerDocument user = connection.players.PlayerInDatabase(source);
+            PlayerDocument user = connection.Players.PlayerInDatabase(source);
             if(user != null)
             {
                 // Load player information
@@ -58,7 +58,7 @@ namespace Server
             }
             else
             {
-                connection.players.AddNewUser(player);
+                connection.Players.AddNewUser(player);
             }
         }
 
