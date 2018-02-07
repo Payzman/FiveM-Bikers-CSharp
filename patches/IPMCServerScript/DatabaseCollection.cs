@@ -6,11 +6,13 @@ namespace Server.CouchDB
     // The actual HTTP Requests and Responses are done by a lua script!
     class DatabaseCollection
     {
-        public PlayerDatabase players;
+        private PlayerDatabase players;
 
         public DatabaseCollection()
         {
 
         }
+
+        public PlayerDatabase Players { get => players; set => players = value; }
     }
 }
