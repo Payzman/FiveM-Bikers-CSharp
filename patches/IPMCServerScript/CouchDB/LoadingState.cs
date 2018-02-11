@@ -14,12 +14,12 @@ namespace Server.CouchDB
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override void Request()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

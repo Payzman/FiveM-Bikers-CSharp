@@ -16,6 +16,7 @@
             if (reason == Strings.get_player_docs)
             {
                 connection.Players = new PlayerDatabase(response);
+                connection.ChangeState(new LoadingState(connection));
             }
         }
 
