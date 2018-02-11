@@ -19,7 +19,7 @@
 
         public void Request()
         {
-            state.Request();
+            this.state.Request();
         }
 
         public void HandleResponse(dynamic response, string reason, dynamic param)
