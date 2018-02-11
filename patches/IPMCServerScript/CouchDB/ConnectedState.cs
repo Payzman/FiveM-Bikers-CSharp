@@ -9,7 +9,7 @@
         {
         }
 
-        bool temp = true;
+        private bool temp = true;
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
