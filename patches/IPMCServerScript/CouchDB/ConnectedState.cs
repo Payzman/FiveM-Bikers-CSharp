@@ -1,6 +1,7 @@
 ﻿namespace Server.CouchDB
 {
     using CitizenFX.Core;
+    using System.Collections.Generic;
 
     public class ConnectedState : State
     {
@@ -12,7 +13,10 @@
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
-            //Implementation pending
+            if (reason == Strings.get_player_docs)
+            {
+                connection.Players = new PlayerDatabase(response);
+            }
         }
 
         public override void Request()
