@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="CouchDB\ConnectedState.cs" />
     <Compile Include="CouchDB\Connection.cs" />
+    <Compile Include="CouchDB\IdleState.cs" />
     <Compile Include="CouchDB\LoadingState.cs" />
     <Compile Include="CouchDB\NotConnectedState.cs" />
     <Compile Include="CouchDB\State.cs" />
