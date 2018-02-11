@@ -41,9 +41,6 @@ namespace Server
                     connection.Players.GetPlayerInfo();
                     database_state = Db_State.idle;
                     break;
-                case Db_State.loading:
-                    ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
-                    break;
             }
         }
 

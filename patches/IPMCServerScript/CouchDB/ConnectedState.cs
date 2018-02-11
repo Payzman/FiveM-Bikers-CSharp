@@ -15,7 +15,7 @@ namespace Server.CouchDB
 
         public override void Request()
         {
-            throw new NotImplementedException();
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
         }
     }
 }
