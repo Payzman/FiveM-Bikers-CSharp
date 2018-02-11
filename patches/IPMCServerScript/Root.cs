@@ -18,7 +18,6 @@ namespace Server.CouchDB
             this.couchdb = obj.couchdb;
             this.version = obj.version;
             this.vendor = new Vendor(obj.vendor);
-            ServerScript.TriggerEvent("Server:Initialized");
         }
         public string couchdb { get; set; }
         public string version { get; set; }

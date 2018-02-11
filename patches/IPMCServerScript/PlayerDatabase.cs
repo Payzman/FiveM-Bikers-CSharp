@@ -11,7 +11,7 @@ namespace Server.CouchDB
 
         public PlayerDatabase(dynamic obj) : base((ExpandoObject)obj)
         {
-            ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
+
         }
 
         public void GetPlayerInfo()
