@@ -16,7 +16,10 @@ namespace Server.CouchDB
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
-            //throw new NotImplementedException();
+            if(reason == Strings.get_single_player_doc)
+            {
+                connection.Players.AddPlayerDocument(response);
+            }
         }
 
         public override void Request()

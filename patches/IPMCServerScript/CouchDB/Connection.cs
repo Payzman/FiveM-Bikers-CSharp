@@ -32,9 +32,6 @@
         {
             switch (reason)
             {
-                case Strings.get_single_player_doc:
-                    players.AddPlayerDocument(response);
-                    break;
                 case Strings.request_uuids:
                     players.UploadNewUser(response, param);
                     break;
