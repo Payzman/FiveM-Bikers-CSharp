@@ -20,6 +20,10 @@ namespace Server.CouchDB
             {
                 connection.Players.AddPlayerDocument(response);
             }
+            if(connection.Players.users.Count == connection.Players.total_rows)
+            {
+                connection.ChangeState(new IdleState(connection));
+            }
         }
 
         public override void Request()

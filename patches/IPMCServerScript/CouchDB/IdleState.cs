@@ -13,9 +13,6 @@ namespace Server.CouchDB
             throw new NotImplementedException();
         }
 
-        public override void Request()
-        {
-            throw new NotImplementedException();
-        }
+        public override void Request() { }
     }
 }
