@@ -4,7 +4,7 @@ using CitizenFX.Core;
 
 namespace Server.CouchDB
 {
-    class PlayerDocument
+    public class PlayerDocument
     {
         /* This constructor is used when reading from the database */
         public PlayerDocument(dynamic obj)

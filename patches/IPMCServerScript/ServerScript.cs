@@ -7,28 +7,13 @@ using Server.CouchDB;
 namespace Server
 {
     public class ServerScript : BaseScript
-    {
-        enum Db_State
-        {
-            not_connected,
-            connected,
-            loading, //Database -> Script
-            updating, // Script -> Database
-            idle,
-        };
-        Db_State database_state;
-
-        DatabaseCollection database;
-        Root couchdb;
+    {        
+        Connection connection;
 
         public ServerScript()
         {
-            database_state = Db_State.not_connected;
-            couchdb = new Root();
-            database = new DatabaseCollection(couchdb);
-            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(database.HandleResponse);
-            EventHandlers["Server:Initialized"] += new Action(Initialized);
-            EventHandlers["Server:LoadedPlayerdocs"] += new Action(LoadedPlayerDocs);
+            this.connection = new Connection();
+            EventHandlers["Server:HttpResponse"] += new Action<dynamic, string, dynamic>(connection.HandleResponse);
             EventHandlers["Server:playerConnected"] += new Action<int>(initPlayer);
             Tick += OnTick;
         }
@@ -36,25 +21,13 @@ namespace Server
         private async Task OnTick()
         {
             await Task.FromResult(0);
-            switch(database_state)
-            {
-                case Db_State.not_connected:
-                    couchdb.RequestConnnectivity();
-                    break;
-                case Db_State.connected:
-                    database.players.GetPlayerInfo();
-                    database_state = Db_State.idle;
-                    break;
-                case Db_State.loading:
-                    database.Load();
-                    break;
-            }
+            connection.Request();
         }
 
         void initPlayer(int source)
         {
             Player player = new PlayerList()[source];
-            PlayerDocument user = database.players.PlayerInDatabase(source);
+            PlayerDocument user = connection.Players.PlayerInDatabase(source);
             if(user != null)
             {
                 // Load player information
@@ -62,19 +35,8 @@ namespace Server
             }
             else
             {
-                database.players.AddNewUser(player);
+                connection.Players.AddNewUser(player);
             }
-        }
-
-        void Initialized()
-        {
-            database_state = Db_State.loading;
-        }
-
-        void LoadedPlayerDocs()
-        {
-            // provisional -> connected state is after ALL databases were loaded in.... just playerdatabase for now.
-            database_state = Db_State.connected;
         }
     }
 }
