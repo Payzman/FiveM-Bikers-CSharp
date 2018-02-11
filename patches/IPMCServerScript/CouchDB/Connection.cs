@@ -25,17 +25,6 @@
         public void HandleResponse(dynamic response, string reason, dynamic param)
         {
             state.HandleResponse(response, reason, param);
-            DeprecatedHandleResponse(response, reason, param);
-        }
-
-        public void DeprecatedHandleResponse(dynamic response, string reason, dynamic param)
-        {
-            switch (reason)
-            {
-                case Strings.request_uuids:
-                    players.UploadNewUser(response, param);
-                    break;
-            }
         }
     }
 }
