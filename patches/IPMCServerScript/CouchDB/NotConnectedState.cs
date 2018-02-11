@@ -9,22 +9,19 @@ namespace Server.CouchDB
     class NotConnectedState : State
     {
         public NotConnectedState(Connection connection) : base(connection) { }
-        // temporary
-        bool temp = true;
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
-            Root root = new Root(response);
+            if(reason == Strings.reason_connectivity)
+            {
+                Root root = new Root(response);
+                connection.ChangeState(new ConnectedState(connection));
+            }
         }
 
         public override void Request()
         {
-            // connectivity test
-            if(temp)
-            {
-                ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
-                temp = false;
-            }
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.couchdb_url, Strings.reason_connectivity);
         }
     }
 }
