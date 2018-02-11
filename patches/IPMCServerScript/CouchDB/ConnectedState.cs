@@ -5,11 +5,11 @@
 
     public class ConnectedState : State
     {
+        private bool temp = true;
+
         public ConnectedState(Connection connection) : base(connection)
         {
         }
-
-        private bool temp = true;
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
