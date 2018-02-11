@@ -1,8 +1,5 @@
 ﻿namespace Server.CouchDB
 {
-    using CitizenFX.Core;
-    using System.Collections.Generic;
-
     public class ConnectedState : State
     {
         public ConnectedState(Connection connection) : base(connection)
