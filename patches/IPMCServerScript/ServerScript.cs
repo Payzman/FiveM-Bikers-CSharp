@@ -38,7 +38,6 @@ namespace Server
             switch(database_state)
             {
                 case Db_State.connected:
-                    connection.Players.GetPlayerInfo();
                     database_state = Db_State.idle;
                     break;
             }

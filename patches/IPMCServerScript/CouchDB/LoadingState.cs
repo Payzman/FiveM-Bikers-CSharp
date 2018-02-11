@@ -8,6 +8,8 @@ namespace Server.CouchDB
 {
     class LoadingState : State
     {
+        private bool temp = true;
+
         public LoadingState(Connection connection) : base(connection)
         {
         }
@@ -19,7 +21,11 @@ namespace Server.CouchDB
 
         public override void Request()
         {
-            //throw new NotImplementedException();
+            if (temp)
+            {
+                connection.Players.GetPlayerInfo();
+                temp = false;
+            }
         }
     }
 }

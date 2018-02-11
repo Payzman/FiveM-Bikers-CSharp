@@ -5,8 +5,6 @@
 
     public class ConnectedState : State
     {
-        private bool temp = true;
-
         public ConnectedState(Connection connection) : base(connection)
         {
         }
@@ -22,11 +20,7 @@
 
         public override void Request()
         {
-            if(temp)
-            {
-                ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
-                temp = false;
-            }
+            ServerScript.TriggerEvent("Server:HttpGet", Strings.player_doc_url, Strings.get_player_docs);
         }
     }
 }
