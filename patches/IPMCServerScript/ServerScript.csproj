@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CouchDB\ConnectedState.cs" />
     <Compile Include="CouchDB\Connection.cs" />
     <Compile Include="CouchDB\NotConnectedState.cs" />
     <Compile Include="CouchDB\State.cs" />
