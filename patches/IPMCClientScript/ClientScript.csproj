@@ -40,6 +40,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\nativeui.net.dll</HintPath>
     </Reference>
+    <Reference Include="StyleCop, Version=5.0.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
+      <HintPath>..\packages\StyleCop.5.0.0\lib\net40\StyleCop.dll</HintPath>
+    </Reference>
+    <Reference Include="StyleCop.CSharp, Version=5.0.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
+      <HintPath>..\packages\StyleCop.CSharp.5.0.0\lib\net40\StyleCop.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StyleCop.CSharp.Rules, Version=5.0.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
+      <HintPath>..\packages\StyleCop.CSharp.Rules.5.0.0\lib\net40\StyleCop.CSharp.Rules.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -52,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InteractionMenu.cs" />
+    <Compile Include="MenuItems.cs" />
+    <Compile Include="Patch.cs" />
     <Compile Include="PatchesMenu.cs" />
     <Compile Include="Ped.cs" />
     <Compile Include="ClientScript.cs" />
@@ -61,9 +72,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
+    <None Include="StyleCop.CSharp.Rules.targets" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(TargetPath)" "C:\FiveMServer\server-data\resources\ipmc"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets'))" />
+    <Error Condition="!Exists('..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets'))" />
+  </Target>
+  <Import Project="..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets" Condition="Exists('..\packages\StyleCop.CSharp.Rules.5.0.0\build\StyleCop.CSharp.Rules.targets')" />
 </Project>

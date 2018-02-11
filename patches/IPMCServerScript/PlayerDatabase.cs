@@ -5,13 +5,13 @@ using CitizenFX.Core;
 
 namespace Server.CouchDB
 {
-    class PlayerDatabase : Database
+    public class PlayerDatabase : Database
     {
         public List<PlayerDocument> users = new List<PlayerDocument>();
 
         public PlayerDatabase(dynamic obj) : base((ExpandoObject)obj)
         {
-            ServerScript.TriggerEvent("Server:LoadedPlayerdocs");
+
         }
 
         public void GetPlayerInfo()

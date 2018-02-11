@@ -1,71 +1,46 @@
-﻿using NativeUI;
-using CitizenFX.Core.UI;
-using CitizenFX.Core;
-using CitizenFX.Core.Native;
-
-namespace Client
+﻿namespace Client
 {
-    class InteractionMenu
+    using CitizenFX.Core;
+    using CitizenFX.Core.Native;
+    using CitizenFX.Core.UI;
+    using NativeUI;
+
+    public class InteractionMenu
     {
-        Player player;
+        private Player player;
         private MenuPool menus;
-        private UIMenu interaction_menu;
-        // Creates all the interactive menus and calls them.
-        // Constructor: Initialization
+        private UIMenu interactionMenu;
+
         public InteractionMenu(Player p)
         {
-            // Create menu pool
-            menus = new MenuPool();
-            AddInteractionMenu();
-            player = p;
-        }
-
-        private void AddInteractionMenu()
-        {
-            // Add additional menus here
-            interaction_menu = new UIMenu(Strings.MenuTitleInteraction, Strings.MenuSubtitleInteraction);
-            menus.Add(interaction_menu);
-            AddInteractionMenuItems();
-            // Refresh the interaction menu
-            interaction_menu.RefreshIndex();
-        }
-
-        private void AddInteractionMenuItems()
-        {
-            PatchesMenu patches_menu = new PatchesMenu(menus, interaction_menu);
-            // default clothes menu is just for WIP
-            UIMenuItem default_clothes = new UIMenuItem(Strings.MenuItemDefaultClothes);
-            interaction_menu.AddItem(default_clothes);
-            // Recording submenu
-            RecordingMenu recording_menu = new RecordingMenu(menus, interaction_menu);
-            // Leave Session
-            UIMenuItem leave_session = new UIMenuItem(Strings.MenuItemLeaveSession);
-            interaction_menu.AddItem(leave_session);
-            // Define the interaction menu item handler
-            interaction_menu.OnItemSelect += ItemHandler;
+            this.menus = new MenuPool();
+            this.AddInteractionMenu();
+            this.player = p;
         }
 
         // Wrapper so it can easily be used in IPMCScript.cs
         public void ProcessMenus()
         {
-            menus.ProcessMenus();
+            this.menus.ProcessMenus();
         }
 
-        // TODO: A function which just does it for every menu will be created eventually
+        // TODO: A function which just does it for every menu will be created
+        // eventually
         public void ToggleInteractionMenu()
         {
-            interaction_menu.Visible = !interaction_menu.Visible;
+            this.interactionMenu.Visible = !this.interactionMenu.Visible;
         }
 
-        public void ItemHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        public void ItemHandler(
+            UIMenu sender, UIMenuItem selectedItem, int index)
         {
-            switch(selectedItem.Text)
+            switch (selectedItem.Text)
             {
-                case Strings.MenuItemDefaultClothes:
-                    DefaultClothes();
+                case Strings.MenuItem.DefaultClothes:
+                    this.DefaultClothes();
                     break;
-                case Strings.MenuItemLeaveSession:
-                    LeaveSession();
+                case Strings.MenuItem.LeaveSession:
+                    this.LeaveSession();
                     break;
                 default:
                     break;
@@ -82,7 +57,39 @@ namespace Client
         public void LeaveSession()
         {
             Function.Call(Hash.NETWORK_SESSION_LEAVE_SINGLE_PLAYER);
-            Screen.ShowNotification(Strings.NotificationLeaveSession);
+            Screen.ShowNotification(Strings.Notification.LeaveSession);
+        }
+
+        private void AddInteractionMenu()
+        {
+            this.interactionMenu = new UIMenu(
+                Strings.MenuTitle.Interaction, 
+                Strings.MenuSubtitle.Interaction);
+            this.menus.Add(this.interactionMenu);
+            this.AddInteractionMenuItems();
+
+            this.interactionMenu.RefreshIndex();
+            this.interactionMenu.MouseEdgeEnabled = false; // might be a fix for the rotating camera bug
+        }
+
+        private void AddInteractionMenuItems()
+        {
+            PatchesMenu patches_menu = new PatchesMenu(
+                this.menus, this.interactionMenu);
+
+            // default clothes menu is just for WIP
+            UIMenuItem default_clothes =
+                new UIMenuItem(Strings.MenuItem.DefaultClothes);
+            this.interactionMenu.AddItem(default_clothes);
+
+            RecordingMenu recording_menu =
+                new RecordingMenu(this.menus, this.interactionMenu);
+
+            UIMenuItem leave_session =
+                new UIMenuItem(Strings.MenuItem.LeaveSession);
+            this.interactionMenu.AddItem(leave_session);
+
+            this.interactionMenu.OnItemSelect += this.ItemHandler;
         }
     }
 }

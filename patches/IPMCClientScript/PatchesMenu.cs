@@ -1,96 +1,90 @@
-﻿using NativeUI;
-using CitizenFX.Core.UI;
-using CitizenFX.Core;
-using CitizenFX.Core.Native;
-using System;
-
-namespace Client
+﻿namespace Client
 {
-    class PatchesMenu
+    using System.Collections.Generic;
+    using CitizenFX;
+    using CitizenFX.Core;
+    using NativeUI;
+
+    public class PatchesMenu
     {
         private MenuPool pool;
         private UIMenu parent;
-        private UIMenu set_patches;
+        private UIMenu setPatches;
         private Ped ped;
+        private Patch.Collection patchCollection;
 
         public PatchesMenu(MenuPool pool, UIMenu parent)
         {
             this.pool = pool;
             this.parent = parent;
-            ped = new Ped();
-            AddSetPatchesMenu();
+            this.ped = new Ped();
+            this.AddSetPatchesMenu();
+            this.patchCollection = new Patch.Collection();
         }
 
         private void AddSetPatchesMenu()
         {
-            // Add items for the interaction menu here:
-            // Add the submenu "set patch"
-            set_patches = pool.AddSubMenu(parent, Strings.MenuTitlePatch, Strings.MenuDescriptionSetPatch);
-            // Set Patch on back
-            UIMenuListItem set_patches2 = new UIMenuListItem(Strings.MenuItemCharter, Strings.charters, 1, Strings.MenuDescriptionSetCharter);
-            set_patches.AddItem(set_patches2);
-            // Set title bar patch
-            UIMenuListItem bar_title = new UIMenuListItem(Strings.MenuItemTitles, Strings.titles, 1, Strings.MenuDescriptionSetTitle);
-            set_patches.AddItem(bar_title);
+            this.setPatches = this.pool.AddSubMenu(
+                this.parent, 
+                Strings.MenuTitle.Patch, 
+                Strings.MenuDescription.SetPatch);
 
-            UIMenuCheckboxItem boogeyman = new UIMenuCheckboxItem("Boogeyman", false, "PVP Commendation Boogeyman");
-            set_patches.AddItem(boogeyman);
+            this.setPatches.AddItem(MenuItems.Backpatch);
 
-            UIMenuCheckboxItem guardian = new UIMenuCheckboxItem("Guardian", false, "PVP Commendation Guardian");
-            set_patches.AddItem(guardian);
+            this.setPatches.AddItem(MenuItems.BarTitle);
 
-            UIMenuCheckboxItem mayhem = new UIMenuCheckboxItem("Mayhem", false, "PVP Commendation Mayhem");
-            set_patches.AddItem(mayhem);
+            this.AddPvpCommendationPatches();
 
-            UIMenuCheckboxItem pow = new UIMenuCheckboxItem("Prisoner of War", false, "PVP Commendation Prisoner of War");
-            set_patches.AddItem(pow);
+            this.setPatches.OnListChange += this.SetPatchHandler;
+            this.setPatches.OnCheckboxChange += this.CheckboxHandler;
+            this.setPatches.MouseEdgeEnabled = false; // might be a fix for the rotating camera bug
 
-            UIMenuCheckboxItem valor = new UIMenuCheckboxItem("Valor", false, "PVP Commendation Valor");
-            set_patches.AddItem(valor);
-            // Use a handler to handle user input (choosing buttons etc.)
-            set_patches.OnListChange += SetPatchHandler;
-            set_patches.OnCheckboxChange += CheckboxHandler;
-            // Refresh the set patches menu
-            set_patches.RefreshIndex();
+            this.setPatches.RefreshIndex();
         }
 
-        private void CheckboxHandler(UIMenu sender, UIMenuCheckboxItem checkboxItem, bool Checked)
+        private void AddPvpCommendationPatches()
         {
-            if (checkboxItem.Text == "Boogeyman")
-            {
-                ped.SetBoogeymanPatch(Checked);
-            }
-            else if (checkboxItem.Text == "Guardian")
-            {
-                ped.SetGuardianPatch(Checked);
-            }
-            else if (checkboxItem.Text == "Mayhem")
-            {
-                ped.SetMayhemPatch(Checked);
-            }
-            else if (checkboxItem.Text == "Prisoner of War")
-            {
-                ped.SetPowPatch(Checked);
-            }
-            else if (checkboxItem.Text == "Valor")
-            {
-                ped.SetValorPatch(Checked);
-            }
+            this.setPatches.AddItem(MenuItems.Pow);
+            this.setPatches.AddItem(MenuItems.Mayhem);
+            this.setPatches.AddItem(MenuItems.Guardian);
+            this.setPatches.AddItem(MenuItems.Boogeyman);
+            this.setPatches.AddItem(MenuItems.Valor);
         }
 
-        public void SetPatchHandler(UIMenu sender, UIMenuItem selectedItem, int index)
+        private void SetPatchHandler(
+            UIMenu sender,
+            UIMenuListItem selectedItem,
+            int index)
         {
-            if (sender == set_patches)
+            List<Patch> patchList = this.patchCollection.List.FindAll(item => item.Group == "All" || item.Group == selectedItem.Text);
+            foreach (Patch patch in patchList)
             {
-                if (selectedItem.Text == Strings.MenuItemCharter)
-                {
-                    ped.ApplyBottomRocker(index);
-                }
-                else if (selectedItem.Text == Strings.MenuItemTitles)
-                {
-                    ped.ApplyTitleBarPatch(index);
-                }
+                this.ped.RemovePatch(patch);
             }
+
+            string patchname = selectedItem.IndexToItem(index);
+            Patch patchToAdd = patchList.Find(item => item.Name == patchname);
+            this.ped.AddPatch(patchToAdd);
+
+            this.ped.UpdateDecorations();
+        }
+
+        private void CheckboxHandler(
+            UIMenu sender, 
+            UIMenuCheckboxItem checkboxItem, 
+            bool checkboxChecked)
+        {
+            Patch patch = this.patchCollection.List.Find(item => item.Name == checkboxItem.Text);
+            if (checkboxChecked)
+            {
+                this.ped.AddPatch(patch);
+            }
+            else
+            {
+                this.ped.RemovePatch(patch);
+            }
+            
+            this.ped.UpdateDecorations();
         }
     }
 }
