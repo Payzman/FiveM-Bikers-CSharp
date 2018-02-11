@@ -2,7 +2,7 @@
 {
     using CitizenFX.Core;
 
-    class ConnectedState : State
+    public class ConnectedState : State
     {
         public ConnectedState(Connection connection) : base(connection)
         {
