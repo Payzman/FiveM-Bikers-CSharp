@@ -7,7 +7,7 @@
 
         public Connection()
         {
-            state = new NotConnectedState(this);
+            this.state = new NotConnectedState(this);
         }
 
         public PlayerDatabase Players { get => this.players; set => players = value; }
