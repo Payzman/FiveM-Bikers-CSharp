@@ -96,7 +96,6 @@
     <Compile Include="CouchDB\State.cs" />
     <Compile Include="PlayerDatabase.cs" />
     <Compile Include="Root.cs" />
-    <Compile Include="DatabaseCollection.cs" />
     <Compile Include="DatabaseRevision.cs" />
     <Compile Include="DatabaseRows.cs" />
     <Compile Include="Database.cs" />

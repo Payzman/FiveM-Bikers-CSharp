@@ -4,14 +4,12 @@
     {
         private State state;
         private PlayerDatabase players;
-        private DatabaseCollection dbcoll;
 
         public PlayerDatabase Players { get => players; set => players = value; }
 
         public Connection()
         {
             state = new NotConnectedState(this);
-            dbcoll = new DatabaseCollection();
         }
 
         public void ChangeState(State state)
