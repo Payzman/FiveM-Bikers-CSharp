@@ -5,12 +5,12 @@
         private State state;
         private PlayerDatabase players;
 
-        public PlayerDatabase Players { get => players; set => players = value; }
-
         public Connection()
         {
             state = new NotConnectedState(this);
         }
+
+        public PlayerDatabase Players { get => players; set => players = value; }
 
         public void ChangeState(State state)
         {
