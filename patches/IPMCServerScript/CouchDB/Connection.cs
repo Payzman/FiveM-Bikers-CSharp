@@ -10,7 +10,7 @@
             this.state = new NotConnectedState(this);
         }
 
-        public PlayerDatabase Players { get => this.players; set => players = value; }
+        public PlayerDatabase Players { get => this.players; set => this.players = value; }
 
         public void ChangeState(State state)
         {
