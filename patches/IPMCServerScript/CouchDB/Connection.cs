@@ -32,9 +32,6 @@
         {
             switch (reason)
             {
-                case Strings.get_player_docs:
-                    players = new PlayerDatabase(response);
-                    break;
                 case Strings.get_single_player_doc:
                     players.AddPlayerDocument(response);
                     break;

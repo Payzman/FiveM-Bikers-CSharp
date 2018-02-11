@@ -10,7 +10,7 @@ namespace Server.CouchDB
 
         public override void HandleResponse(dynamic response, string reason, dynamic param)
         {
-            throw new NotImplementedException();
+            connection.Players = new PlayerDatabase(response);
         }
 
         public override void Request()
