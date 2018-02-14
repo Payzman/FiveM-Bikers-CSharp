@@ -82,6 +82,8 @@
                 new UIMenuItem(Strings.MenuItem.DefaultClothes);
             this.interactionMenu.AddItem(default_clothes);
 
+            UIMenu character_creator = this.menus.AddSubMenu(this.interactionMenu, "Character Creator");
+
             RecordingMenu recording_menu =
                 new RecordingMenu(this.menus, this.interactionMenu);
 
