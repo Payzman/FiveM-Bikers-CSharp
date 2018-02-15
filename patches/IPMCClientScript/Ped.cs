@@ -25,13 +25,11 @@
         public void AddPatch(Patch patch)
         {
             this.patchList.Add(patch);
-            this.UpdateDecorations();
         }
 
         public void RemovePatch(Patch patch)
         {
             this.patchList.Remove(patch);
-            this.UpdateDecorations();
         }
 
         public void UpdateDecorations()
@@ -39,7 +37,6 @@
             /* You cannot enable or disable single decorations. The only way
              * is to disable all decorations and reenable all decorations you
              * want on the PC */
-            
             this.playerPedHash = Function.Call<int>(Hash.PLAYER_PED_ID);
             this.ClearDecorations();
             foreach (Patch patch in this.patchList)
