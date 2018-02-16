@@ -50,7 +50,7 @@
                 /* Currently hardcoded - later via file */
                 List<Patch> patches = new List<Patch>()
                 {
-                    new Patch(this.customOverlayHash, "none", "none", "All"),
+                    new Patch(this.customOverlayHash, "None", "None", "All"),
                     new Patch(this.customOverlayHash, "boogeyman_M", Strings.MenuItem.Boogeyman, "pvp"),
                     new Patch(this.customOverlayHash, "guardian_M", Strings.MenuItem.Guardian, "pvp"),
                     new Patch(this.customOverlayHash, "mayhem_M", Strings.MenuItem.Mayhem, "pvp"),

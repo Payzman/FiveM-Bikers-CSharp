@@ -1,5 +1,7 @@
 ﻿namespace Client
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using CitizenFX.Core;
     using CitizenFX.Core.Native;
     using CitizenFX.Core.UI;
@@ -82,6 +84,12 @@
                 new UIMenuItem(Strings.MenuItem.DefaultClothes);
             this.interactionMenu.AddItem(default_clothes);
 
+            UIMenu character_creator = this.menus.AddSubMenu(this.interactionMenu, "Character Creator");
+            List<dynamic> shapes1 = new List<dynamic>();
+            shapes1.AddRange(Enumerable.Range(1, 47).Cast<dynamic>().ToList());
+            character_creator.AddItem(new UIMenuListItem("Shape 1",shapes1,0));
+            character_creator.OnListChange += ListHandler;
+
             RecordingMenu recording_menu =
                 new RecordingMenu(this.menus, this.interactionMenu);
 
@@ -90,6 +98,15 @@
             this.interactionMenu.AddItem(leave_session);
 
             this.interactionMenu.OnItemSelect += this.ItemHandler;
+        }
+
+        private void ListHandler(UIMenu sender, UIMenuListItem selectedItem, int index)
+        {
+            if(selectedItem.Text == "Shape 1")
+            {
+                int player_ped_hash = Function.Call<int>(Hash.PLAYER_PED_ID);
+                Function.Call(Hash.SET_PED_HEAD_BLEND_DATA,player_ped_hash,index,0,0,0,0,0,0,0,0,0);
+            }
         }
     }
 }
